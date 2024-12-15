@@ -86,3 +86,5 @@
 - Google Authenticator
 - React useStateで色選択の状態管理
 
+画面遷移図: url 「https://www.figma.com/design/c6JfZFIlQ5UGLUAM31DEuB/RUNTEQ%E5%8D%92%E5%88%B6%E3%82%A2%E3%83%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=0bbMChYMTvqkikT1-1」
+
