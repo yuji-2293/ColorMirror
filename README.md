@@ -89,7 +89,7 @@
 
 
 ### 画面遷移図
-Figma：%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9
+Figma：https://www.figma.com/design/c6JfZFIlQ5UGLUAM31DEuB/RUNTEQ%E5%8D%92%E5%88%B6%E3%82%A2%E3%83%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=0bbMChYMTvqkikT1-1
 ##MVP
 - [x] ユーザー登録機能
 - [x] ログイン機能
@@ -128,6 +128,3 @@ Figma：%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9
 ### 各画面の作り込み
 画面遷移だけでなく、必要なボタンやフォームが確認できるくらい作り込めているか？
 - [x] 作り込みはある程度完了している（Figmaを見て画面の作成ができる状態にある）
-
-
-https://www.figma.com/design/c6JfZFIlQ5UGLUAM31DEuB/RUNTEQ%E5%8D%92%E5%88%B6%E3%82%A2%E3%83%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=0bbMChYMTvqkikT1-1
