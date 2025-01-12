@@ -1,9 +1,8 @@
 databases:
   - name: ColorMirror
     databaseName: colormirror
-    user: user
+    user: ColorMirror
     region: singapore
-    host: dpg-cu1hvn3tq21c73bih0m0-a
 
 services:
   - type: web
