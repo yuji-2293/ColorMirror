@@ -86,6 +86,9 @@ production:
     <<: *default
     database: colormirrior_24nj
     host: dpg-cu1kk05svqrc73etfab0-a
+    username: colormirrior_24nj_user || postgres
+    password: KECJhezVPpkacM4lHe7DLWiwbiEtsFrW
+    port: 5432
   cache:
     <<: *primary_production
     database: colormirrior_24nj
