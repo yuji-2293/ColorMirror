@@ -85,7 +85,7 @@ production:
   primary: &primary_production
     <<: *default
     adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
+    url: <%= ENV['postgresql://user:qIeoj2gBTUemdpw3qHB7P92Ic0glCZon@dpg-culhvn3tq21c73bihOm0-a/colormirror'] %>
 
   cache:
     <<: *primary_production
