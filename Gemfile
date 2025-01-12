@@ -56,6 +56,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -63,3 +65,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+#ユーザー認証機能[deviceの導入]
+gem 'devise'
+
+#国際化対応
+gem 'rails-i18n'
