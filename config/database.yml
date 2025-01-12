@@ -84,9 +84,12 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  database: <%= ENV['DB_NAME'] || 'colormirror_production' %>
+  username: <%= ENV['DB_USER'] || 'postgres' %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
   pool: 5
-  database: <%= ENV['colormirrior_24nj'] || 'myapp_production' %>
-  username: <%= ENV['colormirrior_24nj_user'] || 'postgres' %>
-  password: <%= ENV['KECJhezVPpkacM4lHe7DLWiwbiEtsFrW'] %>
-  host: <%= ENV['dpg-cu1kk05svqrc73etfab0-a'] %>
-  port: 5432
+
+cable:
+  <<: *production
+  database: colormirror_production_cable
