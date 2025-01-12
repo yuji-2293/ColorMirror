@@ -84,18 +84,20 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: myapp_production
-    username: myapp
-    password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+    database: colormirror
+    host: dpg-cu1hvn3tq21c73bih0m0-a
+    username: user
+    password: qIeoj2gBTUemdpw3qHB7P92Ic0glCZon
+    port: 5432
   cache:
     <<: *primary_production
-    database: myapp_production_cache
+    database: colormirror
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: myapp_production_queue
+    database: colormirror
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: myapp_production_cable
+    database: colormirror
     migrations_paths: db/cable_migrate
