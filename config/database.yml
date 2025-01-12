@@ -84,20 +84,17 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: colormirror
-    host: dpg-cu1hvn3tq21c73bih0m0-a
-    username: user
-    password: qIeoj2gBTUemdpw3qHB7P92Ic0glCZon
-    port: 5432
+    database:
+    host: 
   cache:
     <<: *primary_production
-    database: colormirror
+    database:
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: colormirror
+    database:
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: colormirror
+    database:
     migrations_paths: db/cable_migrate

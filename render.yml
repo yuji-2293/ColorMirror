@@ -1,7 +1,7 @@
 databases:
   - name: ColorMirror
-    databaseName: colormirror
-    user: ColorMirror
+    databaseName: colormirrior_24nj
+    user: colormirrior_24nj_user
     region: singapore
 
 services:
