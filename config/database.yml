@@ -82,14 +82,19 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['DB_NAME'] || 'colormirror_production' %>
-  username: <%= ENV['DB_USER'] || 'postgres' %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOST'] %>
-  pool: 5
-
-cable:
-  <<: *production
-  database: colormirror_production_cable
+  primary: &primary_production
+    <<: *default
+    database: colormirrior_24nj
+    host: dpg-cu1kk05svqrc73etfab0-a
+  cache:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/cable_migrate
