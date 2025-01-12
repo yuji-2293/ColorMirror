@@ -89,15 +89,15 @@ production:
     username: colormirrior_24nj_user
     password: KECJhezVPpkacM4lHe7DLWiwbiEtsFrW
     port: 5432
-  # cache:
-  #   <<: *primary_production
-  #   database: colormirrior_24nj
-  #   migrations_paths: db/cache_migrate
-  # queue:
-  #   <<: *primary_production
-  #   database: colormirrior_24nj
-  #   migrations_paths: db/queue_migrate
-  # cable:
-  #   <<: *primary_production
-  #   database: colormirrior_24nj
-  #   migrations_paths: db/cable_migrate
+  cache:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: colormirrior_24nj
+    migrations_paths: db/cable_migrate
