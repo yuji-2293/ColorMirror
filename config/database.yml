@@ -84,9 +84,11 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    adapter: postgresql
-    url: <%= ENV['postgresql://user:qIeoj2gBTUemdpw3qHB7P92Ic0glCZon@dpg-culhvn3tq21c73bihOm0-a/colormirror'] %>
-
+    database: colormirror
+    host: dpg-cu1hvn3tq21c73bih0m0-a
+    username: user
+    password: qIeoj2gBTUemdpw3qHB7P92Ic0glCZon
+    port: 5432
   cache:
     <<: *primary_production
     database: colormirror
