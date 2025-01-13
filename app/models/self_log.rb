@@ -1,0 +1,2 @@
+class SelfLog < ApplicationRecord
+end

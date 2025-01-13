@@ -1,0 +1,2 @@
+class WhetherLog < ApplicationRecord
+end
