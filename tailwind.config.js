@@ -7,6 +7,10 @@ module.exports = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
+    themes: ["light", "dark", "valentine", "winter"],
     darkTheme: false, // ダークモードをONにする場合は削除
+  },
+    corePlugins: {
+    preflight: false, // TailwindのリセットCSSを無効化
   },
 }
