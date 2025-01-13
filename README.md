@@ -130,4 +130,4 @@ ER図
 
 ---
 
-https://i.gyazo.com/9f1a3146b524bd3279107af06c554be9.png
+![image](https://github.com/user-attachments/assets/7f9d5ecf-5873-4b55-967b-3ddd7a40973e)
