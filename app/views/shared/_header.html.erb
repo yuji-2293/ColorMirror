@@ -1,26 +1,52 @@
-<div class="navbar bg-accent ">
+<div class="navbar bg-base-300 shadow-md rounded-md">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl text-primary-content">ColorMirror</a>
+      <a class="btn btn-ghost text-xl text-">ColorMirror</a>
   </div>
-        <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
-        </li>
-      <% end %>
-  <div class="flex-none">
-    <button class="btn btn-square btn-ghost">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        class="inline-block h-5 w-5 stroke-current">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+  <div class="flex-none mr-8 relative">
+    <!-- Swap Button -->
+    <label class="btn btn-circle swap swap-rotate">
+      <!-- this hidden checkbox controls the state -->
+      <input type="checkbox" id="menu-toggle" />
 
+      <!-- hamburger icon -->
+      <svg
+        class="swap-off fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 512 512">
+        <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
       </svg>
-    </button>
+
+      <!-- close icon -->
+      <svg
+        class="swap-on fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 512 512">
+        <polygon
+          points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+      </svg>
+    </label>
   </div>
+<!-- Dropdown Menu -->
+<div
+  id="dropdown-menu"
+  class="hidden mr-3 w-48 bg-white rounded-lg shadow-lg border border-gray-200 absolute right-0 top-20">
+  <ul class="py-2">
+          <% if user_signed_in? %>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+              </li>
+              <li>マイページ（仮）</li>
+              <li>リマインド設定（仮）</li>
+              <li>振り返り（仮）</li>
+          <% end %>
+              <li>プライバシーポリシー（仮）</li>
+              <li>お問い合わせ（仮）</li>
+              <li>利用規約（仮）</li>
+              <li>「X」「GitHub」（仮）</li>
+  </ul>
+</div>
 </div>
