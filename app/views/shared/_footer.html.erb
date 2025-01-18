@@ -1,4 +1,4 @@
-<div class="btm-nav bg-slate-300">
+<div class="btm-nav bg-slate-300 fixed bottom-0 left-0 right-0">
   <button class="text-primary">
     <%= link_to '履歴', colors_path, class: 'no-underline text-primary' %>
     <svg
@@ -30,7 +30,8 @@
     </svg>
   </button>
   <button class="text-primary">
-    <%= link_to '振り返る', colors_path, class: 'no-underline text-primary' %>
+    <%# 仮置きchatbot %>
+    <%= link_to '振り返る', chatbots_ask_path, class: 'no-underline text-primary' %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5"

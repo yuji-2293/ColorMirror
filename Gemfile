@@ -71,3 +71,8 @@ gem 'devise'
 
 #国際化対応
 gem 'rails-i18n'
+
+# 環境変数設定
+gem 'dotenv-rails'
+
+gem 'ruby-openai'
