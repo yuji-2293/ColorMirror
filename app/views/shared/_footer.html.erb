@@ -1,6 +1,6 @@
 <div class="btm-nav bg-slate-300">
   <button class="text-primary">
-    <span>見る</span>
+    <%= link_to '履歴', colors_path, class: 'no-underline text-primary' %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5"
@@ -15,7 +15,7 @@
     </svg>
   </button>
   <button class="text-primary">
-    <span>記録する</span>
+    <%= link_to '記録する', new_color_path, class: 'no-underline text-primary'%>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5"
@@ -30,7 +30,7 @@
     </svg>
   </button>
   <button class="text-primary">
-    <span>振り返る</span>
+    <%= link_to '振り返る', colors_path, class: 'no-underline text-primary' %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5"

@@ -71,5 +71,8 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  # アセットをプリコンパイルせずに動的に提供
+  config.assets.debug = true
+  config.assets.compile = true
 
 end
