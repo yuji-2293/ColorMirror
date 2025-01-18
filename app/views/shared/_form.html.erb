@@ -1,0 +1,23 @@
+<%= form_with model: @color, url: colors_path, local: true  do |f|%>
+            <div class="color_list mb-10 pl-5 ">
+                <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
+                    <button type="button" class="color-ball w-16 h-16 bg-red-300  rounded-full" data-color-id="1"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-orange-300  rounded-full " data-color-id="2"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-yellow-300  rounded-full " data-color-id="3"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-green-300  rounded-full " data-color-id="4"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-blue-300 rounded-full " data-color-id="5"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-purple-300 rounded-full " data-color-id="6"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-white  rounded-full "data-color-id="7"></button>
+                </div>
+            <%= f.hidden_field :color_id, id: 'color_id' %>
+            <%=f.submit class: 'btn btn-accent text-white rounded-full shadow-md' %>
+<% end %>
+<script>
+  document.querySelectorAll('.color-ball').forEach(function(ball){
+    ball.addEventListener('click', function(){
+      const colorId = this.getAttribute('data-color-id');
+      document.getElementById('color_id').value = colorId;
+      console.log(colorId);
+    });
+  });
+</script>
