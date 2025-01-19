@@ -2,7 +2,7 @@ class ColorsController < ApplicationController
   def top;end
 
   def index
-    @colors = Color.all.includes(:user)
+    @colors = Color.all.includes(:self_logs)
 
   end
 
@@ -11,10 +11,11 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = current_user.color.build(color_params)
+    @color = current_user.colors.build(color_params)
 
     if @color.save
-      redirect_to root_path, notice: '保存成功'
+
+      redirect_to colors_path, notice: '保存成功'
     else
       flash.now[:alert] = '保存失敗'
       render :new, status: :unprocessable_entity
@@ -24,6 +25,6 @@ class ColorsController < ApplicationController
 
   private
   def color_params
-    params.require(:color).permit(:color_id)
+    params.require(:color).permit(:color_name, :user_id, :id)
   end
 end

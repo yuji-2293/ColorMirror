@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :color
+  has_many :self_logs
+  has_many :colors, through: :self_logs, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

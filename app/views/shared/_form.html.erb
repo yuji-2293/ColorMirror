@@ -1,4 +1,6 @@
 <%= form_with model: @color, url: colors_path, local: true  do |f|%>
+<%= render 'shared/error_messages', object: f.object %>
+
             <div class="color_list mb-10 pl-5 ">
                 <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
                     <button type="button" class="color-ball w-16 h-16 bg-red-300  rounded-full" data-color-id="1"></button>
@@ -9,14 +11,14 @@
                     <button type="button" class="color-ball w-16 h-16 bg-purple-300 rounded-full " data-color-id="6"></button>
                     <button type="button" class="color-ball w-16 h-16 bg-white  rounded-full "data-color-id="7"></button>
                 </div>
-            <%= f.hidden_field :color_id, id: 'color_id' %>
+            <%= f.hidden_field :color_name, id: 'color_name'%>
             <%=f.submit class: 'btn btn-accent text-white rounded-full shadow-md' %>
 <% end %>
 <script>
   document.querySelectorAll('.color-ball').forEach(function(ball){
     ball.addEventListener('click', function(){
       const colorId = this.getAttribute('data-color-id');
-      document.getElementById('color_id').value = colorId;
+      document.getElementById('color_name').value = colorId;
       console.log(colorId);
     });
   });
