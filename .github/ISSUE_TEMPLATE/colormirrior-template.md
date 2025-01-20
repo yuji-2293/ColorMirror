@@ -18,9 +18,3 @@ assignees: ''
 - [ ] 
 - [ ]
 - [ ]
-
----
-
-関連issue
-- close #
-- close #
