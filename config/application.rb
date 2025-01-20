@@ -3,7 +3,6 @@ require_relative "boot"
 require "rails/all"
 require 'openai'
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -25,6 +24,8 @@ module Myapp
       g.helper false
       g.test_framework nil
     end
+    # # サービスディレクトリへのルート設定
+    # config.autoload_paths << Rails.root.join("app/services")
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -36,5 +37,7 @@ module Myapp
     config.hosts << "colormirror.onrender.com"
 
     config.i18n.default_locale = :ja
+    config.autoload_paths << Rails.root.join("app/services")
+
   end
 end
