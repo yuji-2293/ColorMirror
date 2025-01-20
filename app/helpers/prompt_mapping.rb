@@ -9,6 +9,7 @@ module PromptMapping
     7 => "灰色"
 }.freeze
 
+    # マッピングを取得するメソッド
   def mapping_color(color_id)
     PROMPT_MAPPING[color_id.to_i] || "その他の色"
   end
