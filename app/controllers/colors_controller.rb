@@ -3,8 +3,8 @@ class ColorsController < ApplicationController
   def top;end
 
   def index
-    @colors = Color.last(1)
-    @response = Response.last(1)
+    @colors = current_user.colors.last(1)
+    @response = current_user.responses.last(1)
 
   end
 
