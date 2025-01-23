@@ -1,3 +1,5 @@
-<% @response.each do |response| %>
-<%= response.ai_comment %>
+<% if @response.present? %>
+<%= @response.ai_comment %>
+<% else %>
+<h1>今日はまだ、気分の登録をされていないため、コメントが生成されていません</h1>
 <% end %>

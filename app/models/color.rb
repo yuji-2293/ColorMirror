@@ -5,4 +5,5 @@ class Color < ApplicationRecord
   accepts_nested_attributes_for :responses
 
   validates :color_name, presence: true
+
 end

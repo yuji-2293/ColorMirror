@@ -1,8 +1,10 @@
-
-<% @colors.each do |color| %>
+<% if @color.present? %>
 <div class="">
-    <h2 class="">私が今日選択した色は:</h2>
-    <div class="<%= color_class(color.color_name) %> rounded-full w-10 h-10 m-10"></div>
+    <h2 class="">私が今日選択した色は:<%= mapping_color(@color.color_name) %></h2>
+    <div class="<%= color_class(@color.color_name) %> rounded-full w-10 h-10 m-10"></div>
 </div>
+
+<% else %>
+<h1>今日は気分の登録をされていません</h1>
 <% end %>
 <%= render 'shared/response' %>

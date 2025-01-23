@@ -1,10 +1,11 @@
 class ColorsController < ApplicationController
+  #helpersのPromptMappingを指定
   helper PromptMapping
   def top;end
 
   def index
-    @colors = current_user.colors.last(1)
-    @response = current_user.responses.last(1)
+    @color = current_user.colors.today_form.first
+    @response = current_user.responses.today_form.first
 
   end
 
