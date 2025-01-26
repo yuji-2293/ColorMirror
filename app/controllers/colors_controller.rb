@@ -1,6 +1,5 @@
 class ColorsController < ApplicationController
-  #helpersのPromptMappingを指定
-  helper PromptMapping
+  before_action :set_color, only: [:edit, :update, :destroy]
   def top;end
 
   def index
@@ -16,30 +15,39 @@ class ColorsController < ApplicationController
   def create
     @color = Color.new(color_params)
     if @color.save
-      #formから渡ってきたcolor_nameをhelperメソッドで色名に変換
-      color_id = color_params[:color_name]
-      mapped_color = view_context.mapping_color(color_id)
-
-      #openai に色名を渡してプロンプトを作成する
-      prompt = "色「#{ mapped_color }」についてコメントを生成してください。"
-      #color_responseからAIにプロンプトを投げてresponseを生成する
-      ai_response = ::ColorResponseService.new.fetch_response(prompt)
-      color_response = ai_response["choices"][0]["message"]["content"]
-
-      #self_logレコードを作成後、responsesテーブルにai_commentを保存
-      self_log = @color.self_logs.create(user: current_user)
-      @response = self_log.responses.create(ai_comment: color_response)
-
+      # /lib/にあるmoduleで色のマッピング
+      mapped_color = ColorMapping.mapping_color(color_params[:color_name])
+      # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す
+      ColorProcessingService.new(@color, current_user).process_color(mapped_color)
       redirect_to colors_path, notice: '色とAIレスポンスを保存しました'
     else
       flash.now[:alert] = '保存失敗'
       render :new, status: :unprocessable_entity
     end
-
   end
 
+  def edit;end
+
+  def update
+    if @color.update(color_params)
+      mapped_color = ColorMapping.mapping_color(color_params[:color_name])
+      ColorProcessingService.new(@color, current_user).process_color(mapped_color)
+      redirect_to colors_path(@color), notice: "色の更新に成功しました！"
+    else
+      flash.now[:alert] = "編集失敗"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @color.destroy!
+    redirect_to colors_path, notice: "削除成功", status: :see_other
+  end
+
+
   private
+
   def color_params
-    params.require(:color).permit(:color_name)
+    params.require(:color).permit(:id, :color_name)
   end
 end
