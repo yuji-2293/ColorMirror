@@ -2,7 +2,7 @@ require "openai"
 
 # Rails全体で利用するOpenAIの設定を保存
 Rails.application.config.openai = {
-  api_key: ENV.fetch("OPENAI_API_KEY"),
+  api_key: ENV.fetch("OPENAI_API_KEY", "default_test_key"),
   default_model: "gpt-4o-mini"
 }
 # OpenAIライブラリの初期設定
