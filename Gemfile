@@ -56,8 +56,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -66,13 +66,15 @@ group :test do
   gem "selenium-webdriver"
 end
 
-#ユーザー認証機能[deviceの導入]
-gem 'devise'
+# ユーザー認証機能[deviceの導入]
+gem "devise"
 
-#国際化対応
-gem 'rails-i18n'
+# 国際化対応
+gem "rails-i18n"
 
 # 環境変数設定
-gem 'dotenv-rails'
-
-gem 'ruby-openai'
+gem "dotenv-rails"
+# railsプロジェクトでOpenAI APIを使うgem
+gem "ruby-openai"
+# lintチェックツール
+gem "rubocop"

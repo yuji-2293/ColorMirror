@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
-require 'openai'
+require "openai"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +16,7 @@ module Myapp
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-    #testファイルやヘルバーファイルの生成を抑制する
+    # testファイルやヘルバーファイルの生成を抑制する
 
     config.generators.system_tests = nil
     config.generators do |g|
@@ -38,8 +38,7 @@ module Myapp
 
     config.i18n.default_locale = :ja
     # config.autoload_paths << Rails.root.join("app/services")
-    config.autoload_paths |= [Rails.root.join('app/services').to_s]
-    config.autoload_paths |= [Rails.root.join('lib').to_s]
-
+    config.autoload_paths |= [ Rails.root.join("app/services").to_s ]
+    config.autoload_paths |= [ Rails.root.join("lib").to_s ]
   end
 end

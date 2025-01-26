@@ -1,11 +1,10 @@
 class ColorsController < ApplicationController
-  before_action :set_color, only: [:edit, :update, :destroy]
+  before_action :set_color, only: [ :edit, :update, :destroy ]
   def top;end
 
   def index
     @color = current_user.colors.today_form.first
     @response = current_user.responses.today_form.first
-
   end
 
   def new
@@ -19,9 +18,9 @@ class ColorsController < ApplicationController
       mapped_color = ColorMapping.mapping_color(color_params[:color_name])
       # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す
       ColorProcessingService.new(@color, current_user).process_color(mapped_color)
-      redirect_to colors_path, notice: '色とAIレスポンスを保存しました'
+      redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
     else
-      flash.now[:alert] = '保存失敗'
+      flash.now[:alert] = "保存失敗"
       render :new, status: :unprocessable_entity
     end
   end
