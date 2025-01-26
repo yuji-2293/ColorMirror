@@ -1,10 +1,16 @@
 <% if @color.present? %>
-<div class="">
-    <h2 class="">私が今日選択した色は:<%= mapping_color(@color.color_name) %></h2>
-    <div class="<%= color_class(@color.color_name) %> rounded-full w-10 h-10 m-10"></div>
-</div>
+    <div class="">
+        <h2 class="">私が今日選択した色は:<%= ColorMapping.mapping_color(@color.color_name) %></h2>
+        <div class="<%= ColorMapping.color_class(@color.color_name) %> rounded-full w-10 h-10 m-10"></div>
+    </div>
 
+    <%= render 'shared/response' %>
+
+
+    <div class="ボタンエリア">
+        <%= link_to "edit", edit_color_path(@color), class: "btn btn-ghost rounded-btn",data: {turbo: false}%>
+        <%= link_to "delete", color_path(@color), class: "btn btn-ghost rounded-btn", data: { turbo_method: :delete, turbo_confirm:"Are you sure?" }  %>
+    </div>
 <% else %>
-<h1>今日は気分の登録をされていません</h1>
+    <h1>今日は気分の登録をされていません</h1>
 <% end %>
-<%= render 'shared/response' %>

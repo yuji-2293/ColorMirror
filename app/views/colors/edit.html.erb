@@ -1,0 +1,10 @@
+<% if @color.present? %>
+<h1>色を再選択する</h1>
+<p><%= current_user.name %>さんが選んだカラーは<%= ColorMapping.mapping_color(@color.color_name) %>でした</p>
+<div class="<%= ColorMapping.color_class(@color.color_name) %> rounded-full w-20 h-20 m-20"></div>
+<p>再選択したい場合は下のカラーボールを選択してください</p>
+<%= render "shared/form", color: @color %>
+
+<% else %>
+<h1>登録されているデータがありません</h1>
+<% end %>
