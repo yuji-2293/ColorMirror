@@ -12,7 +12,7 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = Color.new(color_params)
+    @color = current_user.colors.build(color_params)
     if @color.save
       # /lib/にあるmoduleで色のマッピング
       mapped_color = ColorMapping.mapping_color(color_params[:color_name])
@@ -39,8 +39,8 @@ class ColorsController < ApplicationController
   end
 
   def destroy
-    @color.destroy!
-    redirect_to colors_path, notice: "削除成功", status: :see_other
+    current_user.colors.today_form.destroy_all
+    redirect_to new_color_path, notice: "データの削除成功", status: :see_other
   end
 
 
