@@ -27,5 +27,4 @@ module ColorMapping
     def self.mapping_color(color_id)
       PROMPT_MAPPING[color_id.to_i] || "その他の色"
     end
-
 end

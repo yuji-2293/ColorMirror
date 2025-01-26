@@ -38,7 +38,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { protocol: 'https', host: 'トップページアドレス' }
+  config.action_mailer.default_url_options = { protocol: "https", host: "トップページアドレス" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -74,5 +74,4 @@ Rails.application.configure do
   # アセットをプリコンパイルせずに動的に提供
   config.assets.debug = true
   config.assets.compile = true
-
 end
