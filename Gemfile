@@ -78,5 +78,5 @@ gem "dotenv-rails", groups: [ :development, :test ]
 gem "ruby-openai"
 # lintチェックツール
 gem "rubocop"
-#httpリクエストをサポートするgem
+# httpリクエストをサポートするgem
 gem "httparty"

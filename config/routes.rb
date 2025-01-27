@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get "chatbots/ask" => "chatbots#ask"
   post "chatbots/answer" => "chatbots#answer"
   # OpenWeatherAPI機能のルーティング
-  get 'weather', to: 'weathers#index', as: :weather
-  get 'weather/show', to: 'weathers#show', as: :show_weather
+  get "weather", to: "weathers#index", as: :weather
+  get "weather/show", to: "weathers#show", as: :show_weather
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
