@@ -1,11 +1,10 @@
 <h1><%= @weather[:name] %> の天気</h1>
 
 <p><strong>温度:</strong> <%= @weather[:temp_celsius] %> °C</p>
-<p><strong>体感温度:</strong> <%= @weather[:feels_like_celsius] %> °C</p>
+<p><strong>気圧:</strong> <%= @weather[:pressure] %> hPa</p>
+<p><strong>気圧:</strong> <%=  @pressure_status %> </p>
 <p><strong>最低温度:</strong> <%= @weather[:temp_min_celsius] %> °C</p>
 <p><strong>最高温度:</strong> <%= @weather[:temp_max_celsius] %> °C</p>
-<p><strong>湿度:</strong> <%= @weather[:humidity] %> %</p>
-<p><strong>風速:</strong> <%= @weather[:wind_speed] %> m/s</p>
 <p><strong>天気:</strong> <%= @weather[:description] %></p>
 
 <div>
