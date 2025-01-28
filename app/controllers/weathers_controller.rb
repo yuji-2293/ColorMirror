@@ -19,11 +19,11 @@ def show
       }
       @pressure_status = if @weather[:pressure] > 1013
                           "気圧が高まっています"
-                          elsif @weather = 1013
+      elsif @weather = 1013
                           "平均的な気圧です"
-                          else
+      else
                             "気圧が低下しています"
-                          end
+      end
     else
       redirect_to weather_path, alert: "天気情報の取得に失敗しました。"
     end
