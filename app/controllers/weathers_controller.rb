@@ -15,12 +15,11 @@ def show
         temp_min_celsius: kelvin_to_celsius(weather_data["main"]["temp_min"]).round(1),
         temp_max_celsius: kelvin_to_celsius(weather_data["main"]["temp_max"]).round(1),
         pressure: weather_data["main"]["pressure"],
+        weather_icon: weather_data['weather'][0]['icon'],
         description: weather_data["weather"][0]["description"]
       }
       @pressure_status = if @weather[:pressure] > 1013
                           "気圧が高まっています"
-      elsif @weather = 1013
-                          "平均的な気圧です"
       else
                             "気圧が低下しています"
       end
