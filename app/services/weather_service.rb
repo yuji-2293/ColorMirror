@@ -11,4 +11,5 @@ class WeatherService
   def fetch_weather
     self.class.get("/data/2.5/weather", @options)
   end
+
 end

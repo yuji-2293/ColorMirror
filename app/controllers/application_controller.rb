@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_gon
 
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
@@ -16,4 +17,10 @@ class ApplicationController < ActionController::Base
   def set_color
     @color = current_user.colors.find(params[:id])
   end
+
+  def set_gon
+    gon.color_mapping = ColorMapping::COLOR_MAPPING
+    gon.set_user = current_user
+  end
+
 end

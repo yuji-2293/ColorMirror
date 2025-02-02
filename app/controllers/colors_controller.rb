@@ -13,7 +13,11 @@ class ColorsController < ApplicationController
 
   def create
     @color = current_user.colors.build(color_params)
+
     if @color.save
+      @weather = colors.weather_log.build(color_params[:weather_logs_attributes])
+      raise
+
       # /lib/にあるmoduleで色のマッピング
       mapped_color = ColorMapping.mapping_color(color_params[:color_name])
       # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す
@@ -21,7 +25,7 @@ class ColorsController < ApplicationController
       redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
     else
       flash.now[:alert] = "保存失敗"
-      render :new, status: :unprocessable_entity
+      render :new,  status: :unprocessable_entity
     end
   end
 
@@ -47,6 +51,8 @@ class ColorsController < ApplicationController
   private
 
   def color_params
-    params.require(:color).permit(:id, :color_name)
+    params.require(:color).permit(:id, :color_name,
+    weather_logs_attributes:[:id, :weather_name, :description, :temperature, :temp_max, :temp_min, :pressure, :weather_icon]
+    )
   end
 end

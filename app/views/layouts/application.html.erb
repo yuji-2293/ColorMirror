@@ -22,6 +22,8 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# gem "gon"を有効にする %>
+    <%= include_gon %>
   </head>
 
   <body class="m-0 bg-content">

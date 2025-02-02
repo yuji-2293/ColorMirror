@@ -1,25 +1,28 @@
-<%= form_with model: @color, local: true  do |f|%>
+<%= form_with model: @color, local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-
-            <div class="color_list mb-10 pl-5 ">
+            <p label="city-input">居住都市を入力</p>
+            <%= f.text_field :city, id: "city-input", placeholder: "例: 東京 or tokyo" %>
+            <%# お天気カードUI %>
+            <div id="display-weather"></div>
+            <%# カラーボールform %>
+            <div class="color_list mb-10 pl-5">
                 <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
-                    <button type="button" class="color-ball w-16 h-16 bg-red-500  rounded-full" data-color-id="1"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-orange-500  rounded-full " data-color-id="2"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-yellow-500  rounded-full " data-color-id="3"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-green-500  rounded-full " data-color-id="4"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-blue-500 rounded-full " data-color-id="5"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-purple-500 rounded-full " data-color-id="6"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-gray-500  rounded-full "data-color-id="7"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-red-500  rounded-full border-none shadow-lg" data-color-id="1"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-orange-500  rounded-full border-none shadow-lg" data-color-id="2"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-yellow-500  rounded-full border-none shadow-lg" data-color-id="3"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-green-500  rounded-full border-none shadow-lg" data-color-id="4"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-blue-500 rounded-full border-none shadow-lg" data-color-id="5"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-purple-500 rounded-full border-none shadow-lg" data-color-id="6"></button>
+                    <button type="button" class="color-ball w-16 h-16 bg-gray-500  rounded-full border-none shadow-lg"data-color-id="7"></button>
                 </div>
+            <%# form隠しフィールド %>
             <%= f.hidden_field :color_name, id: 'color_name'%>
+            <%= f.hidden_field :weather_name, id: "weather_name" %>
+            <%= f.hidden_field :description, id: "description" %>
+            <%= f.hidden_field :temperature, id: "temperature" %>
+            <%= f.hidden_field :temp_max, id: "temp_max" %>
+            <%= f.hidden_field :temp_min, id: "temp_min" %>
+            <%= f.hidden_field :pressure, id: "pressure" %>
+            <%= f.hidden_field :weather_icon, id: "weather_icon" %>
             <%=f.submit class: 'btn btn-accent text-white rounded-full shadow-md' %>
 <% end %>
-<script>
-  document.querySelectorAll('.color-ball').forEach(function(ball){
-    ball.addEventListener('click', function(){
-      const colorId = this.getAttribute('data-color-id');
-      document.getElementById('color_name').value = colorId;
-      console.log(colorId);
-    });
-  });
-</script>

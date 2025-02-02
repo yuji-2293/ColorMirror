@@ -1,0 +1,32 @@
+<h1 class="text-center"><%= @weather[:name] %> の天気</h1>
+
+<div class="max-w-sm mx-auto bg-white shadow-lg rounded-xl p-4">
+  <!-- 場所名 -->
+  <div class="flex items-center justify-between">
+    <h2 class="text-lg font-bold text-gray-800"><%= @weather[:name] %></h2>
+    <p class="text-sm text-gray-600"><%= Time.current.strftime("%Y/%m/%d %H:%M") %></p>
+  </div>
+
+  <!-- メイン天気情報 -->
+  <div class="flex items-center justify-between mt-3">
+    <!-- 天気アイコン -->
+    <div class="w-16 h-16">
+      <img src="https://openweathermap.org/img/wn/<%= @weather[:weather_icon] %>@2x.png" alt="天気アイコン">
+    </div>
+
+    <!-- 気温 -->
+    <div class="text-center">
+      <p class="text-3xl font-semibold text-gray-900"><%= @weather[:temp_celsius] %>°C</p>
+      <p class="text-sm text-gray-600"><%= @weather[:description] %></p>
+    </div>
+  </div>
+
+  <!-- 詳細情報 -->
+  <div class="mt-4 border-t pt-2">
+    <p class="text-sm"><strong>気圧:</strong> <%= @weather[:pressure] %> hPa (<%= @pressure_status %>)</p>
+    <p class="text-sm"><strong>最低:</strong> <%= @weather[:temp_min_celsius] %>°C / <strong>最高:</strong> <%= @weather[:temp_max_celsius] %>°C</p>
+  </div>
+  <div class="text-end">
+    <%= link_to '戻る', weather_path, class: "btn btn-primary rounded-md shadow-md" %>
+  </div>
+</div>

@@ -12,3 +12,8 @@
     <h1>今日は気分の登録をされていません</h1>
     <%= link_to "気分を登録する", new_color_path, class: "btn btn-primary" %>
 <% end %>
+<% if @weather.present? %>
+<%= render "shared/weather_card" %>
+<% else %>
+<h1>この記録にはお天気情報を登録されていません</h1>
+<% end %>
