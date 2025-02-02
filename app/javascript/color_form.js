@@ -13,7 +13,7 @@ const user = gon.set_user
         hour12: false
       });
     // _form内でWeatherAPIにfetchする処理
-    document.getElementById("city-input").addEventListener("change", (event) =>{
+    document.getElementById("city").addEventListener("change", (event) =>{
       const cityName = event.target.value;
       const convertCity = convertPrefectureName(cityName);  // :cityの値を漢字から英語へ変換
       fetch(`/weather/show/?city=${encodeURIComponent(convertCity)}`)
@@ -25,8 +25,9 @@ const user = gon.set_user
           document.getElementById("temperature").value = data.temp_celsius;
           document.getElementById("temp_max").value = data.temp_max_celsius;
           document.getElementById("temp_min").value = data.temp_min_celsius;
-          document.getElementById("pressure").value = data.pressure;
+          document.getElementById("weather_pressure").value = data.pressure;
           document.getElementById("weather_icon").value = data.weather_icon;
+          document.getElementById("city").value = cityName;
 
           // WeatherIconのurlから末尾のn(ダーク)を削除してd（ライト）を追加する処理
           const iconCode = data.weather_icon;
@@ -72,6 +73,7 @@ const user = gon.set_user
   document.querySelectorAll('.color-ball').forEach(function(ball){
     ball.addEventListener('click', function(){
       const colorId = this.getAttribute('data-color-id');
+      console.log(colorId);
       document.getElementById('color_name').value = colorId;
       const colorMapping = gon.color_mapping;
       const selectedColor = colorMapping[colorId] || "bg-gray-500";

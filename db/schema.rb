@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_01_172451) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_02_051342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -86,6 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_172451) do
     t.integer "temp_min"
     t.string "weather_icon"
     t.string "description"
+    t.string "city"
     t.index ["self_log_id"], name: "index_weather_logs_on_self_log_id"
   end
 
