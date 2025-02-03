@@ -6,8 +6,16 @@ class ColorsController < ApplicationController
     @color = current_user.colors.today_form.first
     @response = current_user.responses.today_form.first
     @weather = current_user.weather_logs.today_form.first
+    pressure =  @weather[:weather_pressure]
+    @pressure_status =
+    if pressure > 1015
+      "気圧が高めです!!(体が軽く感じることもあるかも？)"
+    elsif pressure < 1012
+      "気圧が低いです！（頭痛や怠さなど体調の変化に注意してください!)"
+    else
+      "気圧は安定している様子です。快活に過ごしてみてください!!"
+    end
   end
-
   def new
     @color = Color.new
   end
