@@ -1,7 +1,9 @@
 <%= form_with model: @color, local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
+            <%= f.fields_for :self_logs_attributes do |y| %>
+            <%= y.fields_for :weather_logs_attributes do |w| %>
+            <%= w.text_field :city, id: "city",placeholder: "例: 東京 or tokyo" %>
 
-            <%= f.fields_for :weather_log_attributes do |w| %>
               <%= w.hidden_field :weather_name, id: "weather_name" %>
               <%= w.hidden_field :description, id: "description" %>
               <%= w.hidden_field :temperature, id: "temperature" %>
@@ -10,10 +12,10 @@
               <%= w.hidden_field :weather_pressure, id: "weather_pressure" %>
               <%= w.hidden_field :weather_icon, id: "weather_icon" %>
             <% end %>
+            <% end %>
             <%# お天気カードUI %>
             <div id="display-weather"></div>
             <p label="city-input">居住都市を入力</p>
-            <%= f.text_field :city, id: "city", placeholder: "例: 東京 or tokyo" %>
             <%# カラーボールform %>
             <div class="color_list mb-10 pl-5">
                 <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">

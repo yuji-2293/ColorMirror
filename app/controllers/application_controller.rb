@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :email, :prefecture])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :email, :prefecture ])
     devise_parameter_sanitizer.permit(:sign_in, keys: [ :name, :email ])
   end
 
@@ -22,5 +22,4 @@ class ApplicationController < ActionController::Base
     gon.color_mapping = ColorMapping::COLOR_MAPPING
     gon.set_user = current_user
   end
-
 end

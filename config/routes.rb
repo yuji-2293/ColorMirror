@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "colors#top"
   resources :colors do
-    resources :self_logs, only: [:index, :show, :create, :destroy]
-    resources :weather_logs, only: [:index, :show, :create, :destroy]
+    resources :self_logs, only: [ :index, :show, :create, :destroy ]
+    resources :weather_logs, only: [ :index, :show, :create, :destroy ]
   end
 
   # chatbot機能

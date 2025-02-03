@@ -8,7 +8,4 @@ class Color < ApplicationRecord
   accepts_nested_attributes_for :self_logs
 
   validates :color_name, presence: true
-
-  private
-
 end
