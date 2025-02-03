@@ -12,16 +12,22 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = current_user.colors.build(color_params)
-    if @color.save
+    ActiveRecord::Base.transaction do
+    @color = current_user.colors.build(color_params.except(:self_logs_attributes))
+    if @color.save!
+      self_log = @color.self_logs.create(user: current_user)
+      weather_log_params = color_params.dig(:self_logs_attributes, "0", :weather_logs_attributes) || color_params.dig(:self_logs_attributes, :weather_logs_attributes)
+      self_log.create_weather_log!(weather_log_params)
+    end
+
       # /lib/にあるmoduleで色のマッピング
       mapped_color = ColorMapping.mapping_color(color_params[:color_name])
       # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す
       ColorProcessingService.new(@color, current_user).process_color(mapped_color)
       redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
-    else
+    rescue ActiveRecord::RecordInvalid => e
       flash.now[:alert] = "保存失敗"
-      render :new, status: :unprocessable_entity
+      render :new,  status: :unprocessable_entity
     end
   end
 
@@ -46,7 +52,13 @@ class ColorsController < ApplicationController
 
   private
 
+  def set_color
+    @color = current_user.colors.find(params[:id])
+  end
   def color_params
-    params.require(:color).permit(:id, :color_name)
+    params.require(:color).permit(:color_name, self_logs_attributes: [ :id, :user_id, :color_id,
+      { weather_logs_attributes: [ :id, :city, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon ] }
+  ]
+    )
   end
 end

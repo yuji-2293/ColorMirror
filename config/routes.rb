@@ -6,14 +6,17 @@ Rails.application.routes.draw do
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "colors#top"
-  resources :colors
+  resources :colors do
+    resources :self_logs, only: [ :index, :show, :create, :destroy ]
+    resources :weather_logs, only: [ :index, :show, :create, :destroy ]
+  end
 
   # chatbot機能
   get "chatbots/ask" => "chatbots#ask"
   post "chatbots/answer" => "chatbots#answer"
   # OpenWeatherAPI機能のルーティング
   get "weather", to: "weathers#index", as: :weather
-  get "weather/show", to: "weathers#show", as: :show_weather
+  get "weather/show", to: "weathers#show", as: :show_weather, defaults: { format: :json }
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

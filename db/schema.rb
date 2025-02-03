@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_115817) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_02_051342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -75,15 +75,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_115817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "whether_logs", force: :cascade do |t|
+  create_table "weather_logs", force: :cascade do |t|
     t.bigint "self_log_id", null: false
-    t.datetime "fetched_at"
-    t.integer "whether_pressure"
-    t.string "whether_condition"
+    t.integer "weather_pressure"
+    t.string "weather_name"
     t.integer "temperature"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["self_log_id"], name: "index_whether_logs_on_self_log_id"
+    t.integer "temp_max"
+    t.integer "temp_min"
+    t.string "weather_icon"
+    t.string "description"
+    t.string "city"
+    t.index ["self_log_id"], name: "index_weather_logs_on_self_log_id"
   end
 
   add_foreign_key "analysis_results", "responses"
@@ -91,5 +95,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_115817) do
   add_foreign_key "responses", "self_logs"
   add_foreign_key "self_logs", "colors"
   add_foreign_key "self_logs", "users"
-  add_foreign_key "whether_logs", "self_logs"
+  add_foreign_key "weather_logs", "self_logs"
 end

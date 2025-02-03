@@ -80,3 +80,5 @@ gem "ruby-openai"
 gem "rubocop"
 # httpリクエストをサポートするgem
 gem "httparty"
+# RailsのcontrollerからJSファイルへデータを渡すgem
+gem "gon"
