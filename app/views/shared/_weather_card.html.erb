@@ -11,7 +11,7 @@
   <div class="flex items-center justify-between mt-3">
     <!-- 天気アイコン -->
     <div class="w-16 h-16">
-      <img src="https://openweathermap.org/img/wn/<%= @weather[:weather_icon] %>@2x.png" alt="天気アイコン">
+      <img src="https://openweathermap.org/img/wn/<%= @weather[:weather_icon].chop %>d@2x.png" alt="天気アイコン">
     </div>
 
     <!-- 気温 -->
