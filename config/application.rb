@@ -37,6 +37,7 @@ module Myapp
     config.hosts << "colormirror.onrender.com"
 
     config.i18n.default_locale = :ja
+
     # config.autoload_paths << Rails.root.join("app/services")
     config.autoload_paths |= [ Rails.root.join("app/services").to_s ]
     config.autoload_paths |= [ Rails.root.join("lib").to_s ]
