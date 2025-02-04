@@ -43,7 +43,11 @@ const user = gon.set_user
             <div class="bg-blue-100 p-4 rounded-lg shadow-lg max-w-sm mx-auto ">
                       <div class="preview_header">
                         <h1 class="font-bold text-lg">${data.name}の天気の様子</h1>
-                        <h1 class="text-lg font-bold">${userName}さんのプレビュー画面<span class="text-sm">~選択した情報が表示されます~</span></h1>
+                        <h1 class="text-lg font-bold">${userName}さんのプレビュー画面
+                        <span class="text-sm">
+                        <br>
+                        ~選択した情報が表示されます~
+                        </span></h1>
                       </div>
                       <div class="flex items-center justify-between">
                         <h2 class="text-lg font-bold text-gray-800">${data.name}</h2>
@@ -83,9 +87,9 @@ const user = gon.set_user
       const colorMapping = gon.color_mapping;
       const selectedColor = colorMapping[colorId] || "bg-gray-500";
       const previewColor =  document.getElementById("display-color")
-
-      previewColor.className = `rounded-full w-16 h-16 mt-4 animate-bounce mx-auto shadow-lg ${selectedColor}`;
-
+      if (previewColor){
+        previewColor.className = `rounded-full w-16 h-16 mt-4 animate-bounce mx-auto shadow-lg ${selectedColor}`;
+      }
     });
   });
 });

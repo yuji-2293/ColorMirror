@@ -23,8 +23,8 @@
 
   <!-- 詳細情報 -->
   <div class="mt-4 border-t pt-2">
-    <p class="text-md"><strong>気圧:</strong> <%= @weather[:weather_pressure] %> hPa</p>
-    <p class="text-md"><strong>コメント:</strong><%= @pressure_status %></p>
+    <p class="text-md"><strong>気圧:</strong> <%= @weather[:weather_pressure] %></p>
+    <p class="text-md"><strong>気圧の状態:</strong> <%= pressure_status(@weather[:weather_pressure]) %></p>
     <p class="text-sm"><strong>最低:</strong> <%= @weather[:temp_min] %>°C / <strong>最高:</strong> <%= @weather[:temp_max] %>°C</p>
   </div>
 </div>
