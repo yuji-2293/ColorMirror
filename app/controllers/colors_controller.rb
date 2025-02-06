@@ -7,41 +7,45 @@ class ColorsController < ApplicationController
     @response = current_user.responses.today_form.first
     @weather = current_user.weather_logs.today_form.first
   end
+
   def new
-    @color = Color.new
+    @color = ColorForm.new
   end
 
   def create
-    ActiveRecord::Base.transaction do
-    @color = current_user.colors.build(color_params.except(:self_logs_attributes))
-    if @color.save!
-      self_log = @color.self_logs.create(user: current_user)
-      weather_log_params = color_params.dig(:self_logs_attributes, "0", :weather_logs_attributes) || color_params.dig(:self_logs_attributes, :weather_logs_attributes)
-      self_log.create_weather_log!(weather_log_params)
-    end
-
-      # /lib/にあるmoduleで色のマッピング
-      mapped_color = ColorMapping.mapping_color(color_params[:color_name])
-      # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す
-      ColorProcessingService.new(@color, current_user).process_color(mapped_color)
+    # マッピングした色データを変数に格納
+    mapped_color = ColorMapping.mapping_color(color_params[:color_name])
+    weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
+    # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す、生成したレスポンスを変数に格納
+    ai_comment = ColorProcessingService.new(@color, current_user, ).process_color(mapped_color,weather_data)
+    @color = ColorForm.new(color_params, ai_comment: ai_comment)
+    if @color.save
       redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
-    rescue ActiveRecord::RecordInvalid => e
+    else
       flash.now[:alert] = "保存失敗"
       render :new,  status: :unprocessable_entity
     end
   end
 
-  def edit;end
+  def edit
+    @color_form = ColorForm.new(color: @color)
+  end
 
   def update
-    if @color.update(color_params)
-      mapped_color = ColorMapping.mapping_color(color_params[:color_name])
-      ColorProcessingService.new(@color, current_user).process_color(mapped_color)
-      redirect_to colors_path(@color), notice: "色の更新に成功しました！"
-    else
-      flash.now[:alert] = "編集失敗"
+
+        mapped_color = ColorMapping.mapping_color(color_params[:color_name])
+        weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
+        ai_comment = ColorProcessingService.new(@color, current_user).process_color(mapped_color,weather_data)
+        @color_form = ColorForm.new(color_params.merge(color: @color), ai_comment: ai_comment)
+        if @color_form.save
+        redirect_to colors_path(@color), notice: "色の更新に成功しました！"
+      else
+        flash.now[:alert] = "編集失敗"
+        render :edit, status: :unprocessable_entity
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      flash.now[:alert] = "更新に失敗しました"
       render :edit, status: :unprocessable_entity
-    end
   end
 
   def destroy
@@ -56,9 +60,6 @@ class ColorsController < ApplicationController
     @color = current_user.colors.find(params[:id])
   end
   def color_params
-    params.require(:color).permit(:color_name, self_logs_attributes: [ :id, :user_id, :color_id,
-      { weather_logs_attributes: [ :id, :city, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon ] }
-  ]
-    )
+    params.require(:color).permit(:color_name, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon, :city, :ai_comment).merge(user_id: current_user.id)
   end
 end
