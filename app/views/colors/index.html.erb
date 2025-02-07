@@ -1,19 +1,30 @@
-<% if @color.present? %>
-    <div>
-        <h2 class="">私が今日選択した色は:<%= ColorMapping.mapping_color(@color.color_name) %></h2>
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
+  <h2 class="text-lg font-semibold text-gray-800 mb-2">AIレスポンス</h2>
+
+  <!-- 色の情報 -->
+    <% if @color.present? %>
+    <div class="flex items-center mb-4">
         <div class="<%= ColorMapping.color_class(@color.color_name) %> rounded-full w-10 h-10 m-10"></div>
+        <h2 class="ml-2 text-gray-700"><strong>私が今日選択した色は:</strong><%= ColorMapping.mapping_color(@color.color_name) %></h2>
     </div>
-    <%= render 'shared/response' %>
     <div class="ボタンエリア">
         <%= link_to "edit", edit_color_path(@color), class: "btn btn-ghost rounded-btn",data: {turbo: false}%>
         <%= link_to "delete", color_path(@color), class: "btn btn-ghost rounded-btn", data: { turbo_method: :delete, turbo_confirm:"Are you sure?" }  %>
     </div>
-<% else %>
+    <% else %>
     <h1>今日は気分の登録をされていません</h1>
     <%= link_to "気分を登録する", new_color_path, class: "btn btn-primary" %>
-<% end %>
-<% if @weather.present? %>
-<%= render "shared/weather_card" %>
-<% else %>
-<h1>この記録にはお天気情報を登録されていません</h1>
-<% end %>
+    <% end %>
+
+  <!-- 天気情報 -->
+  <div class="bg-gray-100 p-3 rounded-lg mb-4">
+    <% if @weather.present? %>
+        <%= render "shared/weather_card" %>
+    <% else %>
+        <h1>この記録にはお天気情報を登録されていません</h1>
+    <% end %>
+  </div>
+
+  <!-- AIコメント -->
+  </div>
+      <%= render 'shared/response' %>

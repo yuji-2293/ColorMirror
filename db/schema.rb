@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_02_051342) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_145130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -44,9 +44,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_02_051342) do
 
   create_table "responses", force: :cascade do |t|
     t.bigint "self_log_id", null: false
-    t.string "ai_comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color_analysis"
+    t.string "weather_analysis"
     t.index ["self_log_id"], name: "index_responses_on_self_log_id"
   end
 
