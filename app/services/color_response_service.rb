@@ -12,7 +12,7 @@ class ColorResponseService
           { role: "system", content: "あなたは色彩心理の専門家です。#{prompt}" },
           { role: "user", content: prompt }
         ],
-        max_tokens: 200,
+        max_tokens: 500,
         temperature: 0.7
       }
     )
