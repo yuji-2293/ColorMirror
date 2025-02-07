@@ -16,7 +16,8 @@ class ColorForm
   attribute :weather_pressure, :integer
   attribute :weather_icon, :string
   # 子モデルの属性(response)
-  attribute :ai_comment, :string
+  attribute :color_analysis, :string
+  attribute :weather_analysis, :string
 
   validates :color_name, presence: true
 
@@ -27,7 +28,6 @@ class ColorForm
 
   def initialize(attributes = nil, color: Color.new, ai_comment: nil)
     @color = color
-    @ai_comment = ai_comment
     super(attributes)
   end
 
@@ -42,7 +42,7 @@ class ColorForm
       end
       self_log = @color.self_logs.first_or_create(user_id: user_id)
 
-      self_log.responses.create!(ai_comment: @ai_comment)
+      self_log.responses.create!(color_analysis: color_analysis, weather_analysis: weather_analysis)
 
       weather_log = self_log.weather_log || self_log.build_weather_log
       weather_log.update!(city: city, weather_name: weather_name, description: description,

@@ -1,5 +1,15 @@
 <% if @response.present? %>
-<%= @response.ai_comment %>
-<% else %>
-<h1>今日はまだ、気分の登録をされていないため、コメントが生成されていません</h1>
-<% end %>
+<div class="grid grid-cols-2 gap-4">
+    <div class="border-l-4 border pl-4 py-2 text-white bg-red-400 rounded-lg mb-2">
+        <h3 class="font_bold text-sm ">気分の分析</h3>
+        <p class=""><%= simple_format(@response.color_analysis) %></p>
+    </div>
+
+    <div class="border-l-4 border pl-4 py-2 bg-cyan-400 rounded-lg">
+        <h3 class="text-bold text-sm">天気との分析</h3>
+        <p class=""><%= simple_format(@response.weather_analysis) %></p>
+    </div>
+    <% else %>
+    <h1>今日はまだ、気分の登録をされていないため、コメントが生成されていません</h1>
+    <% end %>
+</div>
