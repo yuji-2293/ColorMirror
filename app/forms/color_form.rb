@@ -20,6 +20,7 @@ class ColorForm
   attribute :weather_analysis, :string
 
   validates :color_name, presence: true
+  validates :city, presence: true
 
   attr_reader :color
   delegate :persisted?, to: :color

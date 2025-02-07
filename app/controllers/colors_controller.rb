@@ -24,7 +24,7 @@ class ColorsController < ApplicationController
     if @color.save
       redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
     else
-      flash.now[:alert] = "保存失敗"
+      flash.now[:alert] = "保存失敗、情報が不足している可能性があります"
       render :new,  status: :unprocessable_entity
     end
   end

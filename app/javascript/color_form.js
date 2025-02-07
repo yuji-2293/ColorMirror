@@ -40,38 +40,33 @@ const user = gon.set_user
             const pressureStatus = pressureAverage > 1013 ? "気圧が高まってます!!" : "気圧が低下しています!!";
 
             document.getElementById("display-weather").innerHTML = `
-            <div class="bg-blue-100 p-4 rounded-lg shadow-lg max-w-sm mx-auto ">
-                      <div class="preview_header">
-                        <h1 class="font-bold text-lg">${data.name}の天気の様子</h1>
-                        <h1 class="text-lg font-bold">${userName}さんのプレビュー画面
-                        <span class="text-sm">
-                        <br>
+                        <div class="bg-blue-100 p-4 rounded-2xl shadow-lg max-w-lg mx-auto flex flex-col items-center justify-center">
+                    <div class="preview_header">
+                        <h1 class="font-bold">${data.name}の天気の様子</h1>
+                        <h3 class="font-bold">${userName}さんの選択プレビュー画面</h3>
+                       <p class="text-gray-600 font-bold">${formatter.format(now).replace(/\//g, '/')}</p>
                         ~選択した情報が表示されます~
-                        </span></h1>
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <h2 class="text-lg font-bold text-gray-800">${data.name}</h2>
-                        <p class="text-sm text-gray-600 font-bold">${formatter.format(now).replace(/\//g, '/')}</p>
-                      </div>
-                  <div class="flex items-center justify-center mt-3">
-                      <div class="class="w-32 h-32 mx-auto">
-                        <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="天気アイコン">
-                      </div>
-                      <div class="text-center ml-6">
-                        <h2 class="text-lg font-bold">天気: ${data.description}</h2>
-                        <p class="text-md">気温: ${data.temp_celsius}°C</p>
-                      </div>
-                  </div>
-                  <div class="mt-4 border-t-2 pt-2 flex items-stretch justify-center gap-2 ">
-                    <div>
-                      <p class="text-sm"><strong>最低:</strong> ${data.temp_min_celsius}°C / <strong>最高:</strong> ${data.temp_max_celsius}°C</p>
-                      <p class="text-md text-red-400"><strong>気圧:</strong> ${data.pressure}hPa / ${pressureStatus}</p>
                     </div>
-                    <div>
-                      <p class="text-xs animate-pulse whitespace-nowrap">選んだカラーボール</p>
-                      <div id="display-color"></div>
+                    <div class="preview_description grid grid-cols-2 items-center gap-4 mt-1 pb-2">
+                        <h2 class="font-bold text-gray-800">${data.name}:  ${data.description}</h2>
+                        <div class="class="w-32 h-32 mx-auto">
+                            <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="天気アイコン">
+                        </div>
                     </div>
-                  </div>
+                    <div class="mt-1">
+                        <div>
+                            <p class="text-md">気温: ${data.temp_celsius}°C</p>
+                            <p class="text-md text-red-400"><strong>気圧:${data.pressure}hPa / ${pressureStatus}</strong></p>
+                        </div>
+                        <div>
+                            <p class="text-sm"><strong>最低:</strong> ${data.temp_min_celsius}°C / <strong>最高:</strong> ${data.temp_max_celsius}°C</p>
+                        </div>
+                        <div>
+                            <p class="text-xs animate-pulse whitespace-nowrap">下の欄からカラーボールを選択してください！！</p>
+                            <div id="display-color"></div>
+                        </div>
+                    </div>
+                    </div>
             </div>`;
           })
           .catch(error => console.log("天気データのエラー:", error));

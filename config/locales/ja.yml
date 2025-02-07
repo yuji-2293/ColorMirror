@@ -26,10 +26,13 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
       color:
-        color_name: カラーボール
+        name: カラーボール
     models:
       user: ユーザー
       color: カラー
+      weather_log: ウェザーログ
+      self_log: セルフログ
+      response: レスポンス
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
