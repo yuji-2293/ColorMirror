@@ -37,7 +37,7 @@ class ColorsController < ApplicationController
         mapped_color = ColorMapping.mapping_color(color_params[:color_name])
         weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
         ai_responses = ColorProcessingService.new(@color, current_user).process_color(mapped_color, weather_data)
-        @color_form = ColorForm.new(color_params.merge(color: @color),color_analysis: color_analysis, weather_analysis: weather_analysis)
+        @color_form = ColorForm.new(color_params.merge(color: @color), color_analysis: color_analysis, weather_analysis: weather_analysis)
         if @color_form.save
         redirect_to colors_path(@color), notice: "色の更新に成功しました！"
         else
