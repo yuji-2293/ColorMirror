@@ -1,10 +1,11 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-            <p label="city-input">居住都市を入力:</p>
-            <span>※都市を入力すると、自動でお天気情報を取得してpreview画面を表示します</span>
-            <div>
-            <%= f.text_field :city, id: "city",placeholder: "例: 東京 or tokyo",class: "block text-sm font-medium", required: true %>
+ <div class="max-w-sm mx-auto my-2 rounded-sm shadow-sm">
+            <span>居住都市を入力すると自動でお天気情報を取得してpreview画面を表示します</span>
+            <div class="w-full mx-auto my-2 rounded-sm shadow-sm">
+              <%= f.text_field :city, id: "city",placeholder: "例: 東京 or tokyo",class: "w-full border border-gray-300 bg-slate-50 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500", required: true %>
             </div>
+ </div>
 
               <%= f.hidden_field :weather_name, id: "weather_name" %>
               <%= f.hidden_field :description, id: "description" %>
