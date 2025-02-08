@@ -62,7 +62,7 @@ const user = gon.set_user
                             <p class="text-sm"><strong>最低:</strong> ${data.temp_min_celsius}°C / <strong>最高:</strong> ${data.temp_max_celsius}°C</p>
                         </div>
                         <div>
-                            <p class="text-xs animate-pulse whitespace-nowrap">下の欄からカラーボールを選択してください！！</p>
+                            <p class="text-base animate-pulse whitespace-nowrap">下の欄からカラーボールを選択後「登録する」を押してください！！</p>
                             <div id="display-color"></div>
                         </div>
                     </div>
