@@ -11,6 +11,7 @@ def show
         weather_data = response.parsed_response
           data = {
           name: weather_data["name"],
+          country: weather_data["sys"]["country"],
           temp_celsius: kelvin_to_celsius(weather_data["main"]["temp"]).round(1),
           temp_min_celsius: kelvin_to_celsius(weather_data["main"]["temp_min"]).round(1),
           temp_max_celsius: kelvin_to_celsius(weather_data["main"]["temp_max"]).round(1),

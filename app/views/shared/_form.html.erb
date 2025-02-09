@@ -1,33 +1,36 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
- <div class="max-w-sm mx-auto my-2 rounded-sm shadow-sm">
-            <span>居住都市を入力すると自動でお天気情報を取得してpreview画面を表示します</span>
-            <div class="w-full mx-auto my-2 rounded-sm shadow-sm">
-              <%= f.text_field :city, id: "city",placeholder: "例: 東京 or tokyo",class: "w-full border border-gray-300 bg-slate-50 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500", required: true %>
-            </div>
- </div>
+<div class="max-w-sm mx-auto my-2 rounded-sm shadow-sm">
+  <p class="font-bold text-base">STEP1 居住都市を入力すると自動でお天気情報を取得してpreview画面を表示します</p>
+  <div class="w-full mx-auto my-2 rounded-sm shadow-sm">
+    <%= f.text_field :city, id: "city",placeholder: "例: 東京 or tokyo",class: "w-full border border-gray-300 bg-slate-50 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500", required: true %>
+  </div>
+</div>
 
-              <%= f.hidden_field :weather_name, id: "weather_name" %>
-              <%= f.hidden_field :description, id: "description" %>
-              <%= f.hidden_field :temperature, id: "temperature" %>
-              <%= f.hidden_field :temp_max, id: "temp_max" %>
-              <%= f.hidden_field :temp_min, id: "temp_min" %>
-              <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
-              <%= f.hidden_field :weather_icon, id: "weather_icon" %>
-
-            <%# お天気カードUI %>
-            <div id="display-weather"></div>
-            <%# カラーボールform %>
-            <div class="color_list mb-10 pl-5">
-                <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
-                    <button type="button" class="color-ball w-16 h-16 bg-red-500  rounded-full border-none shadow-lg" data-color-id="1"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-orange-500  rounded-full border-none shadow-lg" data-color-id="2"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-yellow-500  rounded-full border-none shadow-lg" data-color-id="3"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-green-500  rounded-full border-none shadow-lg" data-color-id="4"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-blue-500 rounded-full border-none shadow-lg" data-color-id="5"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-purple-500 rounded-full border-none shadow-lg" data-color-id="6"></button>
-                    <button type="button" class="color-ball w-16 h-16 bg-gray-500  rounded-full border-none shadow-lg"data-color-id="7"></button>
-                </div>
-            <%= f.hidden_field :color_name, id: "color_name", required: true%>
-            <%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>
+  <%= f.hidden_field :weather_name, id: "weather_name" %>
+  <%= f.hidden_field :description, id: "description" %>
+  <%= f.hidden_field :temperature, id: "temperature" %>
+  <%= f.hidden_field :temp_max, id: "temp_max" %>
+  <%= f.hidden_field :temp_min, id: "temp_min" %>
+  <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
+  <%= f.hidden_field :weather_icon, id: "weather_icon" %>
+<div class="text-center my-2">
+  <p class="font-bold text-base">STEP2: カラーボールを選択して「登録」を押してください</p>
+</div>
+<%# カラーボールform %>
+<div class="color_list mb-10 pl-5">
+  <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
+      <button type="button" class="color-ball w-16 h-16 bg-red-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="1"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-orange-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="2"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-yellow-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="3"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-green-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="4"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-blue-500 rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="5"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-purple-500 rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="6"></button>
+      <button type="button" class="color-ball w-16 h-16 bg-gray-500  rounded-full border-none hover:animate-bounce shadow-lg"data-color-id="7"></button>
+  </div>
+<%# お天気カードUI %>
+<div id="display-weather"></div>
+<div id="display-color"></div>
+<%= f.hidden_field :color_name, id: "color_name", required: true%>
+<%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>
 <% end %>

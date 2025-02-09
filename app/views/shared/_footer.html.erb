@@ -1,69 +1,25 @@
-<div class="btm-nav bg-slate-300 fixed bottom-0 left-0 right-0">
+<div class="btm-nav bg-slate-300 fixed bottom-0 left-0 right-0 ">
   <%= link_to new_color_path, class: "no-underline text-primary" do %>
   <button class="text-primary flex flex-col items-center justify-center border-none bg-slate-300">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
-  <span>記録する</span>
+    <i class="fa-solid fa-pencil fa-2xl p-4"></i>
+    <span>記録する</span>
   </button>
   <% end %>
   <%= link_to colors_path, class: "no-underline text-primary" do %>
   <button class="text-primary flex flex-col items-center justify-center border-none bg-slate-300">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
-  <span>見る</span>
+      <i class="fa-solid fa-book fa-2xl p-4"></i>
+      <span>見る</span>
   </button>
   <% end %>
   <%= link_to "", class: "no-underline text-primary" do %>
   <button class="text-primary flex flex-col items-center justify-center border-none bg-slate-300">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
+  <i class="fa-solid fa-database fa-2xl p-4"></i>
   <span>振り返る（実装予定）</span>
   </button>
   <% end %>
   <%= link_to root_path, class: "no-underline text-primary" do %>
   <button class="text-primary flex flex-col items-center justify-center border-none bg-slate-300">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
+  <i class="fa-brands fa-rocketchat fa-2xl p-4"></i>
   <span>chat bot(実装予定)</span>
   </button>
   <% end %>
