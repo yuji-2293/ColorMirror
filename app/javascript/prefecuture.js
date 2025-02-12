@@ -50,5 +50,5 @@ export const prefectureMapping = {
 
 // 日本語を英語に変換
 export function convertPrefectureName(cityName) {
-    return prefectureMapping[cityName] || cityName; // 変換できなかったらそのまま
+    return prefectureMapping[cityName] || "tokyo"; // 変換できなかったらそのまま
 }

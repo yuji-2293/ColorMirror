@@ -6,7 +6,8 @@ require "uri"
 def index;end
 
 def show
-      response = WeatherService.new(params[:city]).fetch_weather
+      city = params[:city] || "Tokyo"
+      response = WeatherService.new(city).fetch_weather
       if response.success?
         weather_data = response.parsed_response
           data = {
