@@ -36,8 +36,6 @@ const user = gon.set_user
             // WeatherIconのurlから末尾のn(ダーク)を削除してd（ライト）を追加する処理
             const iconCode = data.weather_icon;
             const weatherIcon = iconCode.slice(0, -1) + "d";
-            let pressureAverage = 1013
-            const pressureStatus = pressureAverage > 1013 ? "気圧が高まってます!!" : "気圧が低下しています!!";
 
             document.getElementById("display-weather").innerHTML = `
             <div class="bg-blue-100 p-4 rounded-2xl shadow-lg max-w-lg mx-auto flex flex-col items-center justify-center">
@@ -56,7 +54,7 @@ const user = gon.set_user
                 <div class="mt-1">
                     <div>
                         <p class="text-md">気温: ${data.temp_celsius}°C</p>
-                        <p class="text-md text-red-400"><strong>気圧:${data.pressure}hPa / ${pressureStatus}</strong></p>
+                        <p class="text-md text-red-400"><strong>気圧:${data.pressure}hPa</strong></p>
                     </div>
                     <div>
                         <p class="text-sm"><strong>最低:</strong> ${data.temp_min_celsius}°C / <strong>最高:</strong> ${data.temp_max_celsius}°C</p>
