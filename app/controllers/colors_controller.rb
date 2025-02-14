@@ -1,6 +1,6 @@
 class ColorsController < ApplicationController
   before_action :set_color, only: [ :edit, :update, :destroy ]
-  before_action :authenticate_user!, only: [ :index, :new]
+  before_action :authenticate_user!, only: [ :index, :new ]
   def top;end
 
   def index
