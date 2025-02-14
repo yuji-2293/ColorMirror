@@ -1,5 +1,6 @@
 class ColorsController < ApplicationController
   before_action :set_color, only: [ :edit, :update, :destroy ]
+  before_action :authenticate_user!, only: [ :index, :new]
   def top;end
 
   def index
@@ -22,7 +23,8 @@ class ColorsController < ApplicationController
     @color.color_analysis = ai_responses[:color_analysis]
     @color.weather_analysis = ai_responses[:weather_analysis]
     if @color.save
-      redirect_to colors_path, notice: "色とAIレスポンスを保存しました"
+      flash[:notice] = "本日のデータは登録し、コメントを生成しました"
+      redirect_to colors_path
     else
       flash.now[:alert] = "保存失敗、情報が不足している可能性があります"
       render :new,  status: :unprocessable_entity
@@ -39,7 +41,8 @@ class ColorsController < ApplicationController
         ai_responses = ColorProcessingService.new(@color, current_user).process_color(mapped_color, weather_data)
         @color_form = ColorForm.new(color_params.merge(color: @color), color_analysis: color_analysis, weather_analysis: weather_analysis)
         if @color_form.save
-        redirect_to colors_path(@color), notice: "色の更新に成功しました！"
+        flash[:notice] = "色の更新に成功しました！"
+        redirect_to colors_path(@color)
         else
         flash.now[:alert] = "編集失敗"
         render :edit, status: :unprocessable_entity

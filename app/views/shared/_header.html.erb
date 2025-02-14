@@ -1,7 +1,13 @@
 <div class="navbar bg-base-300 shadow-md rounded-md top-0 fixed">
+  <% if user_signed_in? %>
+  <div class="flex-1">
+    <%= link_to 'ColorMirror', colors_top_path, class: 'btn btn-ghost text-xl' %>
+  </div>
+  <% else %>
   <div class="flex-1">
     <%= link_to 'ColorMirror', root_path, class: 'btn btn-ghost text-xl' %>
   </div>
+  <% end %>
   <div class="flex-none mr-8 relative">
     <div class="drawer drawer-end">
       <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />

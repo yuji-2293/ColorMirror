@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     passwords: "users/passwords"
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "colors#top"
+  root "home#index"
+  get "colors/top" => "colors#top"
   resources :colors do
     resources :self_logs, only: [ :index, :show, :create, :destroy ]
     resources :weather_logs, only: [ :index, :show, :create, :destroy ]

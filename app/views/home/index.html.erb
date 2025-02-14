@@ -1,0 +1,21 @@
+<div class="min-h-screen w-full bg-base-200 flex flex-col text-center justify-center mx-auto shadow-md rounded-md">
+    <div class="bg-white shadow-lg rounded-md min-h-96 flex flex-col justify-center p-6 gap-4" id="focus-target" tabindex="-1">
+        <h1 class="text-6xl font-bold mb-2">ColorMirror</h1>
+        <p>今の気分を色にして表現するサービスアプリです</p>
+        <p>あなたの気分を分析してAIが寄り添います</p>
+        <div class="flex gap-4 justify-center my-5">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("turbo:load", () => {
+        const target =  document.getElementById("focus-target");
+        if (target) {
+            target.focus();
+            target.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    });
+</script>
