@@ -1,0 +1,11 @@
+ja:
+  devise:
+    shared:
+      links:
+        signup: 新規登録
+        forgot_pass: パスワードをお忘れの方はこちらから
+        login_page: ログインページはこちら
+    sessions:
+      new:
+        name: 名前
+        password: パスワード

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.alert {
+    border-radius: 5px;
+    padding: 16px 24px;
+    margin: 16px 0px;
+  }
+
+  .alert-success {
+    background-color: #bcdfff;
+    color: #0067C0;
+    border: solid 1px #0067C0;
+  }
+
+  .alert-danger {
+    background-color: #ffd4d1;
+    color: #930403;
+    border: solid 1px #930403;
+  }

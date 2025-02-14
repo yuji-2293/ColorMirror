@@ -2,16 +2,17 @@ import  {prefectureMapping, convertPrefectureName} from "./prefecuture.js"
 document.addEventListener("turbo:load", () => {
 
 const user = gon.set_user
-      const userName = user.name
-      const now = new Date();
-      const formatter = new Intl.DateTimeFormat('ja-JP', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-      });
+  const userName = user.name
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
     // _form内でWeatherAPIにfetchする処理
     const cityInput = document.getElementById("city");
 
