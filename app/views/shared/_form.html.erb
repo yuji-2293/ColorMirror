@@ -1,11 +1,21 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div class="max-w-sm mx-auto my-2 rounded-sm shadow-sm">
-  <p class="font-bold text-base">STEP1 居住都市を入力すると自動でお天気情報を取得してpreview画面を表示します</p>
-  <div class="w-full mx-auto my-2 rounded-sm shadow-sm boarder-none">
-    <%= f.text_field :city, id: "city",placeholder: "例: 東京 or tokyo",class: "w-full rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500", required: true %>
+
+<div class="">
+    <%= f.label :prefecture, t(".prefecture") %>
+  <div class="field grow input flex items-center border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
+    <%= f.text_field :city, id: "city", value: @city, class: "bg-white border-none outline-none flex-grow text-gray-700 text-2xl font-bold", required: true %>
   </div>
+
 </div>
+<%# お天気カードUI %>
+<div id="display-weather"></div>
+
+
+
+
+
+
 
   <%= f.hidden_field :weather_name, id: "weather_name" %>
   <%= f.hidden_field :description, id: "description" %>
@@ -28,8 +38,7 @@
       <button type="button" class="color-ball w-16 h-16 bg-purple-500 rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="6"></button>
       <button type="button" class="color-ball w-16 h-16 bg-gray-500  rounded-full border-none hover:animate-bounce shadow-lg"data-color-id="7"></button>
   </div>
-<%# お天気カードUI %>
-<div id="display-weather"></div>
+
 <div id="display-color"></div>
 <%= f.hidden_field :color_name, id: "color_name", required: true%>
 <%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>

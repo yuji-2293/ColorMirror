@@ -2,14 +2,17 @@ class WeathersController < ApplicationController
   before_action :validate_city, only: %i[show]
 require "httparty"
 require "uri"
+include WeatherHelper
 
 def index;end
 
 def show
       city = params[:city] || "Tokyo"
       response = WeatherService.new(city).fetch_weather
+
       if response.success?
         weather_data = response.parsed_response
+
           data = {
           name: weather_data["name"],
           country: weather_data["sys"]["country"],
@@ -17,6 +20,7 @@ def show
           temp_min_celsius: kelvin_to_celsius(weather_data["main"]["temp_min"]).round(1),
           temp_max_celsius: kelvin_to_celsius(weather_data["main"]["temp_max"]).round(1),
           pressure: weather_data["main"]["pressure"],
+          pressure_message: pressure_status(weather_data["main"]["pressure"]),
           weather_icon: weather_data["weather"][0]["icon"],
           description: weather_data["weather"][0]["description"]
           }
