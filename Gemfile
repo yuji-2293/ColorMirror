@@ -83,4 +83,4 @@ gem "httparty"
 # RailsのcontrollerからJSファイルへデータを渡すgem
 gem "gon"
 # enum サポート
-gem 'enumerize'
+gem "enumerize"
