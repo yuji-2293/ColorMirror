@@ -19,3 +19,10 @@
     color: #930403;
     border: solid 1px #930403;
   }
+
+  input:-webkit-autofill {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+    border: none;
+  }

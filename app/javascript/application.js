@@ -16,3 +16,11 @@ document.querySelectorAll(".alert").forEach((element) => {
         }, 3000)
     });
 });
+// 要素に対してフォーカスを当てスクロールさせる
+document.addEventListener("turbo:load", () => {
+    const target =  document.getElementById("focus-target");
+    if (target) {
+        target.focus();
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+});
