@@ -6,16 +6,9 @@
   <div class="field grow input flex items-center border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
     <%= f.text_field :city, id: "city", value: @city, class: "bg-white border-none outline-none flex-grow text-gray-700 text-2xl font-bold", required: true %>
   </div>
-
-</div>
 <%# お天気カードUI %>
 <div id="display-weather"></div>
-
-
-
-
-
-
+</div>
 
   <%= f.hidden_field :weather_name, id: "weather_name" %>
   <%= f.hidden_field :description, id: "description" %>

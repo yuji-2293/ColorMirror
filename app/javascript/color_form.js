@@ -54,7 +54,7 @@ document.addEventListener("turbo:load", () => {
                     <div class="text-sm text-gray-600">
                       <p>最低: <span id="temp-min">${data.temp_min_celsius}</span>°C / 最高: <span id="temp-max">${data.temp_max_celsius}</span>°C</p>
                       <p class="mt-1 text-red-500">気圧: <span id="pressure">${data.pressure}</span> hPa</p>
-                      <h3 class="text-red-600 font-bold">${pressure_message}</h3>
+                      <h3 class="text-red-500 font-bold">${pressure_message}</h3>
                     </div>
                   </div>
                 </div>
