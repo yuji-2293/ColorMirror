@@ -4,8 +4,8 @@ import "./controllers"
 import "./color_form"
 import "./prefecuture"
 
-document.addEventListener("turbo:load", () => {
 // flash_messageが表示されたら3秒かけて消えていく
+document.addEventListener("turbo:load", () => {
 document.querySelectorAll(".alert").forEach((element) => {
     setTimeout(() => {
         element.style.transition = "opacity 1s";

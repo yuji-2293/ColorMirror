@@ -2,6 +2,7 @@ ja:
   devise:
     shared:
       links:
+        Log in: ログイン
         signup: 新規登録
         forgot_pass: パスワードをお忘れの方はこちらから
         login_page: ログインページはこちら
@@ -9,3 +10,10 @@ ja:
       new:
         name: 名前
         password: パスワード
+    registrations:
+      new:
+        name: 名前
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        email: Eメール
+        signup: 新規作成
