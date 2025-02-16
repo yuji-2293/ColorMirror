@@ -11,6 +11,7 @@ class ColorsController < ApplicationController
 
   def new
     @color = ColorForm.new
+    @city = current_user.prefecture&.text
   end
 
   def create
