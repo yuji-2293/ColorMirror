@@ -16,8 +16,8 @@
 document.addEventListener("turbo:load", ()=>{
   const moodButtons = document.querySelectorAll(".mood-button");
   const selectedMoodInput = document.getElementById("selected-mood");
-  const generateColorsButton = getElementById("generate-colors");
-  const colorSuggest = getElementById("color-suggest");
+  const generateColorsButton = document.getElementById("generate-colors");
+  const colorSuggest = document.getElementById("color-suggest");
 
   moodButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -26,7 +26,31 @@ document.addEventListener("turbo:load", ()=>{
       button.classList.add("ring-4", "ring-yellow-500");
 
       selectedMoodInput.value = button.dataset.mood;
-      console.log("選択した気分");
+      console.log(selectedMoodInput);
+    });
+  });
+
+  generateColorsButton.addEventListener("click", () => {
+    const mood = selectedMoodInput.value;
+    if (!mood) {
+      alert("気分を選んでください");
+      return;
+    }
+    fetch("/colors/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mood })
     })
-  })
+.then(response => response.json())
+.then(data => {
+  colorSuggest.innerHTML = "";
+  data.colors.forEach(color => {
+    const colorBall = document.createElement("div");
+    colorBall.classList.add("w-16", "h-16", "rounded-full", "cursor-pointer", "shadow-lg");
+    colorBall.style.backgroundColor = color;
+    colorSuggest.appendChild(colorBall);
+  });
 })
+.catch(error => console.log("エラー:", error));
+});
+});
