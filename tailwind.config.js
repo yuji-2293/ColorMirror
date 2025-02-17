@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark", "valentine", "winter"],
+    themes: ["light", "dark"],
     darkTheme: false, // ダークモードをONにする場合は削除
   },
     corePlugins: {
