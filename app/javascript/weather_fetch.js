@@ -76,19 +76,4 @@ document.addEventListener("turbo:load", () => {
         })
         .catch(error => console.log("天気データのエラー:", error));
     }
-
-    // _formの選択したcolor-idを隠しフィールドに含める処理
-  document.querySelectorAll('.color-ball').forEach(function(ball){
-    ball.addEventListener('click', function(){
-      const colorId = this.getAttribute('data-color-id');
-      console.log(colorId);
-      document.getElementById('color_name').value = colorId;
-      const colorMapping = gon.color_mapping;
-      const selectedColor = colorMapping[colorId] || "bg-gray-500";
-      const previewColor =  document.getElementById("display-color")
-      if (previewColor){
-        previewColor.className = `rounded-full w-16 h-16 mt-4 animate-bounce mx-auto shadow-lg ${selectedColor}`;
-      }
-    });
-  });
 });

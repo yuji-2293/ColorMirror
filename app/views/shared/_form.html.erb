@@ -1,27 +1,42 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-
-<div class="">
-    <%= f.label :prefecture, t(".prefecture") %>
-  <div class="field grow input flex items-center border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-    <%= f.text_field :city, id: "city", value: @city, class: "bg-white border-none outline-none flex-grow text-gray-700 text-2xl font-bold", required: true %>
-  </div>
-<%# お天気カードUI %>
-<div id="display-weather"></div>
+<%# formステップ1エリア %>
+<div class="STEP1 border-solid border-pink-600  hover:shadow-md">
+    <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-300">
+      (ご登録いただいた居住地を基に現在の天気情報をセットしています)</span></p>
+    <%# sign up時の居住地を初期値にセット %>
+    <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
+    <%# お天気カードUI %>
+    <div id="display-weather" class="my-4"></div>
+    <%# 天気カードから取得したパラメーター %>
+    <div class="hidden_fields">
+      <%= f.hidden_field :weather_name, id: "weather_name" %>
+      <%= f.hidden_field :description, id: "description" %>
+      <%= f.hidden_field :temperature, id: "temperature" %>
+      <%= f.hidden_field :temp_max, id: "temp_max" %>
+      <%= f.hidden_field :temp_min, id: "temp_min" %>
+      <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
+      <%= f.hidden_field :weather_icon, id: "weather_icon" %>
+    </div>
 </div>
 
-  <%= f.hidden_field :weather_name, id: "weather_name" %>
-  <%= f.hidden_field :description, id: "description" %>
-  <%= f.hidden_field :temperature, id: "temperature" %>
-  <%= f.hidden_field :temp_max, id: "temp_max" %>
-  <%= f.hidden_field :temp_min, id: "temp_min" %>
-  <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
-  <%= f.hidden_field :weather_icon, id: "weather_icon" %>
-<div class="text-center mt-4">
-  <p class="font-bold text-base">STEP2: カラーボールを選択して「登録」を押してください</p>
+<%# formステップ2エリア %>
+<div class="STEP2 border-solid border-pink-600 mx-auto text-center hover:shadow-md my-4">
+  <h2 class="text-lg font-bold text-gray-800 mb-4">今の気分を選んでください</h2>
+  <div class="grid grid-flow-col gap-4 max-w-2xl mx-auto">
+    <button class="mood-button bg-yellow-200 text-yellow-800 p-4 rounded-lg font-bold" data-mood="ワクワク">ワクワク</button>
+    <button class="mood-button bg-blue-200 text-blue-800 p-4 rounded-lg font-bold" data-mood="モヤモヤ">モヤモヤ</button>
+    <button class="mood-button bg-red-200 text-red-800 p-4 rounded-lg font-bold" data-mood="ムカムカ">ムカムカ</button>
+    <button class="mood-button bg-green-200 text-green-800 p-4 rounded-lg font-bold" data-mood="ホッと">ホッと</button>
+  </div>
+<input type="hidden" id="selected-mood" name="mood">
+<button id="generate-colors" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">色を生成する</button>
+
+
+
 </div>
 <%# カラーボールform %>
-<div class="color_list mb-10 pl-5">
+<%# <div class="color_list mb-10 pl-5">
   <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
       <button type="button" class="color-ball w-16 h-16 bg-red-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="1"></button>
       <button type="button" class="color-ball w-16 h-16 bg-orange-500  rounded-full border-none hover:animate-bounce shadow-lg" data-color-id="2"></button>
@@ -34,5 +49,5 @@
 
 <div id="display-color"></div>
 <%= f.hidden_field :color_name, id: "color_name", required: true%>
-<%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>
+<%# <%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>
 <% end %>

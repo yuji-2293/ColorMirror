@@ -1,8 +1,9 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
-import "./color_form"
+import "./color_fetch"
 import "./prefecuture"
+import "./weather_fetch"
 
 // flash_messageが表示されたら3秒かけて消えていく
 document.addEventListener("turbo:load", () => {
