@@ -9,7 +9,7 @@ class ColorResponseService
       parameters: {
         model: @default_model,
         messages: [
-          { role: "system", content: "あなたは色彩心理の専門家です。#{prompt}" },
+          { role: "system", content: "#{prompt}" },
           { role: "user", content: prompt }
         ],
         max_tokens: 500,

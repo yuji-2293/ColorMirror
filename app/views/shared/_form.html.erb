@@ -20,21 +20,6 @@
     </div>
 </div>
 
-<%# formステップ2エリア %>
-<div class="STEP2 border-solid border-pink-600 mx-auto text-center hover:shadow-md my-4">
-  <h2 class="text-lg font-bold text-gray-800 mb-4">今の気分を選んでください</h2>
-  <div class="grid grid-flow-col gap-4 max-w-2xl mx-auto">
-    <button class="mood-button bg-yellow-200 text-yellow-800 p-4 rounded-lg font-bold" data-mood="ワクワク">ワクワク</button>
-    <button class="mood-button bg-blue-200 text-blue-800 p-4 rounded-lg font-bold" data-mood="モヤモヤ">モヤモヤ</button>
-    <button class="mood-button bg-red-200 text-red-800 p-4 rounded-lg font-bold" data-mood="ムカムカ">ムカムカ</button>
-    <button class="mood-button bg-green-200 text-green-800 p-4 rounded-lg font-bold" data-mood="ホッと">ホッと</button>
-  </div>
-<input type="hidden" id="selected-mood" name="mood">
-<button id="generate-colors" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">色を生成する</button>
-
-
-
-</div>
 <%# カラーボールform %>
 <%# <div class="color_list mb-10 pl-5">
   <div class="color_selection grid grid-flow-col mb-10 bg-content m-10 ">
@@ -51,3 +36,16 @@
 <%= f.hidden_field :color_name, id: "color_name", required: true%>
 <%# <%=f.submit class: "btn btn-accent text-white rounded-full shadow-md" %>
 <% end %>
+<%# formステップ2エリア %>
+<div class="STEP2 border-solid border-pink-600 mx-auto text-center hover:shadow-md my-4">
+  <h2 class="text-lg font-bold text-gray-800 mb-4">今の気分を選んでください</h2>
+  <div class="grid grid-flow-col gap-4 max-w-2xl mx-auto">
+    <button class="mood-button bg-yellow-200 text-yellow-800 p-4 rounded-lg font-bold" data-mood="ワクワク">ワクワク</button>
+    <button class="mood-button bg-blue-200 text-blue-800 p-4 rounded-lg font-bold" data-mood="モヤモヤ">モヤモヤ</button>
+    <button class="mood-button bg-red-200 text-red-800 p-4 rounded-lg font-bold" data-mood="ムカムカ">ムカムカ</button>
+    <button class="mood-button bg-green-200 text-green-800 p-4 rounded-lg font-bold" data-mood="ホッと">ホッと</button>
+  </div>
+<input type="hidden" id="selected-mood" name="mood">
+<button id="generate-colors" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">色を生成する</button>
+<div id="color-suggest" class="flex space-x-4 justify-center mt-4"></div>
+</div>

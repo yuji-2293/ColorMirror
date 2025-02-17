@@ -57,6 +57,12 @@ class ColorsController < ApplicationController
     redirect_to new_color_path, notice: "データの削除成功", status: :see_other
   end
 
+  def analyze
+    mood = params[:mood]
+    suggested_colors = AiColorService.generate_color(mood)
+
+    render json: { colors: suggested_colors }
+  end
 
   private
 
