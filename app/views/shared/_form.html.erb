@@ -38,12 +38,17 @@
 <% end %>
 <%# formステップ2エリア %>
 <div class="STEP2 border-solid border-pink-600 mx-auto text-center hover:shadow-md my-4">
-  <h2 class="text-lg font-bold text-gray-800 mb-4">今の気分を選んでください</h2>
+  <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
   <div class="grid grid-flow-col gap-4 max-w-2xl mx-auto">
-    <button class="mood-button bg-yellow-200 text-yellow-800 p-4 rounded-lg font-bold" data-mood="ワクワク">ワクワク</button>
-    <button class="mood-button bg-blue-200 text-blue-800 p-4 rounded-lg font-bold" data-mood="モヤモヤ">モヤモヤ</button>
-    <button class="mood-button bg-red-200 text-red-800 p-4 rounded-lg font-bold" data-mood="ムカムカ">ムカムカ</button>
-    <button class="mood-button bg-green-200 text-green-800 p-4 rounded-lg font-bold" data-mood="ホッと">ホッと</button>
+    <button class="mood-button bg-warning text-yellow-800 p-4 rounded-lg font-bold" data-mood="ワクワク">ワクワク</button>
+    <button class="mood-button bg-primary text-white p-4 rounded-lg font-bold" data-mood="モヤモヤ">モヤモヤ</button>
+    <button class="mood-button bg-error text-red-800 p-4 rounded-lg font-bold" data-mood="ムカムカ">ムカムカ</button>
+    <button class="mood-button bg-success text-white p-4 rounded-lg font-bold" data-mood="ホッと">ホッと</button>
+    <button id="other-mood-button" class="mood-button bg-secondary-content text-gray-800 p-4 rounded-lg font-bold" data-mood="その他">その他</button>
+  </div>
+    <!-- その他の気分入力欄（デフォルトで非表示） -->
+  <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
+    <input type="text" id="other-mood-input" class=" p-4 border border-primary rounded-lg font-bold" placeholder="気分を入力してください">
   </div>
 <input type="hidden" id="selected-mood" name="mood">
 <button id="generate-colors" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">色を生成する</button>

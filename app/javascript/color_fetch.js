@@ -18,16 +18,31 @@ document.addEventListener("turbo:load", ()=>{
   const selectedMoodInput = document.getElementById("selected-mood");
   const generateColorsButton = document.getElementById("generate-colors");
   const colorSuggest = document.getElementById("color-suggest");
+  const otherMoodButton = document.getElementById("other-mood-button");
+  const otherMoodInput = document.getElementById("other-mood-input");
+  const otherMoodInputContainer = document.getElementById("other-mood-input-container");
 
   moodButtons.forEach(button => {
     button.addEventListener("click", () => {
       moodButtons.forEach(btn => btn.classList.remove("ring-4", "ring-yellow-500"));
 
-      button.classList.add("ring-4", "ring-yellow-500");
+      if(button === otherMoodButton) {
+        otherMoodInputContainer.classList.remove("hidden");
+        otherMoodInput.focus();
+        selectedMoodInput.value = "";
+      }else {
+        otherMoodInputContainer.classList.add("hidden");
+        button.classList.add("ring-4", "ring-yellow-500");
 
-      selectedMoodInput.value = button.dataset.mood;
-      console.log(selectedMoodInput);
+        selectedMoodInput.value = button.dataset.mood;
+        console.log(selectedMoodInput.value);
+      };
     });
+  });
+
+  otherMoodInput.addEventListener("input", () => {
+    selectedMoodInput.value = otherMoodInput.value;
+    console.log(selectedMoodInput.value);
   });
 
   generateColorsButton.addEventListener("click", () => {
@@ -41,14 +56,28 @@ document.addEventListener("turbo:load", ()=>{
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mood })
     })
-.then(response => response.json())
-.then(data => {
-  colorSuggest.innerHTML = "";
-  data.colors.forEach(color => {
-    const colorBall = document.createElement("div");
-    colorBall.classList.add("w-16", "h-16", "rounded-full", "cursor-pointer", "shadow-lg");
-    colorBall.style.backgroundColor = color;
-    colorSuggest.appendChild(colorBall);
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      colorSuggest.innerHTML = "";
+      data.colors.forEach(color => {
+        const colorBall = document.createElement("div");
+        colorBall.classList.add("w-16", "h-16", "rounded-full", "cursor-pointer", "shadow-lg");
+        colorBall.style.backgroundColor = color.hex;
+        colorBall.dataset.color = color.hex;
+
+        // ラベルの作成
+        const colorLabel = document.createElement("p");
+        colorLabel.textContent = color.name;
+        colorLabel.classList.add("text-xs", "text-gray-700", "mt-1", "text-center");
+        console.log(colorLabel);
+
+        const colorContainer = document.createElement("div");
+        colorContainer.appendChild(colorBall);
+        colorContainer.appendChild(colorLabel);
+        colorSuggest.appendChild(colorBall);
+        colorSuggest.appendChild(colorContainer);
+
   });
 })
 .catch(error => console.log("エラー:", error));
