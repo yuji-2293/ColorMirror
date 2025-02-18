@@ -24,7 +24,7 @@ document.addEventListener("turbo:load", ()=>{
 
   moodButtons.forEach(button => {
     button.addEventListener("click", () => {
-      moodButtons.forEach(btn => btn.classList.remove("ring-4", "ring-yellow-500"));
+      moodButtons.forEach(btn => btn.classList.remove("ring-2", "ring-error"));
 
       if(button === otherMoodButton) {
         otherMoodInputContainer.classList.remove("hidden");
@@ -32,7 +32,7 @@ document.addEventListener("turbo:load", ()=>{
         selectedMoodInput.value = "";
       }else {
         otherMoodInputContainer.classList.add("hidden");
-        button.classList.add("ring-4", "ring-yellow-500");
+        button.classList.add("ring-2", "ring-error");
 
         selectedMoodInput.value = button.dataset.mood;
         console.log(selectedMoodInput.value);
@@ -62,7 +62,7 @@ document.addEventListener("turbo:load", ()=>{
       colorSuggest.innerHTML = "";
       data.colors.forEach(color => {
         const colorBall = document.createElement("div");
-        colorBall.classList.add("w-16", "h-16", "rounded-full", "cursor-pointer", "shadow-lg");
+        colorBall.classList.add("w-20", "h-20", "rounded-full", "cursor-pointer", "shadow-lg","transition", "hover:scale-110");
         colorBall.style.backgroundColor = color.hex;
         colorBall.dataset.color = color.hex;
 
@@ -79,6 +79,8 @@ document.addEventListener("turbo:load", ()=>{
         colorSuggest.appendChild(colorContainer);
 
   });
+  const AnimateColor = document.getElementById("color-suggest");
+  AnimateColor.classList.add("animate-fade-in");
 })
 .catch(error => console.log("エラー:", error));
 });
