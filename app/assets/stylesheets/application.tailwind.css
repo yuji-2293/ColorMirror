@@ -26,3 +26,38 @@
     box-shadow: 0 0 0px 1000px white inset !important;
     border: none;
   }
+
+  @layer utilities {
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+
+    .transform-style {
+      transform-style: preserve-3d;
+    }
+
+    .flip-card-inner {
+      transition: transform 0.3s ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card-front, .flip-card-back {
+      backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    .perspective {
+      perspective: 1000px;
+    }
+
+    .flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+  }

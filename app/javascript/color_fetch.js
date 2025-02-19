@@ -85,3 +85,21 @@ document.addEventListener("turbo:load", ()=>{
 .catch(error => console.log("エラー:", error));
 });
 });
+
+document.addEventListener("turbo:load", () => {
+  const moodCards = document.querySelectorAll(".flip-card");
+  const selectedMoodInput = document.getElementById("selected-mood");
+
+  moodCards.forEach(card => {
+    card.addEventListener("click", () => {
+      // すべてのカードの回転をリセット
+      moodCards.forEach(btn => btn.classList.remove("flipped"));
+
+      // クリックしたカードを回転
+      card.classList.add("flipped");
+
+      // hidden input に選択した気分をセット
+      selectedMoodInput.value = card.dataset.mood;
+    });
+  });
+});
