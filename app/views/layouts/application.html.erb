@@ -27,11 +27,11 @@
     <%# font_awesome icon設定%>
     <script src="https://kit.fontawesome.com/4ab3416db2.js" crossorigin="anonymous"></script>
   </head>
+  <%= render "shared/header" %>
+  <%= render "shared/flash_message" %>
 
-  <body class="m-0 bg-content">
-    <main class="my-24">
-    <%= render "shared/header" %>
-    <%= render "shared/flash_message" %>
+  <body class="bg-cover bg-center min-h-screen" style="background-image: url('/images/onomatopoeia/ColorMirrorイメージ.webp');">
+    <main class="mt-16 p-12">
     <%= yield %>
     </main>
     <%= render "shared/footer" %>
