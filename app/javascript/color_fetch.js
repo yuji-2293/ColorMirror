@@ -39,11 +39,13 @@ document.addEventListener("turbo:load", ()=>{
       };
     });
   });
+    if (otherMoodInput){
+      otherMoodInput.addEventListener("input", () => {
+        selectedMoodInput.value = otherMoodInput.value;
+        console.log(selectedMoodInput.value);
+      });
+    };
 
-  otherMoodInput.addEventListener("input", () => {
-    selectedMoodInput.value = otherMoodInput.value;
-    console.log(selectedMoodInput.value);
-  });
 
   generateColorsButton.addEventListener("click", () => {
     const mood = selectedMoodInput.value;

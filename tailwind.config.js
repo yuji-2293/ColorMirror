@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "fade-in": "fadeIn 0.8s ease-in-out",
+        "fade-in": "fadeIn 1s ease-in-out",
       },
       keyframes: {
         fadeIn: {
@@ -25,7 +25,7 @@ module.exports = {
     themes: ["light", "dark"],
     darkTheme: false, // ダークモードをONにする場合は削除
   },
-    corePlugins: {
-    preflight: false, // TailwindのリセットCSSを無効化
-  },
+  //   corePlugins: {
+  //   preflight: false, // TailwindのリセットCSSを無効化
+  // },
 }
