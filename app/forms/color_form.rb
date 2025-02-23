@@ -2,7 +2,7 @@ class ColorForm
   include ActiveModel::Model
   include ActiveModel::Attributes
   # 親モデルの属性
-  attribute :color_name, :integer
+  attribute :color_name, :string
   # 子モデルの属性(中間)
   attribute :color_id, :integer
   attribute :user_id, :integer

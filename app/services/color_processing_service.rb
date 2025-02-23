@@ -5,7 +5,7 @@ class ColorProcessingService
     @user = current_user
   end
 
-  def process_color(mapped_color, weather_data)
+  def process_color(prompt_color, weather_data, prompt_mood)
       pressure_warning = case weather_data[:weather_pressure].to_i
       when 1000..1010 then "低気圧が近づいているので、体調管理に注意してください。"
       when 1011..1015 then "気圧は安定しています。過ごしやすい一日になりそうです。"
@@ -17,10 +17,11 @@ class ColorProcessingService
       # 1. 気分を表す色での心情の言語化
       prompt_1 = <<~PROMPT
         あなたは色彩心理の専門家です。
-        あなたはユーザーに語りかけるように優しい言葉で話します。
-        ユーザーはあなたにその時思い浮かんだ#{mapped_color}をあなたに伝えるでしょう。
-        色: #{mapped_color}
-        この色を選んだユーザーの心理状態や気分を言語化してください。
+        以下の条件でユーザーの気分と色で心象を言語化してください。
+
+        気分: #{ prompt_mood } = 直感で選んだユーザーの気分
+        色: #{ prompt_color } = 気分をもとに今の気分に合う選択した色
+
         できるだけポジティブな言葉を使ってください。
         150字程度で要点を押さえて表現してください。
         マークダウン方式を使わないでください。
@@ -35,9 +36,8 @@ class ColorProcessingService
         - 追加情報: #{pressure_warning}
 
         気圧: #{weather_data[:weather_pressure]}hPaは直接コメントの中に含めないでください。
-        上記の気象データを考慮して、ユーザーの気分「#{mapped_color}」を選んだ要因を根拠づけてください。
-        150字程度で要点を押さえて表現してください。
-        マークダウン方式を使わないでください。
+
+        #{ prompt_1 }をもとに外部環境データを使って根拠づけてください。
 
         また、追加情報: #{pressure_warning}について注意すべき点についてコメントしてください。
         できるだけポジティブな言葉を使ってください。
