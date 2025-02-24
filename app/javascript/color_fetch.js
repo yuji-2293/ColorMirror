@@ -48,6 +48,8 @@ document.addEventListener("turbo:load", ()=>{
       console.log(data);
       colorSuggest.innerHTML = "";
       data.colors.forEach(color => {
+
+        // ボールの作成
         const colorBall = document.createElement("div");
         colorBall.classList.add("w-20", "h-20", "rounded-full", "cursor-pointer", "shadow-lg","transition", "hover:scale-110", "color-ball");
         colorBall.style.backgroundColor = color.hex;
@@ -56,28 +58,27 @@ document.addEventListener("turbo:load", ()=>{
         // ラベルの作成
         const colorLabel = document.createElement("p");
         colorLabel.textContent = color.name;
-        colorLabel.classList.add("text-xs", "text-gray-700", "mt-1", "text-center");
+        colorLabel.classList.add("text-md", "text-gray-700", "mt-3", "text-center", "font-bold");
         console.log(colorLabel);
 
+         // コンテナの作成
         const colorContainer = document.createElement("div");
+        colorContainer.classList.add("flex", "flex-col", "items-center","justify-center");
+
         colorContainer.appendChild(colorBall);
         colorContainer.appendChild(colorLabel);
-        colorSuggest.appendChild(colorBall);
-        colorSuggest.appendChild(colorContainer);
 
-  });
-  const AnimateColor = document.getElementById("color-suggest");
-  AnimateColor.classList.add("animate-fade-in");
+        colorSuggest.appendChild(colorContainer);
+      });
+      const AnimateColor = document.getElementById("color-suggest");
+      AnimateColor.classList.add("animate-fade-in");
+      setupColorBallClickEvents();
 })
 .catch(error => console.log("エラー:", error));
 });
-});
 
-document.addEventListener("turbo:load", () => {
+// カード選択イベントの処理
   const moodCards = document.querySelectorAll(".flip-card");
-  const selectedMoodInput = document.getElementById("selected-mood");
-  const submitColor =  document.querySelectorAll('.color-ball');
-
   moodCards.forEach(card => {
     card.addEventListener("click", () => {
       // すべてのカードの回転をリセット
@@ -91,25 +92,31 @@ document.addEventListener("turbo:load", () => {
     });
   });
 
-  let clickedButton = null;
-  submitColor.forEach(submit => {
-    submit.addEventListener("click", (event) => {
-    const newClickedButton = event.target
+// 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
+  function setupColorBallClickEvents() {
+    let clickedButton = null;
+    const submitColor =  document.querySelectorAll('.color-ball');
 
-    if ( clickedButton && clickedButton !== newClickedButton) {
-      clickedButton.classList.remove("skeleton", "ring-4", "ring-yellow-400", "scale-125"); // 以前のボタンのクラスを削除
-    }
+    submitColor.forEach(submit => {
+      submit.addEventListener("click", (event) => {
+      const newClickedButton = event.target
 
-    if (clickedButton === newClickedButton) {
-      return;
-    }
-    clickedButton = newClickedButton;
-    clickedButton.classList.add("skeleton", "ring-4", "ring-yellow-400", "scale-125");
+      if ( clickedButton && clickedButton !== newClickedButton) {
+        clickedButton.classList.remove("skeleton", "ring-4", "ring-yellow-400", "scale-125"); // 以前のボタンのクラスを削除
+      }
 
-      const colorName = window.getComputedStyle(event.target).backgroundColor;
-      console.log(colorName);
-      document.getElementById("color_name").value = colorName;
+      if (clickedButton === newClickedButton) {
+        return;
+      }
+      clickedButton = newClickedButton;
+      clickedButton.classList.add("skeleton", "ring-4", "ring-yellow-400", "scale-125");
 
-    })
-  })
-});
+        const colorName = window.getComputedStyle(event.target).backgroundColor;
+        console.log(colorName);
+        document.getElementById("color_name").value = colorName;
+
+      });
+    });
+  }
+  setupColorBallClickEvents();
+  });
