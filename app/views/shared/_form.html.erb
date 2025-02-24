@@ -1,7 +1,7 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
 <%# formステップ1エリア %>
-<div class="STEP1 bg-opacity-50 bg-white rounded-lg my-5 p-6 hover:shadow-xl">
+<div class="STEP1 bg-opacity-50 bg-white/30 backdrop-blur-md rounded-lg my-5 p-6 hover:shadow-xl">
     <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-300">
       (ご登録いただいた居住地を基に現在の天気情報をセットしています)</span></p>
     <%# sign up時の居住地を初期値にセット %>
@@ -20,12 +20,12 @@
     </div>
 </div>
 <%# formステップ2エリア %>
-<div class="STEP2 bg-white bg-opacity-50 mx-auto text-center hover:shadow-xl my-4">
+<div class="STEP2 bg-white/30 backdrop-blur-md bg-opacity-50 mx-auto text-center hover:shadow-xl my-4">
   <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
 
   <div class="grid grid-flow-col justify-between gap-4 w-full mx-auto p-6">
 <%# ワクワクcard %>
-    <button type="button" class="flip-card w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
+    <button type="button" class="flip-card neumorphism w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
         <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
             <!-- 表面 -->
             <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ワクワクfront.png');">
@@ -39,7 +39,7 @@
         </div>
     </button>
 <%# ムカムカcard %>
-    <button type="button" class="flip-card w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
+    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
         <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
             <!-- 表面 -->
             <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ムカムカfront.jpg');">
@@ -53,7 +53,7 @@
         </div>
     </button>
 <%# モヤモヤcard %>
-    <button type="button" class="flip-card w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
+    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
         <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
             <!-- 表面 -->
             <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/モヤモヤfront.jpg');">
@@ -67,7 +67,7 @@
         </div>
     </button>
 <%# ホッとcard %>
-    <button type="button" class="flip-card w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
+    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
         <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
             <!-- 表面 -->
             <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ホッとfront.jpg');">
@@ -81,20 +81,20 @@
         </div>
     </button>
 <%# その他card %>
-    <button type="button" id="other-mood-button" class="mood-button bg-secondary-content text-gray-800 p-4 rounded-lg font-bold w-72 h-80" data-mood="その他">
+    <button type="button" id="other-mood-button" class="mood-button neumorphism bg-secondary-content text-gray-800 p-4 rounded-lg font-bold w-72 h-80" data-mood="その他">
     その他
     </button>
     </div>
 
     <!-- その他の気分入力欄（デフォルトで非表示） -->
   <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
-    <input type="text" id="other-mood-input" class=" p-4 border border-primary rounded-lg font-bold" placeholder="気分を入力してください">
+    <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass" placeholder="気分を入力してください">
   </div>
     <input type="hidden" id="selected-mood" name="mood">
-    <button type="button" id="generate-colors" class="skeleton mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+    <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
 </div>
 
-<div class="STEP3 bg-white bg-opacity-70 mx-auto text-center hover:shadow-xl my-4">
+<div class="STEP3 bg-white/30 backdrop-blur-md bg-opacity-70 mx-auto text-center hover:shadow-xl my-4">
   <h2 class="text-lg font-bold text-gray-800 mb-4">STEP3: 生成されたカラーボールを選択して登録してください</h2>
   <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4">
   </div>

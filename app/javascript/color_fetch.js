@@ -9,15 +9,12 @@ document.addEventListener("turbo:load", ()=>{
 
   moodButtons.forEach(button => {
     button.addEventListener("click", () => {
-      moodButtons.forEach(btn => btn.classList.remove("ring-4", "ring-error"));
-
       if(button === otherMoodButton) {
         otherMoodInputContainer.classList.remove("hidden");
         otherMoodInput.focus();
         selectedMoodInput.value = "";
       }else {
         otherMoodInputContainer.classList.add("hidden");
-        button.classList.add("ring-4", "ring-error");
 
         selectedMoodInput.value = button.dataset.mood;
         console.log(selectedMoodInput.value);
