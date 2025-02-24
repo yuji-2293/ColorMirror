@@ -5,7 +5,7 @@ import "./color_fetch"
 import "./prefecuture"
 import "./weather_fetch"
 
-// flash_messageが表示されたら3秒かけて消えていく
+// flash_messageが表示されたら5秒かけて消えていく
 document.addEventListener("turbo:load", () => {
 document.querySelectorAll(".alert").forEach((element) => {
     setTimeout(() => {
@@ -14,7 +14,7 @@ document.querySelectorAll(".alert").forEach((element) => {
         setTimeout(() => {
             element.style.visibility = "hidden";
         }, 1000);
-        }, 3000)
+        }, 5000)
     });
 });
 // 要素に対してフォーカスを当てスクロールさせる
