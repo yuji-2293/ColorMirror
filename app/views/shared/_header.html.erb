@@ -1,15 +1,9 @@
-<div class="navbar bg-base-300 top-0 fixed w-full">
-  <% if user_signed_in? %>
-  <div class="flex-1">
-    <%= link_to 'ColorMirror', colors_top_path, class: 'btn btn-ghost text-xl' %>
-    <%= render "shared/drawer_menu" %>
-
-  </div>
-  <% else %>
-  <div class="flex-1">
-    <%= link_to 'ColorMirror', root_path, class: 'btn btn-ghost text-xl' %>
-    <%= render "shared/before_menu" %>
-
-  </div>
-  <% end %>
+<div class="navbar bg-primary-content top-0 fixed w-full  flex items-center justify-between px-4 py-2">
+    <% if user_signed_in? %>
+        <%= link_to 'ColorMirror', colors_top_path, class: 'btn btn-ghost text-3xl' %>
+        <%= render "shared/drawer_menu",class: "right-0" %>
+    <% else %>
+        <%= link_to 'ColorMirror', root_path, class: 'btn btn-ghost text-xl' %>
+        <%= render "shared/before_menu" %>
+      <% end %>
 </div>

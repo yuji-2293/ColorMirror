@@ -31,7 +31,7 @@ document.addEventListener("turbo:load", ()=>{
       });
     };
 
-
+if (generateColorsButton) {
   generateColorsButton.addEventListener("click", () => {
     const mood = selectedMoodInput.value;
     if (!mood) {
@@ -76,6 +76,8 @@ document.addEventListener("turbo:load", ()=>{
 })
 .catch(error => console.log("エラー:", error));
 });
+};
+
 
 // カード選択イベントの処理
   const moodCards = document.querySelectorAll(".flip-card");
