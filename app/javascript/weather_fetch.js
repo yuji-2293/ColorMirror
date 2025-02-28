@@ -17,6 +17,7 @@ document.addEventListener("turbo:load", () => {
           .then(response => response.json())
           .then(data => {
             console.log("取得した天気データ:", data);
+            // 各データをform_withの隠しフィールドにセット
             document.getElementById("description").value = data.description;
             document.getElementById("weather_name").value = data.name;
             document.getElementById("temperature").value = data.temp_celsius;
@@ -30,7 +31,7 @@ document.addEventListener("turbo:load", () => {
     // WeatherIconのurlから末尾のn(ダーク)を削除してd（ライト）を追加する処理
     const iconCode = data.weather_icon;
     const weatherIcon = iconCode.slice(0, -1) + "d";
-
+            // 天気カードを生成
             document.getElementById("display-weather").innerHTML = `
             <div id="weather-card" class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:max-w-2xl border border-gray-200">
               <div class="md:flex">
