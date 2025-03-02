@@ -84,3 +84,9 @@ gem "httparty"
 gem "gon"
 # enum サポート
 gem "enumerize"
+# 開発環境用のメール確認
+group :development do
+  gem "letter_opener_web"
+end
+# omniauth
+gem "omniauth"

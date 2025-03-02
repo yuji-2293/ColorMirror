@@ -7,9 +7,10 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+  def create
+    super
+    flash[:notice] = "パスワードリセットの案内を送信しました"
+  end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
