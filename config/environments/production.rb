@@ -15,7 +15,7 @@ Rails.application.configure do
     :password => ENV["MAILGUN_SMTP_PASSWORD"],
     :authentication => :plain,
     :enable_starttls_auto => true
-  }
+  },
 
   # Settings specified here will take precedence over those in config/application.rb.
 
