@@ -2,7 +2,7 @@
 <%= render 'shared/error_messages', object: f.object %>
 <%# formステップ1エリア %>
 <div class="STEP1 glass rounded-lg my-5 p-6 hover:shadow-xl">
-    <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-300">
+    <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-600">
       (ご登録いただいた居住地を基に現在の天気情報をセットしています)</span></p>
     <%# sign up時の居住地を初期値にセット %>
     <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
@@ -88,7 +88,7 @@
 
     <!-- その他の気分入力欄（デフォルトで非表示） -->
   <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
-    <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass" placeholder="気分を入力してください">
+    <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass focus:outline-none" placeholder="気分を入力してください">
   </div>
     <input type="hidden" id="selected-mood" name="mood">
     <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>

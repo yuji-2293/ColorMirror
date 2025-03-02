@@ -9,37 +9,47 @@
       </div>
       <div class="drawer-side">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul id="glass-drawer-menu" class="menu min-h-full max-w-md w-full p-2 bg-white/30 backdrop-blur-md shadow-lg transform -translate-x-full transition-transform mt-16 space-4 text-white">
+        <ul id="glass-drawer-menu" class="menu min-h-full max-w-md w-full p-4 bg-white/30 backdrop-blur-md shadow-lg transform -translate-x-full transition-transform mt-16 space-y-4 text-white">
           <!-- Sidebar content here -->
               <% if user_signed_in? %>
-              <div class="flex items-center ml-2">
-                <i class="fa-solid fa-right-from-bracket text-2xl font-bold"></i>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class:"block py-2 px-4 rounded hover:bg-white/20" %></li>
+              <div class="flex items-center gap-x-4">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-right-from-bracket text-2xl font-bold"></i>
+                </span>
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class:"hover:bg-white/20" %>
+                </li>
               </div>
-              <div class="flex items-center border-solid border-b-2 border-bg-white/30 mb-2 pb-4">
-                <i class="fa-solid fa-house-laptop text-2xl font-bold m-2"></i>
-                  <li><%= link_to "マイページ", destroy_user_session_path, data: { turbo_method: :delete }, class:"block py-2 px-4 rounded hover:bg-white/20" %></li>
+              <div class="flex items-center gap-x-4 justify-start border-solid border-b-2 border-bg-white/30 pb-2">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-house-laptop text-2xl font-bold"></i>
+                </span>
+                  <li><%= link_to "マイページ", destroy_user_session_path, data: { turbo_method: :delete }, class:"hover:bg-white/20" %></li>
               </div>
-              <div class="flex items-center">
-                <i class="fa-solid fa-bell text-2xl font-bold m-2"></i>
-                  <li><%= link_to "リマインド設定", destroy_user_session_path, data: { turbo_method: :delete }, class:"block py-2 px-4 rounded hover:bg-white/20" %></li>
+              <div class="flex items-center gap-x-4 justify-start">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-bell block text-2xl w-10 h-10 font-bold"></i>
+                </span>
+                  <li><%= link_to "リマインド設定", destroy_user_session_path, data: { turbo_method: :delete }, class:"hover:bg-white/20" %></li>
               </div>
-              <div class="flex items-center">
-                <i class="fa-solid fa-chart-simple text-2xl font-bold m-2"></i>
-                  <li><%= link_to "振り返り", destroy_user_session_path, data: { turbo_method: :delete }, class:"block py-2 px-4 rounded hover:bg-white/20" %></li>
+              <div class="flex items-center gap-x-4 justify-start">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-chart-simple block text-2xl w-10 h-10 font-bold"></i>
+                </span>
+                  <li><%= link_to "振り返り", destroy_user_session_path, data: { turbo_method: :delete }, class:"hover:bg-white/20" %></li>
               </div>
               <% end %>
-              <div class="flex items-center border-solid border-t-2 border-bg-white/30 mt-2 pt-4">
-                <i class="fa-solid fa-user-lock text-2xl font-bold m-2"></i>
-                  <li><a href="" class="block py-2 px-4 rounded hover:bg-white/20">プライバシーポリシー</a></li>
+              <div class="flex items-center gap-x-4 justify-start">
+                <i class="fa-solid fa-user-lock block text-2xl w-10 h-10 font-bold"></i>
+                  <li><a href="" class="hover:bg-white/20">プライバシーポリシー</a></li>
               </div>
-              <div class="flex items-center">
-                  <i class="fa-solid fa-lock text-2xl font-bold m-2"></i>
-                  <li><a href="" class="block py-2 px-4 rounded hover:bg-white/20">利用規約</a></li>
+              <div class="flex items-center gap-x-4 justify-start">
+                  <i class="fa-solid fa-lock block text-2xl w-10 h-10 font-bold"></i>
+                  <li><a href="" class="hover:bg-white/20">利用規約</a></li>
               </div>
-              <div class="flex items-center">
-                  <i class="fa-regular fa-envelope text-2xl font-bold m-2"></i>
-                  <li><a href="" class="block py-2 px-4 rounded hover:bg-white/20">お問い合わせ</a></li>
+              <div class="flex items-center gap-x-4 justify-start">
+                  <i class="fa-regular fa-envelope block text-2xl w-10 h-10 font-bold"></i>
+                  <li><a href="" class="hover:bg-white/20">お問い合わせ</a></li>
               </div>
 
               <div class="flex flex-col items-center justify-center text-center border-solid border-t-2 border-bg-white/30 mt-2 pt-4">
