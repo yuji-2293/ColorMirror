@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
     :address => ENV["MAILGUN_SMTP_SERVER"],
-    :port => ENV["MAILGUN_SMTP_PORT"].to_i,
+    :port => ENV["MAILGUN_SMTP_PORT"],
     :domain => ENV["MAILGUN_SMTP_DOMAIN"],
     :user_name => ENV["MAILGUN_SMTP_LOGIN"],
     :password => ENV["MAILGUN_SMTP_PASSWORD"]
