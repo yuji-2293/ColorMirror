@@ -7,6 +7,5 @@ class AddUsersToUsers < ActiveRecord::Migration[8.0]
     add_column :users, :unconfirmed_email, :string # Only if using reconfirmable
 
     add_index :users, :confirmation_token,   unique: true
-
   end
 end

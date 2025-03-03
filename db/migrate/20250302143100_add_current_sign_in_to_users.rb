@@ -8,4 +8,4 @@ class AddCurrentSignInToUsers < ActiveRecord::Migration[8.0]
       t.inet     :last_sign_in_ip
     end
   end
-end   
+end
