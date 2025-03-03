@@ -2,22 +2,23 @@ ja:
   devise:
     shared:
       links:
-        Log in: ログイン
+        Log in: ~ログインページはこちら~
         signup: 新規登録
         forgot_pass: パスワードをお忘れの方はこちらから
         login_page: ログインページはこちら
+        confirmations: ~認証メールが届いてない場合はこちら~
     sessions:
       new:
         name: 名前
         password: パスワード
     registrations:
       new:
-        name: 名前
-        password: パスワード
-        password_confirmation: 確認用パスワード
-        email: Eメール
+        name: 名前(必須)
+        password: パスワード(必須)
+        password_confirmation: 確認用パスワード(必須)
+        email: Eメール(必須)
         signup: 新規作成
-        prefecture: 居住都市
+        prefecture: 居住都市(必須)
   shared:
     form:
       prefecture: 居住都市

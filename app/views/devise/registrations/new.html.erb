@@ -1,46 +1,55 @@
-<div class="flex items-center justify-center p-6 m-6  bg-base-300 min-h-screen">
-  <div class="max-w-3xl w-full rounded-lg shadow-md bg-white p-8" id="focus-target" tabindex="-1">
+<div class="flex items-center justify-center p-6 m-6  glass min-h-screen">
+  <div class="max-w-3xl w-full rounded-lg focus:shadow-lg focus:outline-none p-8" id="focus-target" tabindex="-1">
     <h1 class="text-2xl font-bold text-center">新アカウント作成</h1>
 <%= form_with model: @user, url: registration_path(resource_name), class: "space-y-4", local: true do |f| %>
-      <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-        <i class="fa-solid fa-user mr-2"></i>
-        <%= f.label :name,t(".name") %><br/>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "名前", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+      <div class="name_field">
+        <%= f.label :name, t(".name") ,class:" text-sm text-pink-400 font-bold" %>
+        <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+          <i class="fa-solid fa-user mr-2"></i>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+        </div>
       </div>
 
-      <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-        <i class="fa-solid fa-envelope"></i>
-        <%= f.label :email,t(".email")  %><br/>
-        <%= f.email_field :email, autocomplete: "email", placeholder: "sample@gmail.com", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+      <div class="email_field">
+        <%= f.label :email,t(".email"),class:" text-sm text-pink-400 font-bold"  %>
+        <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <i class="fa-solid fa-envelope"></i>
+            <%= f.email_field :email, autocomplete: "email", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+        </div>
       </div>
 
-      <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-        <i class="fa-solid fa-envelope"></i>
-        <%= f.label :prefecture,t(".prefecture")  %><br/>
-        <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+      <div class="prefecture_field">
+        <%= f.label :prefecture,t(".prefecture"),class:" text-sm text-pink-400 font-bold" %>
+        <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <i class="fa-solid fa-city"></i>
+            <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm" %>
+        </div>
       </div>
 
-      <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-          <i class="fa-solid fa-lock mr-2"></i>
-          <%= f.label :password,t(".password")  %><br/>
-          <% if @minimum_password_length %>
-            <em>(最低<%= @minimum_password_length %>文字以上)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+      <div class="password_field">
+        <%= f.label :password,t(".password"),class:" text-sm text-pink-400 font-bold"  %>
+        <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <i class="fa-solid fa-lock mr-2"></i>
+            <% if @minimum_password_length %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "(#{@minimum_password_length}文字以上)", class:"bg-white border-none outline-none flex-grow text-gray-700 text-md" %>
+          <% end %>
+        </div>
       </div>
 
-        <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-blue-400 bg-white text-lg">
-          <i class="fa-solid fa-lock mr-2"></i>
-          <%= f.label :password_confirmation,t(".password_confirmation")  %><br/>
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "確認用パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
-      </div>
+        <div class="confirmation_field">
+          <%= f.label :password_confirmation,t(".password_confirmation"),class:" text-sm text-pink-400 font-bold"  %><br/>
+          <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <i class="fa-solid fa-lock mr-2"></i>
+            <%= f.password_field :password, autocomplete: "new-password", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+          </div>
+        </div>
 
         <div class="actions">
           <%= f.submit t(".signup"),class: "btn btn-primary border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %>
         </div>
-        <div class="links flex flex-col justify-center items-center mr-6">
+        <div class="links">
           <%= render "devise/shared/links" %>
-        </div>
+          </div>
 <% end %>
 
   </div>
