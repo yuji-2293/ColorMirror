@@ -2,15 +2,16 @@ ja:
   devise:
     shared:
       links:
-        Log in: ~ログインページはこちら~
+        Log in: ログインページはこちら
         signup: 新規登録
-        forgot_pass: パスワードをお忘れの方はこちらから
+        forgot_pass: パスワードをお忘れですか？
         login_page: ログインページはこちら
-        confirmations: ~認証メールが届いてない場合はこちら~
+        confirmations: 認証メールが届いてませんか?
     sessions:
       new:
         name: 名前
         password: パスワード
+        forgot_pass: パスワードをお忘れですか？
     registrations:
       new:
         name: 名前(必須)

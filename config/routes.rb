@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
-    passwords: "users/passwords"
+    passwords: "users/passwords",
+    confirmations: "users/confirmations"
   }
+  devise_scope :user do
+    post "users/confirmation/resend", to: "users/confirmations#resend", as: :resend_confirmation
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "home#index"
   get "colors/top" => "colors#top"

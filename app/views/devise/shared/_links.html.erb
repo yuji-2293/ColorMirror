@@ -1,18 +1,22 @@
+<div class="sign_up_links flex space-x-3 items-center justify-center">
 <%- if controller_name != 'sessions' %>
-  <%= link_to t(".Log in"), new_session_path(resource_name),class:"block text-center text-md font-bold text-white hover:glass" %><br />
+  <%= link_to t(".Log in"), new_session_path(resource_name),class:"block p-2 text-center text-sm rounded-lg font-bold text-white hover:glass" %><br />
 <% end %>
-
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to t(".signup"), new_registration_path(resource_name),class: "btn btn-ghost border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %><br />
+  <%= link_to t(".signup"), new_registration_path(resource_name),class: "block p-2 text-center text-sm font-bold text-white hover:glass" %><br />
+<% end %>
+<%- if devise_mapping.confirmable? %>
+  <%= link_to t(".confirmations"), new_confirmation_path(resource_name),class:"block p-2 text-center text-sm rounded-lg  font-bold text-white hover:glass" %><br />
+<% end %>
+</div>
+
+
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' && controller_name != 'sessions' %>
+  <%= link_to t(".forgot_pass"), new_password_path(resource_name),class: "block text-center text-sm font-bold text-white hover:glass" %><br />
 <% end %>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to t(".forgot_pass"), new_password_path(resource_name),class: "btn btn-ghost border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %><br />
-<% end %>
 
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to t(".confirmations"), new_confirmation_path(resource_name),class:"block text-center text-md font-bold text-white hover:glass" %><br />
-<% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />

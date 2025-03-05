@@ -11,6 +11,21 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
+    def resend
+      user = User.find_by(email: params[:email])
+
+      if user&.unconfirmed?
+        user.send_confirmation_instructions
+        flash.now[:notice] = "認証メールを送信しました!!"
+      else
+        flash.now[:alert] = "メールアドレスが見つからないか、すでに認証済みです"
+      end
+
+      respond_to do |format|
+        format.turbo_stream
+      end
+    end
+
   # GET /resource/confirmation?confirmation_token=abcdef
   # def show
   #   super
