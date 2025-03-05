@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
-  # GET /resource/confirmation/new
-  # def new
-  #   super
-  # end
+    # GET /resource/confirmation/new
+    # def new
+    #   super
+    # end
 
-  # POST /resource/confirmation
-  # def create
-  #   super
-  # end
+    # POST /resource/confirmation
+    # def create
+    #   super
+    # end
 
     def resend
       user = User.find_by(email: params[:email])
