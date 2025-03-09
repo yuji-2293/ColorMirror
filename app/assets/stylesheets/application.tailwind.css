@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.modal-hidden {
+  @apply hidden;
+}
+
+.modal-visible {
+  @apply flex items-center justify-center;
+}
 .alert {
   position: fixed;
   top: 20px;

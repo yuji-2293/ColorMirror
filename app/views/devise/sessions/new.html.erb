@@ -1,19 +1,22 @@
 <div class="flex items-center justify-center">
-  <div class="max-w-3xl w-full rounded-lg shadow-md focus:outline-none glass p-8" id="focus-target" tabindex="-1">
-    <h1 class="text-2xl font-bold text-center">ログイン</h1>
+  <div class="sm:max-w-3xl w-full rounded-lg shadow-md focus:outline-none glass p-8" id="focus-target" tabindex="-1">
+    <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン</h1>
 <%= form_with model: @user, url: user_session_path, local: true, class: "space-y-4" do |f| %>
-            <div class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+          <div class="name-field sm:text-lg text-base text-gray-700">
+            <%= f.label :name,t(".name"),class:"p-3 "%>
+            <div class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white">
               <i class="fa-solid fa-user mr-2"></i>
-              <%= f.label :name,t(".name") %><br/>
-              <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "名前", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "名前", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-2xl" %>
             </div>
-
-            <div id="return" class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
-              <i class="fa-solid fa-lock mr-2"></i>
-              <%= f.label :password,t(".password")  %><br/>
-              <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
           </div>
 
+          <div class="password-field sm:text-lg text-base text-gray-700">
+            <%= f.label :password,t(".password"),class:"p-3"%><br/>
+            <div class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white">
+              <i class="fa-solid fa-lock mr-2"></i>
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-2xl" %>
+            </div>
+          </div>
       <div class="flex flex-col justify-start md:flex-row md:justify-between md:items-center">
         <% if devise_mapping.rememberable? %>
           <div class="field flex items-center gap-2 mb-6 md:mb-0">
@@ -31,7 +34,7 @@
 
       </div>
         <div class="actions">
-          <%= f.submit "ログイン",class: "btn btn-primary border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %>
+          <%= f.submit "ログイン",class: "btn bg-gradient-diagonal border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %>
         </div>
         <div class="links">
           <%= render "devise/shared/links" %>
@@ -39,4 +42,4 @@
         <% end %>
   </div>
 </div>
-<div id="password-area" class="sm:mt-6 mt-3 sm:max-w-xl mx-auto"></div>
+<div id="password-reset-modal" data-controller="password-modal" data-password-modal-target="modal"></div>
