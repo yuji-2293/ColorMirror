@@ -27,9 +27,9 @@
     <%# font_awesome icon設定%>
     <script src="https://kit.fontawesome.com/4ab3416db2.js" crossorigin="anonymous"></script>
   </head>
-  <body class="bg-cover bg-center bg-fixed min-h-screen" style="background-image: url('/images/onomatopoeia/ColorMirror.png');">
+  <body class="">
     <%= render "shared/header" %>
-    <main class="p-12 mt-16">
+    <main class="bg-cover bg-center bg-fixed min-h-screen w-full sm:pt-20 pt-32" style="background-image: url('/images/onomatopoeia/ColorMirror.png');">
       <%= render "shared/flash_message" %>
     <%= yield %>
     </main>

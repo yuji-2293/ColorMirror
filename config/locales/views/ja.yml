@@ -9,7 +9,7 @@ ja:
         signup: 新規登録
         forgot_pass: パスワードをお忘れですか？
         login_page: ログインページはこちら
-        confirmations: 認証メールが届いてませんか?
+        confirmations: 認証メール再送信
     sessions:
       new:
         name: 名前
