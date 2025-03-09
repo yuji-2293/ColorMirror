@@ -18,6 +18,9 @@ module.exports = {
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
       },
+      backgroundImage: {
+        "gradient-diagonal": "linear-gradient(135deg, #f472b6 0%, #ffffff 50%, #7dd3fc 100%)",
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -8,7 +8,7 @@
               <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "名前", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
             </div>
 
-            <div class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <div id="return" class="field input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
               <i class="fa-solid fa-lock mr-2"></i>
               <%= f.label :password,t(".password")  %><br/>
               <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 text-2xl" %>
@@ -24,9 +24,11 @@
             <span class="ml-2 text-md">ログインを記憶する</span>
           </div>
         <% end %>
+        <%# turbo_streamで非同期表示 %>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to t(".forgot_pass"), new_password_path(resource_name),class: "block p-1 text-center text-xs font-bold text-base-100 hover:glass" %>
+          <%= link_to t(".forgot_pass"), reset_password_path, data: { turbo_stream: true }, class: "block p-1 text-center text-xs font-bold text-base-100 hover:glass" %>
         <% end %>
+
       </div>
         <div class="actions">
           <%= f.submit "ログイン",class: "btn btn-primary border w-full my-3 mx-auto rounded-lg hover:shadow-lg" %>
@@ -35,6 +37,6 @@
           <%= render "devise/shared/links" %>
         </div>
         <% end %>
-
   </div>
 </div>
+<div id="password-area" class="sm:mt-6 mt-3 sm:max-w-xl mx-auto"></div>

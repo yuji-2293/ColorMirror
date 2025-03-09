@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post "users/confirmation/resend", to: "users/confirmations#resend", as: :resend_confirmation
+    get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
   end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "home#index"
   get "colors/top" => "colors#top"

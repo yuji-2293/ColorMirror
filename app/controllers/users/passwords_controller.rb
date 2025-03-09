@@ -9,7 +9,14 @@ class Users::PasswordsController < Devise::PasswordsController
   # POST /resource/password
   def create
     super
-    flash[:notice] = "パスワードリセットの案内を送信しました"
+    flash[:notice] = "パスワードリセットのメールを送信しました"
+  end
+
+  def reset_password
+    self.resource = resource_class.new
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef

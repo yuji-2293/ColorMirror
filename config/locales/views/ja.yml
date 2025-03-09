@@ -1,5 +1,8 @@
 ja:
   devise:
+    mailer:
+      reset_password_instructions:
+        Change my password: パスワードを変更する
     shared:
       links:
         Log in: ログインページはこちら

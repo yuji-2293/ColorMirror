@@ -24,5 +24,15 @@ document.addEventListener("turbo:load", () => {
     if (target) {
         target.focus();
         target.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+document.body.addEventListener("click", (event) =>{
+    if (event.target.id === "return-button") {
+        const returnTarget = document.getElementById("return");
+        if (returnTarget) {
+            returnTarget.focus();
+            returnTarget.scrollIntoView({ behavior: "smooth", block: "nearest"});
+returnTarget.classList.add("ring-4", "ring-yellow-400", "transition-shadow", "duration-500");
+        }
     }
+});
 });
