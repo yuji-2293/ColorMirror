@@ -7,6 +7,8 @@ import "./weather_fetch"
 
 // flash_messageが表示されたら5秒かけて消えていく
 document.addEventListener("turbo:load", () => {
+console.log("Turboがロードされました");
+
     const alerts = document.querySelectorAll(".alert");
         alerts.forEach(alert => {
             alert.classList.add("show")
@@ -36,3 +38,14 @@ returnTarget.classList.add("ring-4", "ring-yellow-400", "transition-shadow", "du
     }
 });
 });
+
+// document.addEventListener("turbo:load", () => {
+//     const modal = document.getElementById("password-reset-modal");
+//     const closeModal = document.getElementById("close-modal");
+
+//     if (closeModal) {
+//         closeModal.addEventListener("click", () => {
+//             modal.classList.add("hidden");
+//         });
+//     }
+// });
