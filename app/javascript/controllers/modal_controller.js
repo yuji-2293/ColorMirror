@@ -8,7 +8,7 @@ export default class extends Controller {
     }
 
     close(event) {
-        if (event.target === this.modalTarget.querySelector("[data-action='click->password-modal#close']")) {
+        if (event.target === this.modalTarget.querySelector("[data-action='click->modal#close']")) {
             this.modalTarget.classList.remove("modal-visible");
             this.modalTarget.classList.add("modal-hidden");
             return;
