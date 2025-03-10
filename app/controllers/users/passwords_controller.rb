@@ -15,7 +15,7 @@ class Users::PasswordsController < Devise::PasswordsController
   def reset_password
     self.resource = resource_class.new
     respond_to do |format|
-      format.turbo_stream 
+      format.turbo_stream
     end
   end
 
