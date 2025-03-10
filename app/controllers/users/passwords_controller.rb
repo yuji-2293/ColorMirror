@@ -8,8 +8,15 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # POST /resource/password
   def create
+    self.resource = User.find_by(email: params[:user][:email])
+
+   if resource.present?
     super
     flash[:notice] = "パスワードリセットのメールを送信しました"
+   else
+    flash[:alert] = "メールアドレスが未入力です"
+    redirect_to new_session_path(resource_name)
+   end
   end
 
   def reset_password

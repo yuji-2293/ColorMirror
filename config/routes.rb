@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post "users/confirmation/resend", to: "users/confirmations#resend", as: :resend_confirmation
+    get "users/confirmation/confirm", to: "users/confirmations#confirm", as: :confirm_confirmation
     get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
   end
 

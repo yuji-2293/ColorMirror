@@ -7,8 +7,16 @@ export default class extends Controller {
     this.modalTarget.classList.add("modal-visible");
     }
 
-    close() {
-        this.modalTarget.classList.remove("modal-visible");
-        this.modalTarget.classList.add("modal-hidden");
+    close(event) {
+        if (event.target === this.modalTarget.querySelector("[data-action='click->password-modal#close']")) {
+            this.modalTarget.classList.remove("modal-visible");
+            this.modalTarget.classList.add("modal-hidden");
+            return;
+        }
+
+        if (event.target === this.element){
+            this.modalTarget.classList.remove("modal-visible");
+            this.modalTarget.classList.add("modal-hidden");
+        }
     }
 }
