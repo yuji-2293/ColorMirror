@@ -1,0 +1,7 @@
+<turbo-stream action="update" target="confirm-modal">
+    <template>
+    <div data-controller="password-modal" data-password-modal-target="modal">
+      <%= render partial: "resend_form", formats: [:html], locals: { resource: resource } %>
+    </div>
+    </template>
+</turbo-stream>

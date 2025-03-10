@@ -11,7 +11,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    flash[:notice] = "Welcome To ColorMirror!!, #{ current_user.name }さん"
+    flash[:notice] = "Welcome To ColorMirror!! #{ current_user.name }さん"
   end
 
   # DELETE /resource/sign_out

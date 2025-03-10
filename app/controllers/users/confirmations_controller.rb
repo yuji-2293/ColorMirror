@@ -12,15 +12,20 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     # end
 
     def resend
-      user = User.find_by(email: params[:email])
+      self.resource = User.find_by(email: params[:user][:email])
 
-      if user&.unconfirmed?
-        user.send_confirmation_instructions
-        flash.now[:notice] = "認証メールを送信しました!!"
+      if resource&.unconfirmed?
+        resource.send_confirmation_instructions
+        flash[:notice] = "認証メールを送信しました!!"
+        redirect_to new_session_path(resource_name)
       else
-        flash.now[:alert] = "メールアドレスが見つからないか、すでに認証済みです"
+        flash[:alert] = "メールアドレスが見つからないか、すでに認証済みです"
+        redirect_to new_session_path(resource_name)
       end
+    end
 
+    def confirm
+      self.resource = resource_class.new
       respond_to do |format|
         format.turbo_stream
       end
