@@ -10,5 +10,5 @@ application.register("form-reset", FormResetController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import PasswordModalController from "./password_modal_controller"
-application.register("password-modal", PasswordModalController)
+import ModalController from ".modal_controller"
+application.register("modal", ModalController)
