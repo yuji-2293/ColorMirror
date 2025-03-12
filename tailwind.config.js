@@ -20,6 +20,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-diagonal": "linear-gradient(135deg, #f472b6 0%, #ffffff 50%, #7dd3fc 100%)",
+        "re-gradient-diagonal": "linear-gradient(135deg, #7dd3fc 0%, #ffffff 50%, #f472b6 100%)"
       },
     },
   },

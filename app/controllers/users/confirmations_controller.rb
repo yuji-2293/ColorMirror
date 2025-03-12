@@ -13,14 +13,21 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
     def resend
       self.resource = User.find_by(email: params[:user][:email])
-
       if resource&.unconfirmed?
         resource.send_confirmation_instructions
-        flash[:notice] = "認証メールを送信しました!!"
-        redirect_to new_session_path(resource_name)
+          flash[:notice] = "認証メールを送信しました!!"
+            if request.referer&.include?("sign_in")
+              redirect_to new_session_path(resource_name)
+            elsif request.referer&.include?("sign_up")
+              redirect_to new_registration_path(resource_name)
+            end
       else
-        flash[:alert] = "メールアドレスが見つからないか、すでに認証済みです"
-        redirect_to new_session_path(resource_name)
+          flash[:alert] = "メールアドレスが見つからないか、すでに認証済みです"
+            if request.referer&.include?("sign_in")
+              redirect_to new_session_path(resource_name)
+            elsif request.referer&.include?("sign_up")
+              redirect_to new_registration_path(resource_name)
+            end
       end
     end
 
