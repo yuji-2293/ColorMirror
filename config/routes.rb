@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
   end
 
+  resource :users, only: [:show, :edit, :destroy, :update] do
+    get "profile", to: "users#show", as: "profile"
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "home#index"
   get "colors/top" => "colors#top"
