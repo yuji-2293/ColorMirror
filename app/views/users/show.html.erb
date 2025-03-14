@@ -1,5 +1,5 @@
-<div class="flex justify-center items-center mt-6">
-  <div id="profile" class="card w-80 md:w-96 bg-base-100 shadow-xl">
+<div class="flex justify-center items-center bg-gradient-diagonal mt-6 sm:p-8 p-4 max-w-5xl mx-auto rounded-md shadow-lg">
+  <div id="profile" class="card w-80 md:w-96 bg-glass neumorphism shadow-xl">
     <figure class="px-10 pt-10">
       <div class="avatar">
         <div class="w-24 rounded-full border-4 mx-auto mt-4">
@@ -13,7 +13,7 @@
         <%= current_user.email %>
       </p>
       <div class="card-actions">
-        <%= link_to "編集", edit_user_registration_path, class: "text-base-content btn btn-primary", data: { turbo_stream: true } %>
+        <%= link_to "ユーザー情報を編集する", edit_user_path, class: "text-base-content btn bg-glass", data: { turbo_stream: true } %>
       </div>
     </div>
     <div class="flex justify-end pr-5 pb-4">
@@ -21,3 +21,4 @@
     </div>
   </div>
 </div>
+<div id="edit-modal" data-controller="modal" data-modal-target="modal"></div>
