@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     post "users/confirmation/resend", to: "users/confirmations#resend", as: :resend_confirmation
     get "users/confirmation/confirm", to: "users/confirmations#confirm", as: :confirm_confirmation
     get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
+    get "users/registration/edit_user", to: "users/registrations#edit_user", as: :edit_user
   end
 
-  resource :users, only: [:show, :edit, :destroy, :update] do
+  resource :users, only: [ :show, :edit, :destroy, :update ] do
     get "profile", to: "users#show", as: "profile"
   end
 
