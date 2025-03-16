@@ -26,3 +26,13 @@ ja:
   shared:
     form:
       prefecture: 居住都市
+  users:
+    confirmations:
+    passwords:
+    registrations:
+      edit_prefecture:
+        prefecture: 居住都市
+      prefecture: 居住都市
+    show:
+      prefecture: 居住都市
+      email: Eメール

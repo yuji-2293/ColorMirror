@@ -43,14 +43,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       format.turbo_stream
     end
   end
+
+  def edit_city
+    self.resource = resource_class.new
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   def after_update_path_for(resource)
     # 自分で設定した「マイページ」へのパス
-    users_profile_path
+    profile_users_path
   end
   # protected
 
   def update_resource(resource, params)
-    resource.update_without_password(params)
+      resource.update_without_password(params)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

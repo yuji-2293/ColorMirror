@@ -1,0 +1,7 @@
+<turbo-stream action="update" target="edit-modal">
+    <template>
+    <div data-controller="modal" data-modal-target="modal">
+      <%= render partial: "edit_prefecture", formats: [:html], locals: { resource: resource } %>
+    </div>
+    </template>
+</turbo-stream>

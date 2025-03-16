@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "users/confirmation/confirm", to: "users/confirmations#confirm", as: :confirm_confirmation
     get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
     get "users/registration/edit_user", to: "users/registrations#edit_user", as: :edit_user
+    get "users/registration/edit_city", to: "users/registrations#edit_city", as: :edit_city
   end
 
   resource :users, only: [ :show, :edit, :destroy, :update ] do

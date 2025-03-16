@@ -4,10 +4,12 @@
             <h2><%= current_user.name %>さんのユーザー情報の編集画面</h2>
             <%= form_with model: resource, url: registration_path(resource), html: { method: :put } do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
-                <div class="email_field mb-4">
-                <i class="fa-solid fa-envelope"></i>
-                    <%= f.label :email, class: "text-sm" %>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field p-2 w-full rounded-full focus:outline-none focus:shadow-md", placeholder: "メールアドレス" %>
+                <div class="prefecture_field">
+                    <%= f.label :prefecture,t(".prefecture"),class:" text-sm text-pink-400 font-bold" %>
+                    <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+                        <i class="fa-solid fa-city"></i>
+                    <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm" %>
+                    </div>
                 </div>
                 <div class="sm:mt-4 mt-2">
                     <%= f.submit "更新する", class: "btn bg-white opacity-70 w-full rounded-full py-3 sm:text-lg text:md" %>
