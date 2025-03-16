@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :weather_logs, through: :self_logs, dependent: :destroy
 
   validates :prefecture, presence: true
+  validates :password, presence: true, on: :create
+  validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,6 +17,10 @@ class User < ApplicationRecord
 
   def unconfirmed?
     pending_any_confirmation
+  end
+
+  def password_required?
+    new_record? || password.present? || password_confirmation.present?
   end
 
     enumerize :prefecture, in: {
