@@ -1,16 +1,13 @@
 <div data-controller="modal" data-modal-target="modal" data-action="connect->modal#connect click->modal#close" class="modal-hidden  fixed inset-0 bg-black bg-opacity-50 z-20">
     <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-3 relative">
         <div class="glass sm:p-8 p-4 m-4 sm:w-full max-w-md text-center">
-            <h2><%= current_user.name %>さんのユーザー情報の編集画面</h2>
             <%= form_with model: resource, url: registration_path(resource), html: { method: :put } do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
-                <div class="prefecture_field">
-                    <%= f.label :prefecture,t(".prefecture"),class:" text-sm text-pink-400 font-bold" %>
-                    <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
+            <h2>登録する<%= f.label :prefecture, t(".prefecture"), class:"text-pink-400 font-bold sm:text-2xl text-md" %>の編集画面</h2>
+                    <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-full hover:shadow-lg px-4 py-2 mt-4 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
                         <i class="fa-solid fa-city"></i>
-                    <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm" %>
+                    <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm", required: true %>
                     </div>
-                </div>
                 <div class="sm:mt-4 mt-2">
                     <%= f.submit "更新する", class: "btn bg-white opacity-70 w-full rounded-full py-3 sm:text-lg text:md" %>
                 </div>

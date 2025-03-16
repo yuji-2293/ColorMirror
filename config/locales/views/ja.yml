@@ -32,6 +32,8 @@ ja:
     registrations:
       edit_prefecture:
         prefecture: 居住都市
+      edit_form:
+        email: Eメールアドレス  
       prefecture: 居住都市
     show:
       prefecture: 居住都市
