@@ -6,7 +6,7 @@
         <%= f.label :name, t(".name") ,class:" text-sm text-pink-400 font-bold" %>
         <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
           <i class="fa-solid fa-user"></i>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "例)太郎 or taro", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-lg text-base" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "例)太郎 or taro", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-lg text-base", required: true %>
         </div>
       </div>
 
@@ -14,7 +14,7 @@
         <%= f.label :email,t(".email"),class:" text-sm text-pink-400 font-bold"  %>
         <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
             <i class="fa-solid fa-envelope"></i>
-            <%= f.email_field :email, autocomplete: "email", placeholder: "PC or スマホどちらでも使えます", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-lg text-base" %>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "PC or スマホどちらでも使えます", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-lg text-base", required: true %>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
         <%= f.label :prefecture,t(".prefecture"),class:" text-sm text-pink-400 font-bold" %>
         <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
             <i class="fa-solid fa-city"></i>
-            <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm" %>
+            <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm", required: true %>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
         <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
             <i class="fa-solid fa-lock mr-2"></i>
             <% if @minimum_password_length %>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "(#{@minimum_password_length}文字以上)", class:"bg-white border-none outline-none flex-grow text-gray-700 text-md" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "(#{@minimum_password_length}文字以上)", class:"bg-white border-none outline-none flex-grow text-gray-700 text-md", required: true %>
           <% end %>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <%= f.label :password_confirmation,t(".password_confirmation"),class:" text-sm text-pink-400 font-bold"  %><br/>
           <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
             <i class="fa-solid fa-lock mr-2"></i>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワードをもう一度" , class:"bg-white border-none outline-none flex-grow text-gray-700 text-md" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワードをもう一度" , class:"bg-white border-none outline-none flex-grow text-gray-700 text-md", required: true %>
           </div>
         </div>
 

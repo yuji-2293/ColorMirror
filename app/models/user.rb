@@ -6,9 +6,13 @@ class User < ApplicationRecord
   has_many :responses, through: :self_logs, dependent: :destroy
   has_many :weather_logs, through: :self_logs, dependent: :destroy
 
+  validates :name, presence: true
   validates :prefecture, presence: true
+  validates :prefecture, presence: { message: "居住都市の入力は必須です" }
+
   validates :password, presence: true, on: :create
-  validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
+  validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
+  validates :email, presence: { message: "メールアドレスの入力は必須です" }, uniqueness: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

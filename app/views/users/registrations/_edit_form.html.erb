@@ -1,13 +1,12 @@
 <div data-controller="modal" data-modal-target="modal" data-action="connect->modal#connect click->modal#close" class="modal-hidden  fixed inset-0 bg-black bg-opacity-50 z-20">
     <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-3 relative">
         <div class="glass sm:p-8 p-4 m-4 sm:w-full max-w-md text-center">
-            <h2><%= current_user.name %>さんのユーザー情報の編集画面</h2>
             <%= form_with model: resource, url: registration_path(resource), html: { method: :put } do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
-                <div class="email_field mb-4">
-                <i class="fa-solid fa-envelope"></i>
-                    <%= f.label :email, class: "text-sm" %>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field p-2 w-full rounded-full focus:outline-none focus:shadow-md", placeholder: "メールアドレス" %>
+            <h2>登録する<%= f.label :email, t(".email"), class:"text-pink-400 font-bold sm:text-2xl text-md" %>の編集画面</h2>
+                <div class="email_field mb-4 input flex items-center gap-2 border-spacing-3 focus:outline-none focus:shadow-md rounded-full mt-4 focus-within:ring-2 focus-within:ring-pink-400">
+                    <i class="fa-solid fa-envelope"></i>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "flex-grow p-2 w-full focus:outline-none rounded-full", placeholder: "メールアドレス", required: true %>
                 </div>
                 <div class="sm:mt-4 mt-2">
                     <%= f.submit "更新する", class: "btn bg-white opacity-70 w-full rounded-full py-3 sm:text-lg text:md" %>
