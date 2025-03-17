@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :set_gon
   protect_from_forgery
 
+  def after_sign_in_path_for(resource)
+    colors_top_path
+  end
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern

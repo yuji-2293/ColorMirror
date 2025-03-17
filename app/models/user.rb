@@ -7,17 +7,17 @@ class User < ApplicationRecord
   has_many :weather_logs, through: :self_logs, dependent: :destroy
 
   validates :name, presence: true
-  validates :prefecture, presence: true
-  validates :prefecture, presence: { message: "居住都市の入力は必須です" }
+  # validates :prefecture, presence: { message: "居住都市の入力は必須です" }
 
   validates :password, presence: true, on: :create
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
-  validates :email, presence: { message: "メールアドレスの入力は必須です" }, uniqueness: true
+  validates :email, presence: { message: "メールアドレスの入力は必須です" }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable, :trackable, :confirmable, :timeoutable, :omniauthable
+          :recoverable, :rememberable, :validatable, :trackable, :confirmable,
+          :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   def unconfirmed?
     pending_any_confirmation
@@ -25,6 +25,36 @@ class User < ApplicationRecord
 
   def password_required?
     new_record? || password.present? || password_confirmation.present?
+  end
+
+  def self.from_omniauth(auth)
+    # find_or_create_by(provider:auth.provider, uid: auth.uid) do |user|
+    #   user.email = auth.info.email
+    #   user.password = Devise.friendly_token[0,20]
+    #   user.name = auth.info.name
+    #   user.confirmed_at ||= Time.current
+    #   user.save
+    # end
+
+      data = auth.info
+      user = User.find_by(email: data["email"])
+
+    if user.blank?
+      user = nil
+      ActiveRecord::Base.transaction do
+          user = User.new(
+          email: auth.info.email,
+          name: auth.info.name,
+          password: Devise.friendly_token[0, 20],
+          confirmed_at: Time.current,
+          provider: auth.provider,
+          uid: auth.uid,
+          )
+          user.save!
+      end
+
+      end
+      user
   end
 
     enumerize :prefecture, in: {
