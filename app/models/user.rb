@@ -28,14 +28,33 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    find_or_create_by(provider:auth.provider, uid: auth.uid) do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name
-      user.prefecture = auth.info.prefecture
-      user.confirmed_at ||= Time.current
-      user.save
-    end
+    # find_or_create_by(provider:auth.provider, uid: auth.uid) do |user|
+    #   user.email = auth.info.email
+    #   user.password = Devise.friendly_token[0,20]
+    #   user.name = auth.info.name
+    #   user.confirmed_at ||= Time.current
+    #   user.save
+    # end
+
+      data = auth.info
+      user = User.find_by(email: data["email"])
+
+    if user.blank?
+      user = nil
+      ActiveRecord::Base.transaction do
+          user = User.new(
+          email: auth.info.email,
+          name: auth.info.name,
+          password: Devise.friendly_token[0, 20],
+          confirmed_at: Time.current,
+          provider: auth.provider,
+          uid: auth.uid,
+          )
+          user.save!
+      end
+
+      end
+      user
   end
 
     enumerize :prefecture, in: {
