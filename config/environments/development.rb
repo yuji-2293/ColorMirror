@@ -88,4 +88,6 @@ Rails.application.configure do
   # アセットをプリコンパイルせずに動的に提供
   config.assets.debug = true
   config.assets.compile = true
+
+  config.web_console.whitelisted_ips = ['127.0.0.1', '::1', '172.20.0.1']  # Docker環境でのIP追加
 end
