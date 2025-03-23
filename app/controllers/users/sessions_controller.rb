@@ -20,11 +20,6 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # protected
-
-  def after_sign_in_path_for(resource)
-    colors_top_path
-  end
-
   # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
     root_path
