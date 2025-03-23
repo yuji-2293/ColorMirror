@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  skip_before_action :require_no_authentication, only: [:new, :create, :edit, :update, :reset_password]
+
   # GET /resource/password/new
   # def new
   #   super
@@ -38,12 +40,21 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  def after_resetting_password_path_for(resource)
+    if user_signed_in?
+      flash[:notice] = "パスワードが変更されました"
+      profile_users_path(current_user)
+    else
+      new_session_path(resource_name)
+    end
+  end
 
   # The path used after sending reset password instructions
-  # def after_sending_reset_password_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+  def after_sending_reset_password_instructions_path_for(resource_name)
+    if user_signed_in?
+      profile_users_path(current_user)
+    else
+      new_session_path(resource_name)
+    end
+  end
 end

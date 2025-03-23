@@ -17,6 +17,7 @@
         <div class="card-actions">
             <%= link_to "Eメールを編集する", edit_user_path, class: "text-base-content btn bg-white w-full", data: { turbo_stream: true } %>
             <%= link_to "居住都市を編集する", edit_city_path, class: "text-base-content btn bg-white w-full", data: { turbo_stream: true } %>
+            <%= link_to "パスワードを編集する", reset_password_path, class: "text-base-content btn bg-white w-full", data: { turbo_stream: true } %>
         </div>
                 <div class="sm:my-4 my-2 sm:py-2 py-0 border-y-2 mx-auto w-full">
             <%= link_to "アカウント削除", user_registration_path, class: "text-base-content btn bg-rose-500 text-white font-bold w-full", data: { turbo_method: :delete, turbo_confirm: "本当にアカウントを削除しますか" } %>
@@ -26,3 +27,4 @@
   </div>
 </div>
 <div id="edit-modal" data-controller="modal" data-modal-target="modal"></div>
+<div id="password-reset-modal" data-controller="modal" data-modal-target="modal"></div>
