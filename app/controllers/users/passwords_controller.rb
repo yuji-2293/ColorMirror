@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  skip_before_action :require_no_authentication, only: [:new, :create, :edit, :update, :reset_password]
+  skip_before_action :require_no_authentication, only: [ :new, :create, :edit, :update, :reset_password ]
 
   # GET /resource/password/new
   # def new
