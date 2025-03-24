@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "users/password/reset_password", to: "users/passwords#reset_password", as: :reset_password
     get "users/registration/edit_user", to: "users/registrations#edit_user", as: :edit_user
     get "users/registration/edit_city", to: "users/registrations#edit_city", as: :edit_city
+    delete "/users/unlink_google_account", to: "users/omniauth_callbacks#unlink_google_account", as: :unlink_google_account
   end
 
   resource :users, only: [ :show, :edit, :destroy, :update ] do

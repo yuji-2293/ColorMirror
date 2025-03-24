@@ -10,14 +10,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
-    flash[:notice] = "Welcome To ColorMirror!! #{ current_user.name }さん"
+    super do |resource|
+      cookies[:login_method] = resource.provider.present? ? "google" : "normal"
+      flash[:notice] = "Welcome To ColorMirror!! #{ current_user.name }さん"
+    end
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # protected
   # ログアウト後のリダイレクト先

@@ -1,18 +1,21 @@
 <div class="flex justify-center items-center bg-gradient-diagonal mt-6 sm:p-8 p-4 max-w-5xl mx-auto rounded-lg">
   <div id="profile" class="card w-80 md:w-96 glass ">
-    <figure class="px-10 pt-10">
+    <figure class="px-10 pt-10 flex flex-col">
       <div class="avatar">
-        <div class="w-24 rounded-full border-4 mx-auto mt-4" style="background-image: url('/images/onomatopoeia/アバター画像.png')";>
+        <div class="w-24 rounded-full border-4 mx-auto mt-4">
             <img class="" src="/images/onomatopoeia/アバター画像.png">
         </div>
       </div>
-
+      <% if current_user.provider.present? %>
+      <div class="badge bg-gradient-diagonal text-md max-w-sm sm:p-2 p-1 skeleton">Google連携中</div>
+      <% end %>
     </figure>
     <div class="card-body items-center text-center">
         <h2 class="card-title"><%= current_user.name %></h2>
         <p class="text-base-content text-opacity-70">
             <%= current_user.email %>
             <%= current_user.prefecture %>
+
         </p>
         <div class="card-actions">
             <%= link_to "Eメールを編集する", edit_user_path, class: "text-base-content btn bg-white w-full", data: { turbo_stream: true } %>
