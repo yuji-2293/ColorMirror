@@ -1,5 +1,21 @@
 <div class="flex items-center justify-center">
   <div class="sm:max-w-3xl w-full rounded-lg shadow-md focus:outline-none glass p-8" id="focus-target" tabindex="-1">
+    <%# Googleアカウントで連携中のUI %>
+    <% if cookies[:login_method] === "google" %>
+          <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン(Googleアカウント連携中)</h1>
+          <%= render "shared/oauth_form" %>
+          <div class="flex items-center justify-center">
+            <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
+              <div class="my-4 text-center text-md font-bold mx-2">または</div>
+            <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
+          </div>
+
+          <%= button_to "連携を解除", unlink_google_account_path, method: :delete, data: { turbo: false , turbo_confirm: "連携を解除してもよろしいですか？"}, class: "btn bg-gradient-diagonal block mx-auto max-w-xl w-full text-gray-700 py-3 px-4  font-bold shadow-md rounded-full" %>
+            <div class="mt-6 text-center text-md font-bold ">
+              連携を解除してもデータは削除されません。
+            </div>
+   <% else %>
+    <%# 連携されてないデフォルトのUI %>
     <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン</h1>
 <%= form_with model: @user, url: user_session_path, local: true, class: "space-y-4" do |f| %>
           <div class="name-field sm:text-lg text-base text-gray-700">
@@ -32,15 +48,17 @@
           <%= link_to t(".forgot_pass"), reset_password_path, data: { turbo_stream: true }, class: "block p-1 text-center text-xs font-bold text-base-100 hover:glass" %>
         <% end %>
 
+        <button type="button" id="link-google-account" data-action-type="link" class="btn btn-glass">Googleアカウントと連携する</button>
       </div>
         <div class="actions">
           <%= f.submit "ログイン",class: "btn bg-gradient-diagonal border w-full my-3 mx-auto rounded-lg hover:shadow-lg hover:bg-re-gradient-diagonal" %>
         </div>
         <div class="links">
           <%= render "devise/shared/links" %>
-          <%= render "shared/oauth_form" %>
         </div>
         <% end %>
+    <% end %>
+
   </div>
 </div>
 <div id="password-reset-modal" data-controller="modal" data-modal-target="modal"></div>

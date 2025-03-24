@@ -28,7 +28,9 @@
     <script src="https://kit.fontawesome.com/4ab3416db2.js" crossorigin="anonymous"></script>
   </head>
   <body class="">
-    <%= render "shared/header" %>
+    <div id="flash-message">
+      <%= render "shared/header" %>
+    </div>
     <main class="bg-cover bg-center bg-fixed min-h-screen w-full sm:pt-36 pt-32" style="background-image: url('/images/onomatopoeia/ColorMirror.png');">
       <%= render "shared/flash_message" %>
     <%= yield %>

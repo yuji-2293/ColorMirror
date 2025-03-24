@@ -13,14 +13,48 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # https://github.com/heartcombo/devise#omniauth
 
   def google_oauth2
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-    if @user.persisted?
+    auth = request.env["omniauth.auth"]
+    type = request.env["omniauth.params"]["type"]
 
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
+  # Googleアカウント情報を署名付きCookieに保存（有効期限1時間）
+  cookies.signed[:google_auth_data] = {
+    value: {
+      email: auth.info.email,
+      provider: auth.provider,
+      uid: auth.uid
+    }.to_json,
+    expires: 1.hour.from_now,
+    httponly: true,
+    secure: Rails.env.production? # HTTPSのみで送信する安全策
+  }
+
+    if type == "link"
+      handle_google_link(auth)
     else
-      session["devise.google_data"] = request.env["omniauth.auth"].except(:extra)
-      redirect_to new_user_session_path, alert: @user.errors.full_messages.join("\n")
+      handle_google_login(auth)
+    end
+  end
+
+  def unlink_google_account
+    data = cookies.signed[:google_auth_data]
+    data = JSON.parse(data, symbolize_names: true) if data.present?
+
+    if data.present?
+      user = User.find_by(email: data[:email])
+      if user
+        user.update(provider: nil, uid: nil)
+        cookies.delete(:google_auth_data)
+
+        flash[:notice] = "Googleアカウントの連携を解除しました"
+        cookies[:login_method] = "normal"
+        redirect_to new_session_path(resource_name)
+      else
+        flash[:alert] = "ユーザーが見つかりません"
+        redirect_to new_registration_path(resource_name)
+      end
+    else
+      flash[:alert] = "無効なセッションです。ログインからやり直してください"
+      redirect_to new_session_path(resource_name)
     end
   end
 
@@ -49,5 +83,50 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def auth
     auth = request.env["omniauth.auth"]
+  end
+
+  def handle_google_link(auth)
+    session[:google_auth_data] = {
+      provider: auth.provider,
+      uid: auth.uid,
+      name: auth.info.name,
+      email: auth.info.email
+    }
+    data = session[:google_auth_data]
+    user = User.find_by(email: auth.info.email)
+    begin
+      if user && data.present?
+        user.update!(provider: data[:provider], uid: data[:uid])
+        cookies[:login_method] = "google"
+        flash[:notice] = "Googleアカウントが連携されました。"
+      else
+        flash[:notice] = "Googleアカウントの連携に失敗しました"
+      end
+    rescue => e
+      flash[:alert] = "予期せぬエラーが発生しました。"
+      Rails.logger.error("Googleアカウント連携エラー: #{e.message}")
+    end
+    render inline:
+    <<~HTML
+      <script>
+        window.opener.location.reload();  // 親画面のリロード
+        window.close();
+      </script>
+    HTML
+  end
+
+  def handle_google_login(auth)
+    Rails.logger.info "Session data before processing: #{session.inspect}"
+
+    @user = User.from_omniauth(auth)
+    if @user.persisted?
+
+      sign_in_and_redirect @user, event: :authentication
+      cookies[:login_method] = resource.provider.present? ? "google" : "normal"
+      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
+    else
+      session["devise.google_data"] = request.env["omniauth.auth"].except(:extra)
+      redirect_to new_user_session_path, alert: @user.errors.full_messages.join("\n")
+    end
   end
 end
