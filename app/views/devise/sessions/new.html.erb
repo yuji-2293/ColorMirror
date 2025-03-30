@@ -14,7 +14,7 @@
             <div class="mt-6 text-center text-md font-bold ">
               連携を解除してもデータは削除されません。
             </div>
-   <% else %>
+    <% else %>
     <%# 連携されてないデフォルトのUI %>
     <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン</h1>
 <%= form_with model: @user, url: user_session_path, local: true, class: "space-y-4" do |f| %>

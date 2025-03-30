@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     get "users/registration/edit_city", to: "users/registrations#edit_city", as: :edit_city
     delete "/users/unlink_google_account", to: "users/omniauth_callbacks#unlink_google_account", as: :unlink_google_account
   end
-
   resource :users, only: [ :show, :edit, :destroy, :update ] do
     get "profile", to: "users#show", as: "profile"
   end

@@ -15,7 +15,6 @@
         <p class="text-base-content text-opacity-70">
             <%= current_user.email %>
             <%= current_user.prefecture %>
-
         </p>
         <div class="card-actions">
             <%= link_to "Eメールを編集する", edit_user_path, class: "text-base-content btn bg-white w-full", data: { turbo_stream: true } %>

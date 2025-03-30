@@ -2,7 +2,7 @@ document.addEventListener("turbo:load", () => {
 
     const googleLink = document.getElementById("link-google-account");
     if (googleLink) {
-        googleLink.addEventListener("click", () => {
+        googleLink.addEventListener("click", async () => {
             const actionType = googleLink.dataset.actionType;
             const form = document.createElement("form");
             form.method = "POST";
@@ -25,18 +25,11 @@ document.addEventListener("turbo:load", () => {
             const left = window.screenX;
             const top = window.screenY;
 
-            window.open("", "popup",
-                        `"width=${width}, height=${height}", top=${top}, left=${left}, resizable=no, scrollbars=yes`
-                    );
-            // fetch("/users/link_google_account", {
-            //     method: "POST",
-            //     headers: {
-            //         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
-            //     }
-            //     });
+            window.open("", "popup",`"width=${width}, height=${height}", top=${top}, left=${left}`);
+
             form.submit();
             // 送信後フォームを削除（クリーンアップ）
             document.body.removeChild(form);
-        })
+         })
     };
 });
