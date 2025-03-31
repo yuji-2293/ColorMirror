@@ -6,10 +6,10 @@ ja:
     shared:
       links:
         Log in: ログインページはこちら
-        signup: 新規登録
+        signup: 新規作成はこちら
         forgot_pass: パスワードをお忘れですか？
         login_page: ログインページはこちら
-        confirmations: メールが届いてない方へ
+        confirmations: メールが届いてませんか？
     sessions:
       new:
         name: 名前
@@ -21,7 +21,7 @@ ja:
         password: パスワード(必須)
         password_confirmation: 確認用パスワード(必須)
         email: Eメール(必須)
-        signup: 新規作成
+        signup: 新規作成はこちら
         prefecture: 居住都市(必須)
   shared:
     form:
@@ -33,7 +33,7 @@ ja:
       edit_prefecture:
         prefecture: 居住都市
       edit_form:
-        email: Eメールアドレス  
+        email: Eメールアドレス
       prefecture: 居住都市
     show:
       prefecture: 居住都市

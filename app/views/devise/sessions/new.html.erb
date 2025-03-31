@@ -3,17 +3,21 @@
     <%# Googleアカウントで連携中のUI %>
     <% if cookies[:login_method] === "google" %>
           <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン(Googleアカウント連携中)</h1>
-          <%= render "shared/oauth_form" %>
-          <div class="flex items-center justify-center">
-            <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
-              <div class="my-4 text-center text-md font-bold mx-2">または</div>
-            <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
-          </div>
-
-          <%= button_to "連携を解除", unlink_google_account_path, method: :delete, data: { turbo: false , turbo_confirm: "連携を解除してもよろしいですか？"}, class: "btn bg-gradient-diagonal block mx-auto max-w-xl w-full text-gray-700 py-3 px-4  font-bold shadow-md rounded-full" %>
-            <div class="mt-6 text-center text-md font-bold ">
-              連携を解除してもデータは削除されません。
+          <div class="GoogleForm">
+            <%= render "shared/oauth_form" %>
+            <div class="flex items-center justify-center">
+              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
+                <div class="my-4 text-center text-gray-500 text-md font-bold mx-2">または</div>
+              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-2"></span>
             </div>
+            <div class="flex items-start justify-center gap-1 max-w-xl  mx-auto">
+              <%= button_to "連携を解除", unlink_google_account_path, method: :delete, data: { turbo: false , turbo_confirm: "連携を解除してもよろしいですか？"},
+              class: "btn bg-gradient-diagonal text-gray-700 py-3 px-4 w-96 font-bold shadow-md rounded-full" %>
+              <span class="tooltip tooltip-left sm:tooltip-bottom custom-tooltip" data-tip="連携を解除してもデータが消えることはありません">
+                <i class="fa-solid fa-circle-exclamation text-base-300 text-xl cursor-pointer"></i>
+              </span>
+            </div>
+          </div>
     <% else %>
     <%# 連携されてないデフォルトのUI %>
     <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン</h1>
@@ -33,7 +37,7 @@
               <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"bg-white border-none outline-none flex-grow text-gray-700 sm:text-2xl", required: true %>
             </div>
           </div>
-      <div class="flex flex-col justify-start md:flex-row md:justify-between md:items-center">
+      <div class="flex flex-col justify-start sm:flex sm:flex-row sm:justify-between sm:items-center">
         <% if devise_mapping.rememberable? %>
           <div class="field flex items-center gap-2 mb-6 md:mb-0">
             <%= f.check_box :remember_me, class: "peer hidden", id: "remember_me" %>
@@ -43,12 +47,23 @@
             <span class="ml-2 text-md">ログインを記憶する</span>
           </div>
         <% end %>
-        <%# turbo_streamで非同期表示 %>
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to t(".forgot_pass"), reset_password_path, data: { turbo_stream: true }, class: "block p-1 text-center text-xs font-bold text-base-100 hover:glass" %>
-        <% end %>
 
-        <button type="button" id="link-google-account" data-action-type="link" class="btn btn-glass">Googleアカウントと連携する</button>
+        <button type="button" id="link-google-account" data-action-type="link" class="gsi-material-button" style="width:300px">
+          <div class="gsi-material-button-state"></div>
+          <div class="gsi-material-button-content-wrapper">
+            <div class="gsi-material-button-icon">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                <path fill="none" d="M0 0h48v48H0z"></path>
+              </svg>
+            </div>
+            <span class="gsi-material-button-contents">Googleアカウントと連携する</span>
+            <span style="display: none;">Googleアカウントと連携する</span>
+          </div>
+        </button>
       </div>
         <div class="actions">
           <%= f.submit "ログイン",class: "btn bg-gradient-diagonal border w-full my-3 mx-auto rounded-lg hover:shadow-lg hover:bg-re-gradient-diagonal" %>
