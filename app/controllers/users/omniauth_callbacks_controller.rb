@@ -23,7 +23,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       provider: auth.provider,
       uid: auth.uid
     }.to_json,
-    expires: 1.hour.from_now,
+    expires: 1.day.from_now,
     httponly: true,
     secure: Rails.env.production? # HTTPSのみで送信する安全策
   }
@@ -53,7 +53,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to new_registration_path(resource_name)
       end
     else
-      flash[:alert] = "無効なセッションです。ログインからやり直してください"
+      flash[:alert] = "連携解除のためには一度ログインからやり直してください"
       redirect_to new_session_path(resource_name)
     end
   end

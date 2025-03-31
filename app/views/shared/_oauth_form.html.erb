@@ -1,6 +1,6 @@
 <%= form_with url: user_google_oauth2_omniauth_authorize_path(type: "login", prompt: "none"), method: :post, data: { turbo: false },class: "space-y-4" do %>
   <%= hidden_field_tag :type, "login" %>
-<button class="gsi-material-button block mx-auto" style="width:400px">
+<button class="gsi-material-button block mx-auto">
   <div class="gsi-material-button-state"></div>
   <div class="gsi-material-button-content-wrapper">
     <div class="gsi-material-button-icon">
