@@ -1,7 +1,9 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<%# formステップ1エリア %>
-<div class="STEP1 glass rounded-lg my-5 p-6 hover:shadow-xl">
+<div data-controller="carousel" class="swiper" >
+    <div class="swiper-wrapper">
+            <%# formステップ1エリア %>
+<div id=STEP1 data-carousel-target="slide" class="swiper-slide glass rounded-lg my-5 p-6 hover:shadow-xl relative">
     <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-600">
       (ご登録いただいた居住地を基に現在の天気情報をセットしています)</span></p>
     <%# sign up時の居住地を初期値にセット %>
@@ -9,18 +11,23 @@
     <%# お天気カードUI %>
     <div id="display-weather" class="my-4"></div>
     <%# 天気カードから取得したパラメーター %>
-    <div class="hidden_fields">
-      <%= f.hidden_field :weather_name, id: "weather_name" %>
-      <%= f.hidden_field :description, id: "description" %>
-      <%= f.hidden_field :temperature, id: "temperature" %>
-      <%= f.hidden_field :temp_max, id: "temp_max" %>
-      <%= f.hidden_field :temp_min, id: "temp_min" %>
-      <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
-      <%= f.hidden_field :weather_icon, id: "weather_icon" %>
-    </div>
+        <div class="hidden_fields">
+            <%= f.hidden_field :weather_name, id: "weather_name" %>
+            <%= f.hidden_field :description, id: "description" %>
+            <%= f.hidden_field :temperature, id: "temperature" %>
+            <%= f.hidden_field :temp_max, id: "temp_max" %>
+            <%= f.hidden_field :temp_min, id: "temp_min" %>
+            <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
+            <%= f.hidden_field :weather_icon, id: "weather_icon" %>
+        </div>
+<div class="flex justify-between mt-4">
+  <button class="swiper-button-next-custom absolute right-0 top-1/2 flex -translate-y-1/2 transform justify-between text-cyan-400"><i class="fa-solid fa-arrow-right fa-beat-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
 </div>
+</div>
+
+
 <%# formステップ2エリア %>
-<div class="STEP2 glass mx-auto text-center hover:shadow-xl my-4">
+<div id="STEP2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
   <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
 
   <div class="grid grid-flow-col justify-between gap-4 w-full mx-auto p-6">
@@ -87,18 +94,27 @@
     </div>
 
     <!-- その他の気分入力欄（デフォルトで非表示） -->
-  <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
-    <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass focus:outline-none" placeholder="気分を入力してください">
-  </div>
-    <input type="hidden" id="selected-mood" name="mood">
-    <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+    <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
+        <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass focus:outline-none" placeholder="気分を入力してください">
+    </div>
+        <input type="hidden" id="selected-mood" name="mood">
+        <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+        <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
+
+<div class="flex justify-between mt-4">
+  <button class="swiper-button-prev-custom">戻る</button>
+  <button class="swiper-button-next-custom">次へ</button>
+</div>
 </div>
 
-<div class="STEP3 glass mx-auto text-center hover:shadow-xl my-4">
-  <h2 class="text-lg font-bold text-gray-800 mb-4">STEP3: 生成されたカラーボールを選択して登録してください</h2>
-  <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4">
-  </div>
-  <%= f.hidden_field :color_name, id: "color_name", required: true %>
-  <%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl" %>
+<div id="STEP3" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
+    <h2 class="text-lg font-bold text-gray-800 mb-4">STEP3:登録してください</h2>
+    <%= f.hidden_field :color_name, id: "color_name", required: true %>
+  <button class="swiper-button-prev-custom">戻る</button>
+    <%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl" %>
 </div>
 <% end %>
+
+</div>
+
+</div>
