@@ -22,7 +22,7 @@
               <%= f.label :prefecture,t(".prefecture"),class:" text-sm text-pink-400 font-bold" %>
               <div class="field grow input flex items-center gap-2 border-spacing-3 border-gray-300 rounded-lg hover:shadow-lg px-4 py-2 focus-within:ring-2 focus-within:ring-pink-400 bg-white text-lg">
                   <i class="fa-solid fa-city"></i>
-                  <%= f.select :prefecture, User.prefecture.options, { include_blank: "選択してください" }, class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm", required: true %>
+                  <%= f.select :prefecture, User.prefecture.options,  class:"bg-white border-none outline-none flex-grow text-gray-700 text-sm", { include_blank: false }, { required: true } %>
               </div>
             </div>
 

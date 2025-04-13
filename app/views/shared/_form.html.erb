@@ -1,29 +1,29 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper h-[600px]" >
+<div data-controller="carousel" class="swiper h-[800px]" >
 <div class="swiper-wrapper">
-            <%# formステップ1エリア %>
-<div id=STEP1 data-carousel-target="slide" class="swiper-slide rounded-lg my-5 p-6 hover:shadow-lg relative glass">
-    <p  class="font-bold text-center ">STEP1: 外部環境の設定<span class="text-xs text-red-600">
-        (ご登録いただいた居住地を基に現在の天気情報をセットしています)</span></p>
-    <%# sign up時の居住地を初期値にセット %>
-    <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
-    <%# お天気カードUI %>
-    <div id="display-weather"></div>
+<%# formステップ1エリア %>
+<div id=STEP1 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg relative glass">
+<%# sign up時の居住地を初期値にセット %>
+<%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
+<%# お天気カードUI %>
+<div id="display-weather"></div>
 
-    <%# 天気カードから取得したパラメーター %>
-        <div class="hidden_fields">
-            <%= f.hidden_field :weather_name, id: "weather_name" %>
-            <%= f.hidden_field :description, id: "description" %>
-            <%= f.hidden_field :temperature, id: "temperature" %>
-            <%= f.hidden_field :temp_max, id: "temp_max" %>
-            <%= f.hidden_field :temp_min, id: "temp_min" %>
-            <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
-            <%= f.hidden_field :weather_icon, id: "weather_icon" %>
-        </div>
-<div class="flex justify-between mt-4">
-  <button class="swiper-button-next-custom absolute right-0 top-1/2 flex -translate-y-1/2 transform justify-between text-cyan-400"><i class="fa-solid fa-arrow-right fa-beat-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
+<%# 天気カードから取得したパラメーター %>
+<div class="hidden_fields">
+<%= f.hidden_field :weather_name, id: "weather_name" %>
+<%= f.hidden_field :description, id: "description" %>
+<%= f.hidden_field :temperature, id: "temperature" %>
+<%= f.hidden_field :temp_max, id: "temp_max" %>
+<%= f.hidden_field :temp_min, id: "temp_min" %>
+<%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
+<%= f.hidden_field :weather_icon, id: "weather_icon" %>
 </div>
+<div class="flex justify-between mt-4">
+<button class="swiper-button-next-custom absolute right-0 top-1/2 flex -translate-y-1/2 transform justify-between text-cyan-400"><i class="fa-solid fa-arrow-right fa-beat-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
+</div>
+
+
 </div>
 
 
