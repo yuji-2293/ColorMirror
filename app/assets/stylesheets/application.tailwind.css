@@ -80,6 +80,7 @@
   animation: fadeOutDown 0.5s ease-out forwards;
 }
 
+
   input:-webkit-autofill {
     background-color: white !important;
     color: black !important;

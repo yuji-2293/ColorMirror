@@ -8,4 +8,30 @@ module WeatherHelper
     else "気圧が不安定です。無理せずリラックスしてください。"
     end
   end
+
+  WEATHER_MAPPING = {
+    "01d" => "/images/weather/sunny.webp",
+    "02d" => "/images/weather/partly_cloudy.webp",
+    "03d" => "/images/weather/cloudy.jpg",
+    "04d" => "/images/weather/overcast.jpg",
+    "09d" => "/images/weather/rain.webp",
+    "10d" => "/images/weather/showers.webp",
+    "11d" => "/images/weather/thunderstorm.webp",
+    "13d" => "/images/weather/snow.jpg",
+    "50d" => "/images/weather/mist.jpg",
+    # 夜のアイコン
+    "01n" => "/images/weather/clear_night.webp",
+    "02n" => "/images/weather/cloudy_night.webp",
+    "03n" => "/images/weather/cloudy.jpg",
+    "04n" => "/images/weather/overcast.jpg",
+    "09n" => "/images/weather/rain.webp",
+    "10n" => "/images/weather/showers.webp",
+    "11n" => "/images/weather/thunderstorm.webp",
+    "13n" => "/images/weather/snow.jpg",
+    "50n" => "/images/weather/mist.jpg"
+  }.freeze
+
+  def self.weather_image(icon_code)
+    WEATHER_MAPPING[icon_code] || "images/weather/sunny.webp"
+  end
 end

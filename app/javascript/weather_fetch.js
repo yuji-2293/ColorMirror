@@ -27,17 +27,20 @@ document.addEventListener("turbo:load", () => {
             document.getElementById("weather_icon").value = data.weather_icon;
             document.getElementById("city").value = cityName;
             const pressure_message = data.pressure_message;
+            const weatherImage = data.weather_image;
+            // WeatherIconのurlから末尾のn(ダーク)を削除してd（ライト）を追加する処理
+            const iconCode = data.weather_icon;
+            const weatherIcon = iconCode.slice(0, -1) + "d";
 
-    // WeatherIconのurlから末尾のn(ダーク)を削除してd（ライト）を追加する処理
-    const iconCode = data.weather_icon;
-    const weatherIcon = iconCode.slice(0, -1) + "d";
             // 天気カードを生成
             document.getElementById("display-weather").innerHTML = `
-            <div id="weather-card" class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:max-w-2xl border border-gray-200">
-              <div class="md:flex">
-                <div class="md:flex-shrink-0 flex items-center justify-center bg-blue-100 p-4">
-                <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="天気アイコン" class="w-20 h-20 my-auto">
+            <div id="weather-card" class="max-w-3xl max-h-svh mx-auto glass rounded-xl shadow-lg overflow-hidden border border-gray-200">
+              <div class="flex w-full h-fll">
+
+                <div class="md:flex-shrink-0 flex items-center justify-center sm:p-4 w-72">
+                  <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="天気アイコン" class="w-20 h-20 my-auto">
                 </div>
+
                 <div class="p-6">
                   <div class="uppercase tracking-wide text-lg text-blue-500 font-semibold">
                     <span id="weather-location">${data.name}</span> の天気
@@ -60,6 +63,7 @@ document.addEventListener("turbo:load", () => {
                   </div>
                 </div>
               </div>
+
             </div>`;
 
     const now = new Date();
@@ -71,6 +75,12 @@ document.addEventListener("turbo:load", () => {
       minute: '2-digit',
       hour12: false
     });
+          const step1 = document.getElementById("STEP1");
+          if (step1) {
+            step1.style.backgroundImage = `url('${weatherImage}')`;
+            step1.classList.remove("glass");
+            step1.classList.add("bg-cover", "bg-center");
+          }
           document.getElementById("current-date").textContent = formatter.format(now).replace(/\//g, "/");
           const weatherCard = document.getElementById("weather-card");
           weatherCard.classList.add("animate-fade-in");
