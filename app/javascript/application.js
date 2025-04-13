@@ -28,6 +28,7 @@ console.log("Turboがロードされました");
 });
 // 要素に対してフォーカスを当てスクロールさせる
 document.addEventListener("turbo:load", () => {
+    
     const target =  document.getElementById("focus-target");
         if (target) {
             target.focus();
