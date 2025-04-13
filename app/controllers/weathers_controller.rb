@@ -7,8 +7,13 @@ include WeatherHelper
 def index;end
 
 def show
-      city = params[:city] || "Tokyo"
-      response = WeatherService.new(city).fetch_weather
+      city = params[:city]
+      if city.present?
+        response = WeatherService.new(city).fetch_weather
+      else
+        city = "Tokyo"
+        response = WeatherService.new(city).fetch_weather
+      end
 
       if response.success?
         weather_data = response.parsed_response

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :weather_logs, through: :self_logs, dependent: :destroy
 
   validates :name, presence: true
-  # validates :prefecture, presence: { message: "居住都市の入力は必須です" }
+  validates :prefecture, presence: true
 
   validates :password, presence: true, on: :create
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
@@ -49,7 +49,6 @@ class User < ApplicationRecord
   end
 
     enumerize :prefecture, in: {
-    "---": 0,
     北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5, 山形県: 6, 福島県: 7,
     茨城県: 8, 栃木県: 9, 群馬県: 10, 埼玉県: 11, 千葉県: 12, 東京都: 13, 神奈川県: 14,
     新潟県: 15, 富山県: 16, 石川県: 17, 福井県: 18, 山梨県: 19, 長野県: 20,

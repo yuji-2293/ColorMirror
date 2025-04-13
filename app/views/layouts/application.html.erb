@@ -29,11 +29,9 @@
     <!-- Swiper's CSS -->
   <%= stylesheet_link_tag "https://unpkg.com/swiper/swiper-bundle.min.css", media: "all" %>
   </head>
-  <body class="">
-    <div id="flash-message">
-      <%= render "shared/header" %>
-    </div>
-    <main class="bg-slate-200 min-h-screen w-full sm:pt-36 pt-32">
+  <body class="bg-slate-200 min-h-screen flex flex-col">
+    <%= render "shared/header" %>
+    <main class="flex-1 overflow-auto">
       <%= render "shared/flash_message" %>
     <%= yield %>
     </main>
