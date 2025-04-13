@@ -13,6 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     super do |resource|
       cookies[:login_method] = resource.provider.present? ? "google" : "normal"
       flash[:notice] = "Welcome To ColorMirror!! #{ current_user.name }さん"
+
     end
   end
 
