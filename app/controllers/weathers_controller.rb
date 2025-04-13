@@ -20,7 +20,10 @@ def show
           temp_min_celsius: kelvin_to_celsius(weather_data["main"]["temp_min"]).round(1),
           temp_max_celsius: kelvin_to_celsius(weather_data["main"]["temp_max"]).round(1),
           pressure: weather_data["main"]["pressure"],
+
+          # helperで定義したメッセージをhelperから取得してjavascriptに渡す
           pressure_message: pressure_status(weather_data["main"]["pressure"]),
+          weather_image: WeatherHelper.weather_image(weather_data["weather"][0]["icon"]),
           weather_icon: weather_data["weather"][0]["icon"],
           description: weather_data["weather"][0]["description"]
           }
