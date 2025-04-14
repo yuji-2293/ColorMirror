@@ -1,13 +1,21 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper h-[800px]" >
+<div data-controller="carousel" class="swiper">
 <div class="swiper-wrapper">
 <%# formステップ1エリア %>
 <div id=STEP1 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg relative glass">
 <%# sign up時の居住地を初期値にセット %>
 <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
+<div class="flex flex-col">
+<p class="text-center text-white tracking-wider text-xl animate-fade-in-text block my-4">STEP1:現在地の環境を設定<span class="text-white text-xs font-medium">(登録した居住地をもとに自動取得されます)</span></p>
 <%# お天気カードUI %>
-<div id="display-weather"></div>
+<div id="display-weather" class=""></div>
+<div class="flex items-center justify-center gap-6 my-4">
+    <%= link_to "マイページで再設定", profile_users_path, class: "btn btn-secondary" %>
+    <button type="button" class="swiper-button-next-custom btn btn-accent">次のステップへ</button>
+</div>
+</div>
+
 
 <%# 天気カードから取得したパラメーター %>
 <div class="hidden_fields">

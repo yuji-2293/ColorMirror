@@ -48,7 +48,7 @@ document.addEventListener("turbo:load", () => {
                     </div>
 
                     <div class="rightColumn">
-                      <p class="text-7xl font-bold text-white"><span id="temperature">${data.temp_celsius}</span>°C</p>
+                      <p class="text-7xl font-bold text-white block mb-4"><span id="temperature">${data.temp_celsius}</span>°C</p>
                       <p class="text-xl text-white tracking-wide ">
                       <span id="temp-min" class="text-sky-500">${data.temp_min_celsius}</span>°C<i class="fa-solid fa-temperature-arrow-down fa-fade mr-1" style="color: #1aacf4;"></i>
                         /

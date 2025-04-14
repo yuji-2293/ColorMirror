@@ -10,12 +10,17 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "fade-in": "fadeIn 1s ease-in-out",
+        "fade-in": "fadeIn 0.5s ease-in-out",
+        "fade-in-text": "fadeInText 0.5s ease-in-out",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: 0, transform: "translateY(-10px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        fadeInText: {
+          "0%": { opacity: 0, transform: "translateX(-10px)" },
+          "100%": { opacity: 1, transform: "translateX(0)" },
         },
       },
       backgroundImage: {
@@ -24,12 +29,12 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('postcss-import'), ],
   daisyui: {
     themes: ["light", "dark"],
     darkTheme: false, // ダークモードをONにする場合は削除
   },
-  //   corePlugins: {
-  //   preflight: false, // TailwindのリセットCSSを無効化
-  // },
 }

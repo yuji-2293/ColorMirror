@@ -125,7 +125,6 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
       position: relative;
       z-index: 1;
-
     }
   }
 /* daisyUIのtooltipクラスのカスタム */
@@ -140,6 +139,24 @@
     white-space: nowrap;
     margin-top: 0.6rem;
   }
+
+  .ch-container {
+    height: 100%;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+    overflow: hidden;
+  }
+  .ch-subdomain-bg {
+
+  }
+
+
+
+
+
+
 
   .gsi-material-button {
     -moz-user-select: none;
