@@ -11,7 +11,7 @@ module WeatherHelper
 
   WEATHER_MAPPING = {
     "01d" => "/images/weather/sunny.webp",
-    "02d" => "/images/weather/partly_cloudy.webp",
+    "02d" => "/images/weather/party_cloudy.webp",
     "03d" => "/images/weather/cloudy.webp",
     "04d" => "/images/weather/overcast.webp",
     "09d" => "/images/weather/rain.webp",
@@ -20,8 +20,8 @@ module WeatherHelper
     "13d" => "/images/weather/snow.webp",
     "50d" => "/images/weather/mist.webp",
     # 夜のアイコン
-    "01n" => "/images/weather/clear_night.webp",
-    "02n" => "/images/weather/cloudy_night.webp",
+    "01n" => "/images/weather/sunny.webp",
+    "02n" => "/images/weather/party_cloudy.webp",
     "03n" => "/images/weather/cloudy.webp",
     "04n" => "/images/weather/overcast.webp",
     "09n" => "/images/weather/rain.webp",

@@ -2,7 +2,8 @@
   "name": "app",
   "private": true,
   "devDependencies": {
-    "esbuild": "^0.24.2"
+    "esbuild": "^0.24.2",
+    "postcss-import": "^16.1.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
@@ -13,6 +14,7 @@
     "@hotwired/turbo-rails": "^8.0.12",
     "@stimulus-components/carousel": "^6.0.0",
     "autoprefixer": "^10.4.20",
+    "cal-heatmap": "^4.2.4",
     "daisyui": "^4.12.23",
     "postcss": "^8.4.49",
     "swiper": "^11.2.6",
