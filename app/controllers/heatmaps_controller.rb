@@ -3,11 +3,11 @@ class HeatmapsController < ApplicationController
 
   include ApplicationHelper
   MOOD_MAP = {
-    "ホッと" => 40,
-    "ワクワク" => 30,
+    "ホッと" => 50,
+    "ワクワク" => 40,
+    "その他" => 30,
     "モヤモヤ" => 20,
-    "ムカムカ" => 10,
-    "その他" => 0
+    "ムカムカ" => 10
   }
   def heatmap_data
     if current_user

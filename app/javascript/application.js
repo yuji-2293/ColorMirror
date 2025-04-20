@@ -7,6 +7,7 @@ import "./weather_fetch"
 import "./link_google_account"
 import "swiper/css/bundle"
 import "./heatmap"
+import "./analysis"
 
 // flash_messageが表示されたら5秒かけて消えていく
 document.addEventListener("turbo:load", () => {

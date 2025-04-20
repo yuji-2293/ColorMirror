@@ -9,7 +9,7 @@ document.addEventListener("turbo:load", () => {
 
             const parsedData = data.map(entry => ({
                 x: entry.x,
-                y:entry.y
+                y: entry.y
             }));
 
             console.log(parsedData);
@@ -53,8 +53,8 @@ document.addEventListener("turbo:load", () => {
                             scale: {
                                 color: {
                                     type: "linear",
-                                    domain: [0, 10, 20, 30, 40],
-                                    range: ["#B3E5FC", "#DC143C", "#8888ff", "#FFD700", "#02f346"]
+                                    domain: [0, 10, 20, 30, 40, 50],
+                                    range: ["#fff9","#DC143C", "#8888ff","#B3E5FC", "#FFD700", "#02f346"]
                                 }
                             },
 
@@ -76,7 +76,7 @@ document.addEventListener("turbo:load", () => {
             }
         })
         .catch(err => {
-            console.error(err);
+            console.log(err);
             // エラー処理をちゃんと書く（モーダル出すとか）
         });
     }

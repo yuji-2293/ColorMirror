@@ -15,6 +15,7 @@
     "@stimulus-components/carousel": "^6.0.0",
     "autoprefixer": "^10.4.20",
     "cal-heatmap": "^4.2.4",
+    "chart.js": "^4.4.9",
     "daisyui": "^4.12.23",
     "postcss": "^8.4.49",
     "swiper": "^11.2.6",

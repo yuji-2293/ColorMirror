@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :self_logs, only: [ :index, :show, :create, :destroy ]
     resources :weather_logs, only: [ :index, :show, :create, :destroy ]
   end
+  resources :analysis_results, only: [ :index, :show, :create, :destroy ]
 
   # chatbot機能
   get "chatbots/ask" => "chatbots#ask"
