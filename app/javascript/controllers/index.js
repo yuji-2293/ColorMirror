@@ -15,6 +15,3 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
-
-import StepFormController from "./step_form_controller"
-application.register("step-form", StepFormController)

@@ -1,5 +1,5 @@
-<div data-controller="modal" data-modal-target="modal" data-action="connect->modal#connect click->modal#close" class="modal-hidden  fixed inset-0 bg-black bg-opacity-50 z-20">
-    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-3 relative">
+<div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
+    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-3 relative sm:max-w-3xl w-full">
         <div class="glass sm:p-8 p-4 m-4 sm:w-full max-w-md text-center">
             <%= form_with model: resource, url: registration_path(resource), html: { method: :put } do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>

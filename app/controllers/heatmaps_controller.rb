@@ -1,4 +1,6 @@
 class HeatmapsController < ApplicationController
+  before_action :authenticate_user!
+
   include ApplicationHelper
   MOOD_MAP = {
     "ホッと" => 40,
@@ -8,6 +10,7 @@ class HeatmapsController < ApplicationController
     "その他" => 0
   }
   def heatmap_data
+    if current_user
     data = current_user.colors.map do |color|
       mood_score = MOOD_MAP[color.mood] || 0
       {
@@ -15,6 +18,9 @@ class HeatmapsController < ApplicationController
         y: mood_score
       }
     end
-    render json: data
+      render json: data
+    else
+      render json: [], status: :unauthorized
+    end
   end
 end

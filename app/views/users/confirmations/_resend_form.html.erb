@@ -1,6 +1,7 @@
-<div data-controller="modal" data-modal-target="modal" data-action="connect->modal#connect click->modal#close" class="modal-hidden sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
-    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative">
+<div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
+    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative sm:max-w-3xl w-full">
         <div class="glass sm:p-8 p-6 m-4 sm:w-full max-w-md text-center">
+
             <h2 class="sm:text-3xl text-lg font-bold text-gray-800 mb-6">認証メールを送信できます</h2>
               <%= form_with model: resource, url: resend_confirmation_path, method: :post, data: { turbo: false } do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
@@ -11,6 +12,7 @@
                   <%= f.submit "送信", class: "btn bg-white opacity-70 w-full py-3 sm:text-lg text:md" %>
                 </div>
               <% end %>
+
         </div>
         <button type="button" data-action="click->modal#close" class="text-gray-500 hover:scale-125 sm:text-3xl text-lg absolute top-0 right-0 sm:p-4 p-2 z-20">
           ✖️
