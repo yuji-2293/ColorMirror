@@ -3,6 +3,8 @@ class ColorForm
   include ActiveModel::Attributes
   # 親モデルの属性
   attribute :color_name, :string
+  attribute :mood, :string
+  attribute :mood_level, :integer
   # 子モデルの属性(中間)
   attribute :color_id, :integer
   attribute :user_id, :integer
@@ -37,9 +39,9 @@ class ColorForm
 
     ActiveRecord::Base.transaction do
       if @color.persisted?
-        @color.update!(color_name: color_name)
+        @color.update!(color_name: color_name, mood: mood)
       else
-        @color = Color.create!(color_name: color_name)
+        @color = Color.create!(color_name: color_name, mood: mood)
       end
       self_log = @color.self_logs.first_or_create(user_id: user_id)
 

@@ -142,21 +142,18 @@
 
   .ch-container {
     height: 100%;
-    padding: 1.5rem;
+    padding: 0.5rem;
     background: white;
     border-radius: 10px;
     box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-    overflow: hidden;
   }
-  .ch-subdomain-bg {
-
+  #cal-heatmap svg {
+    box-sizing: content-box;
   }
-
-
-
-
-
-
+  #cal-heatmap {
+    mask-image: linear-gradient(to left, transparent 0%, white 16.6%, white 100%);
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, white 16.6%, white 100%);
+  }
 
   .gsi-material-button {
     -moz-user-select: none;

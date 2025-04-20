@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get "weather", to: "weathers#index", as: :weather
   get "weather/show", to: "weathers#show", as: :show_weather, defaults: { format: :json }
 
+  # JSからheatmapControllerへのエンドポイント
+  get "heatmap", to: "heatmaps#heatmap_data", as: :heatmap
   # JSからopen AI へのルーティング
   post "/colors/analyze", to: "colors#analyze"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

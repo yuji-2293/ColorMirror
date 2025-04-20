@@ -70,6 +70,6 @@ class ColorsController < ApplicationController
     @color = current_user.colors.find(params[:id])
   end
   def color_params
-    params.require(:color).permit(:color_name, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon, :city, :color_analysis, :weather_analysis).merge(user_id: current_user.id)
+    params.require(:color).permit(:color_name, :mood, :mood_level, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon, :city, :color_analysis, :weather_analysis).merge(user_id: current_user.id)
   end
 end

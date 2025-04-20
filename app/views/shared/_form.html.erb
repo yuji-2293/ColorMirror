@@ -38,6 +38,9 @@
 <%# formステップ2エリア %>
 <div id="STEP2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
   <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
+    <%= f.hidden_field :mood, id: "selected-mood", required: true %>
+    <%= f.hidden_field :mood_level, id: "mood_level" %>
+
 
   <div class="grid grid-flow-col justify-between gap-4 w-full mx-auto p-6">
 <%# ワクワクcard %>
@@ -106,7 +109,6 @@
     <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
         <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass focus:outline-none" placeholder="気分を入力してください">
     </div>
-        <input type="hidden" id="selected-mood" name="mood">
         <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
         <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
 
