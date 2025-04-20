@@ -1,46 +1,75 @@
-import CalHeatmap from 'cal-heatmap';
-
+import CalHeatmap from "cal-heatmap";
 
 document.addEventListener("turbo:load", () => {
-    const cal = new CalHeatmap();
-    const cellSize = 50
-    cal.paint(
-        {
-            itemSelector: document.getElementById("cal-heatmap"),
-            //or itemSelector: document.getElementById("cal-heatmap"),
+fetch("/heatmap")
+.then((response) => response.json())
+.then ((data) => {
 
-            domain: {
-                type: "month",
-                gutter: 8,
-                label: {
-                    text: "MMM",
-                    textAlign: "start",
-                    position: "top"
-                }
-            },
-            subDomain: {
-                type:"ghDay",
-                gutter:6,
-                width:cellSize,
-                height:cellSize,
-                radius:cellSize,
-            },
-            date: {
-                start: new Date("2024-04-14")
-            },
-            range: 12,
-            data: {
-                source: "data.json",
-                x: "date",
-                y: "total"
-            },
-            scale: {
-                color: {
-                    type: "linear",
-                    range: ["#ededed","#4dd05a","#37a446","#166b34"],
-                    domain: [0,10,20,30],
-                }
-            }
-        }
-    );
+    const parsedData = data.map(entry => ({
+        x: entry.x,
+        y:entry.y
+    }));
+
+    console.log(parsedData);
+
+            const cal = new CalHeatmap();
+            const cellSize = 30
+            const radius = 10
+            cal.paint(
+                {
+                    itemSelector: document.getElementById("cal-heatmap"),
+                    //or itemSelector: document.getElementById("cal-heatmap"),
+
+                    domain: {
+                        type: "month",
+                        gutter: 15,
+                        label: {
+                            text: "MMM",
+                            textAlign: "start",
+                            position: "top"
+                        },
+                    },
+                    subDomain: {
+                        type:"ghDay",
+                        gutter:3,
+                        width:cellSize,
+                        height:cellSize,
+                        radius:radius,
+
+                    },
+                    date: {
+                        start: new Date()
+                    },
+                    range: 12,
+                    data: {
+                    source: parsedData,
+                    x: "x",
+                    y: "y"
+                    },
+
+                    scale: {
+                        color: {
+                            type: "linear",
+                            domain: [0, 10, 20, 30, 40],
+                            range: ["#B3E5FC", "#DC143C", "#8888ff", "#FFD700", "#02f346"]
+                        }
+                    },
+
+                },
+                [
+                    [
+                        CalendarLabel,
+                        {
+                        position: "left",
+                        key: "left",
+                        text: () => ["Sun", "Mon", "", "wed", "", "fri", ""],
+                        textAlign: "end",
+                        width: 30,
+                        padding: [5, 5, 5, 5],
+                        },
+                    ],
+                ],
+            );
+})
+
 });
