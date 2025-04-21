@@ -37,11 +37,6 @@ class ColorForm
   def save
     return if invalid?
     ActiveRecord::Base.transaction do
-      today = Time.current.to_date
-      current_user_colors = Color.joins(:self_logs).where(self_logs: { user_id: user_id })
-      today_color = current_user_colors.find_by("DATE(colors.created_at) = ?", today)
-      today_color.destroy if today_color
-
       if @color.persisted?
         @color.update!(color_name: color_name, mood: mood)
       else
