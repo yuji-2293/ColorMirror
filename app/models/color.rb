@@ -6,4 +6,18 @@ class Color < ApplicationRecord
   validates :color_name, presence: true
   # validates :mood, presence: true
   # validates :mood_level, presence: true
+
+  def self.mood_score_map
+    {
+      "ホッと" => 50,
+      "ワクワク" => 40,
+      "その他" => 30,
+      "モヤモヤ" => 20,
+      "ムカムカ" => 10
+    }
+  end
+
+  def mood_score
+    self.class.mood_score_map[mood] || 0
+  end
 end
