@@ -1,6 +1,6 @@
 class AnalysisResultsController < ApplicationController
   def index
-    @end_date = Date.current
-    @start_date = @end_date - 6.days
+    @start_date = Date.today.beginning_of_week
+    @end_date = Date.today.end_of_week
   end
 end

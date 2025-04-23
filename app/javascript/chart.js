@@ -1,8 +1,8 @@
 import Chart from "chart.js/auto"
 
 document.addEventListener("turbo:load", () => {
-  const labels = ["ホッと", "ワクワク", "その他", "モヤモヤ", "ムカムカ"];
-  const scores = [50,50,50,50,50]; // 初期はゼロで見せる
+  const labels = ["ホッと", "ワクワク", "わからない", "モヤモヤ", "ムカムカ"];
+  const scores = [35,35,35,35,35]; // 初期はゼロで見せる
 
     const map = document.getElementById("myChart");
     if (map) {
@@ -33,8 +33,8 @@ document.addEventListener("turbo:load", () => {
                   angleLines: {
                       display: false
                   },
-                  suggestedMin: 10,
-                  suggestedMax: 50
+                  suggestedMin: 0,
+                  suggestedMax: 35
               }
           }
           }
@@ -43,7 +43,7 @@ document.addEventListener("turbo:load", () => {
     fetch("/radar_map")
       .then(response => response.json())
       .then(data => {
-        const fetchScores = data.map(entry => entry.score);
+        const fetchScores = data.score;
         console.log(data);
 
         myChart.data.datasets.push({

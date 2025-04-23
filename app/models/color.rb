@@ -9,12 +9,12 @@ class Color < ApplicationRecord
 
   def self.mood_score_map
     {
-      "ホッと" => 50,
-      "ワクワク" => 40,
-      "その他" => 30,
-      "モヤモヤ" => 20,
-      "ムカムカ" => 10
-    }
+      "ホッと" => 5,
+      "ワクワク" => 4,
+      "わからない" => 3,
+      "モヤモヤ" => 2,
+      "ムカムカ" => 1
+  }
   end
 
   def mood_score
