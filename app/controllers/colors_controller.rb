@@ -4,9 +4,9 @@ class ColorsController < ApplicationController
   def top;end
 
   def index
-    @color = current_user.colors.today_form.first
-    @response = current_user.responses.today_form.first
-    @weather = current_user.weather_logs.today_form.first
+    # @color = current_user.colors.today_form.first
+    # @response = current_user.responses.today_form.first
+    # @weather = current_user.weather_logs.today_form.first
   end
 
   def new
