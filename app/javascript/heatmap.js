@@ -53,7 +53,7 @@ document.addEventListener("turbo:load", () => {
                             scale: {
                                 color: {
                                     type: "linear",
-                                    domain: [0, 10, 20, 30, 40, 50],
+                                    domain: [0, 1, 2, 3, 4, 5],
                                     range: ["#fff9","#DC143C", "#8888ff","#B3E5FC", "#FFD700", "#02f346"]
                                 }
                             },

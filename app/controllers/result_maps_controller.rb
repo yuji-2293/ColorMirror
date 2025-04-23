@@ -17,15 +17,26 @@ class ResultMapsController < ApplicationController
 
   def radar_map_data
     if current_user
-      # 1週間分のレコードを取得
-      week_colors = current_user.colors.where("colors.created_at >= ?", 6.days.ago.beginning_of_day)
-      mood_score = week_colors.map do |color|
+      start_date = Date.today.beginning_of_week
+      end_date = Date.today.end_of_week
+      week_colors = current_user.colors.where(created_at: start_date..end_date)
+      ordered_moods = [ "ホッと", "ワクワク", "わからない", "モヤモヤ", "ムカムカ" ]
+
+      group_mood = week_colors.group(:mood).count
+
+      scores = ordered_moods.map do |mood|
+        count = group_mood[mood] || 0
+        score = Color.mood_score_map[mood] * count
+        [ mood, score ]
+      end.to_h
+
+      data =
       {
-      mood: color.mood,
-      score: color.mood_score
+      mood: scores.keys,
+      score: scores.values
       }
-      end
-render json: mood_score
+
+    render json: data
     end
   end
 end
