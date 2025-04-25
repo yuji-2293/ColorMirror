@@ -32,6 +32,18 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  solid_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle install && bin/rails solid_queue:start"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+    volumes:
+      - .:/myapp
+      - bundle_data:/usr/local/bundle:cached
 volumes:
   bundle_data:
   postgresql_data:

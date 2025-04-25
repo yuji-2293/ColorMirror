@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.hide()
-    document.addEventListener("turbo:submit-start", () => this.show())
+    // document.addEventListener("turbo:submit-start", () => this.show())
     document.addEventListener("turbo:render", () => this.hide())
     document.addEventListener("turbo:load", () => this.hide())
   }
