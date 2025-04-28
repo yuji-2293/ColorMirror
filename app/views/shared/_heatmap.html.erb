@@ -1,10 +1,27 @@
-  <div class="lg:w-full w-[400px] flex justify-center lg:items-center flex-col ">
-    <div id="cal-heatmap" class=" overflow-scroll glass max-w-screen-lg w-full h-full p-4 mx-auto my-6 rounded-lg shadow-md"></div>
-    <div class="flex items-center gap-4 mt-4 text-xs sm:text-sm mx-auto ">
-        <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#02f346]"></div><span>ホッと</span>
-        <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FFD700]"></div><span>ワクワク</span>
-        <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#B3E5FC]"></div><span>わからない</span>
-        <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#8888ff]"></div><span>モヤモヤ</span>
-        <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#DC143C]"></div><span>ムカムカ</span>
+<div class="lg:w-full w-[400px] flex justify-center lg:items-center sm:flex-col flex-col-reverse">
+  <div id="cal-heatmap" class="overflow-scroll neumorphism max-w-screen-lg w-full h-full p-4 mx-auto my-6 rounded-lg shadow-md"></div>
+
+  <!-- 凡例 -->
+  <div class="flex items-center sm:gap-6 gap-2 sm:mt-6 mt-3 text-[10px] sm:text-xs mx-auto">
+    <div class="flex flex-col items-center gap-1">
+      <span class="text-gray-500">少ない</span>
+      <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FFF7FA]"></div>
     </div>
+    <div class="flex flex-col items-center gap-1">
+      <span class="text-gray-400">&nbsp;</span> <!-- ラベルなし -->
+      <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FFE3EC]"></div>
+    </div>
+    <div class="flex flex-col items-center gap-1">
+      <span class="text-gray-500">中くらい</span>
+      <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FFB7C5]"></div>
+    </div>
+    <div class="flex flex-col items-center gap-1">
+      <span class="text-gray-400">&nbsp;</span> <!-- ラベルなし -->
+      <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FF8BA0]"></div>
+    </div>
+    <div class="flex flex-col items-center gap-1">
+      <span class="text-gray-500">多い</span>
+      <div class="sm:w-4 w-2 sm:h-4 h-2 rounded bg-[#FF5C7A]"></div>
+    </div>
+  </div>
 </div>

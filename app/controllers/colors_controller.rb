@@ -15,15 +15,10 @@ class ColorsController < ApplicationController
   end
 
   def create
+    # newアクションで作成したオブジェクトにformオブジェクトインスタンスを格納
     @color = ColorForm.new(color_params)
-    # マッピングした色データを変数に格納
-    prompt_color = color_params[:color_name]
-    prompt_mood = params[:mood]
-    weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
-    # AIレスポンス生成のserviceを呼び出す/必要な引数を渡す、生成したレスポンスを変数に格納
-    ai_responses = ColorProcessingService.new(@color, current_user).process_color(prompt_color, weather_data, prompt_mood)
-    @color.color_analysis = ai_responses[:color_analysis]
-    @color.weather_analysis = ai_responses[:weather_analysis]
+
+    # formオブジェクトで処理されたデータを保存
     if @color.save
       flash[:notice] = "本日のデータは登録し、コメントを生成しました"
       redirect_to colors_path
