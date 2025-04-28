@@ -22,9 +22,9 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - .:/myapp
+      - .:/myapp:cached
+      - node_modules:/myapp/node_modules
       - bundle_data:/usr/local/bundle:cached
-      # - node_modules:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
     ports:

@@ -33,7 +33,7 @@ document.addEventListener("turbo:load", () => {
                                 },
                             },
                             subDomain: {
-                                type:"ghDay",
+                                type:"day",
                                 gutter:3,
                                 width:cellSize,
                                 height:cellSize,
@@ -54,7 +54,7 @@ document.addEventListener("turbo:load", () => {
                                 color: {
                                     type: "linear",
                                     domain: [0, 1, 2, 3, 4, 5],
-                                    range: ["#fff9","#DC143C", "#8888ff","#B3E5FC", "#FFD700", "#02f346"]
+                                    range: ["#FFF7FA",  "#FFE3EC", "#FFB7C5", "#FF8BA0", "#FF5C7A"]
                                 }
                             },
 

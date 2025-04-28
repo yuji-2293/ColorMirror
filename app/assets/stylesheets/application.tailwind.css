@@ -114,7 +114,7 @@
       transform: rotateY(180deg);
     }
     .neumorphism {
-      background: #e0e0e0;
+      background: #f4f3f3;
       border-radius: 10px;
       box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
     }
@@ -143,8 +143,14 @@
   .ch-container {
     height: 100%;
     padding: 0.5rem;
-    background: white;
-    border-radius: 10px;
+    background: linear-gradient(
+      to bottom,
+      #ffff 0%,    /* fill色に一致させる（スタート） */
+      #e5f6fa 30%,   /* ごく淡い青、違和感なく開始 */
+      #bdeeff 60%,   /* やさしいスカイブルー */
+      #8fdcfb 90%,   /* 少し強い青み */
+      #74d6f3 100%   /* しっかり空色 */
+    );    border-radius: 10px;
     box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
   }
   #cal-heatmap svg {
