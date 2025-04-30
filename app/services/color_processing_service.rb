@@ -5,13 +5,16 @@ class ColorProcessingService
     @user = current_user
   end
 
-  def process_color(prompt_color, weather_data, prompt_mood)
+  def process_color(prompt, weather_data)
       pressure_warning = case weather_data[:weather_pressure].to_i
       when 1000..1010 then "低気圧が近づいているので、体調管理に注意してください。"
       when 1011..1015 then "気圧は安定しています。過ごしやすい一日になりそうです。"
       when 1016..1030 then "高気圧の影響で、空気が澄んでいます！"
       else "気圧が不安定です。無理せずリラックスしてください。"
       end
+
+      prompt_color = prompt[:color_name]
+      prompt_mood = prompt[:mood]
 
       # PROMPT
       # 1. 気分を表す色での心情の言語化
@@ -52,5 +55,6 @@ class ColorProcessingService
       color_analysis: ai_response1["choices"][0]["message"]["content"],
       weather_analysis: ai_response2["choices"][0]["message"]["content"]
     }
+    ai_responses
   end
 end

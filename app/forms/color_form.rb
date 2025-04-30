@@ -44,7 +44,10 @@ class ColorForm
       end
       self_log = @color.self_logs.first_or_create(user_id: user_id)
 
-      self_log.responses.create!(color_analysis: color_analysis, weather_analysis: weather_analysis)
+      self_log.create_response!(
+        color_analysis: nil,
+        weather_analysis: nil
+        )
 
       weather_log = self_log.weather_log || self_log.build_weather_log
       weather_log.update!(city: city, weather_name: weather_name, description: description,

@@ -21,6 +21,14 @@ class ColorsController < ApplicationController
     # formオブジェクトで処理されたデータを保存
     if @color.save
       flash[:notice] = "本日のデータは登録し、コメントを生成しました"
+      # Jobを呼ぶコードを書く
+      # promptとして使うデータを変数に格納
+      prompt = color_params.slice(:color_name, :mood)
+      weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
+      @self_log =  @color.color.self_logs.create!(user_id: current_user.id)
+      @self_log.create_response!(color_analysis: nil, weather_analysis: nil)
+
+      AiGenerationJob.perform_later(prompt, weather_data, @self_log.id, @color.color.id, current_user.id)
       redirect_to colors_path
     else
       flash.now[:alert] = "保存失敗、情報が不足している可能性があります"
