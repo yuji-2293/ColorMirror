@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center justify-center sm:px-4 sm:py-8 px-2 py-4 sm:space-y-10 space-y-5">
+<div class="flex flex-col items-center justify-center sm:px-4 sm:py-8 px-2 py-4 sm:space-y-10 space-y-5 w-full">
     <!-- タイトル -->
     <div class="text-center">
         <h2 class="text-3xl font-bold">今週の気分を振り返る</h2>
@@ -6,10 +6,12 @@
     </div>
 
     <!-- ヒートマップ ＆ レーダーチャート -->
-    <div class="flex items-center justify-center flex-col lg:flex-row gap-8 glass p-4 w-fit">
+    <div class="flex items-start justify-center flex-col lg:flex-row gap-8 p-4 w-full max-w-6xl mx-auto">
+        <div>
         <%= render "shared/heatmap" %>
-        <div class="lg:h-[400px] h-full">
-            <canvas id="myChart" class="glass rounded-lg shadow p-4"></canvas>
+        </div>
+        <div class="lg:h-[500px] h-[400px] w-[500px] lg:w-[600px]">
+            <canvas id="myChart" class="rounded-lg shadow-lg p-4 neumorphism"></canvas>
         </div>
     </div>
 

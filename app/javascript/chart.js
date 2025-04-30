@@ -1,64 +1,53 @@
 import Chart from "chart.js/auto"
 
 document.addEventListener("turbo:load", () => {
-  const labels = ["ホッと", "ワクワク", "わからない", "モヤモヤ", "ムカムカ"];
-  const scores = [35,35,35,35,35]; // 初期はゼロで見せる
+    fetch("/map")
+    .then(response => response.json())
+    .then(data => {
+    const labels = ["日","月", "火", "水", "木", "金", "土"];
+    const currentWeekScores = data.current_scores.map(item => item.score);
+    const lastWeekScores = data.last_scores.map(item => item.score);
+    console.log(data);
 
     const map = document.getElementById("myChart");
     if (map) {
       const myChart = new Chart(map, {
-          type: "radar",
+          type: "line",
           data: {
             labels: labels,
             datasets: [
-              // 理想値のレーダーチャート
               {
-              label: "理想の気分",
-              data: scores,
-              backgroundColor: "rgba(255, 99, 132, 0.1)",
-              borderColor: "rgba(255, 99, 132, 1)",
-              borderDash: [5, 5],
-              pointRadius: 0
+                label: '今週',
+                data:currentWeekScores,
+                fill: true,
+                tension: 0.3,
+                borderColor: "#FF5C7A",
+                pointBackgroundColor: "#FF5C7A",
               },
-
-              // 実際のfetchしたレーダーチャート
-
+              {
+                label: '先週',
+                data:lastWeekScores,
+                fill: false,
+                tension: 0.3,
+                borderColor: "#8fdcfb",
+                pointBackgroundColor: "#8fdcfb",
+              }
             ]
           },
 
-          // ここに設定オプションを書きます
+          // 設定オプション
           options: {
             scales: {
-              r: {
-                  angleLines: {
-                      display: false
-                  },
-                  suggestedMin: 0,
-                  suggestedMax: 35
+              y: {
+                beginAtZero: true,
+                suggestedMax: 5
               }
-          }
+            }
           }
       });
-    // 次にデータを非同期で追加
-    fetch("/radar_map")
-      .then(response => response.json())
-      .then(data => {
-        const fetchScores = data.score;
-        console.log(data);
-
-        myChart.data.datasets.push({
-          label: "あなたの気分スコア",
-          data: fetchScores,
-          backgroundColor: "rgba(70, 180, 220, 0.4)", // 少し濃い＋透明度下げる
-          borderColor: "#46B4DC" // 濃いスカイブルーのhex
-        });
-
-        myChart.update(); // 再描画！
-      });
-
-
-
     }
+    });
+
 
 
 });

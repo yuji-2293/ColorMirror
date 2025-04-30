@@ -5,7 +5,6 @@ class Color < ApplicationRecord
 
   validates :color_name, presence: true
 
-    # heatmap用マッピング
     # 感情ごとのスコアマッピング
     MOOD_SCORE = {
       "ホッと" => 5,
@@ -14,16 +13,6 @@ class Color < ApplicationRecord
       "モヤモヤ" => 2,
       "ムカムカ" => 1
     }.freeze
-  # radar_map用マッピング
-  def self.mood_score_map
-    {
-      "ホッと" => 5,
-      "ワクワク" => 5,
-      "わからない" => 5,
-      "モヤモヤ" => 5,
-      "ムカムカ" => 5
-  }
-  end
 
   def mood_score
     MOOD_SCORE[mood] || 0

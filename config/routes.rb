@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   # JSからheatmap_dataへのエンドポイント
   get "heatmap", to: "result_maps#heatmap_data", as: :heatmap
   # JSからradar_map_dataへのエンドポイント
-  get "radar_map", to: "result_maps#radar_map_data", as: :radar_map
+  get "map", to: "result_maps#map_data", as: :map
   # JSからopen AI へのルーティング
   post "/colors/analyze", to: "colors#analyze"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

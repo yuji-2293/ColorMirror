@@ -15,28 +15,37 @@ class ResultMapsController < ApplicationController
     end
   end
 
-  def radar_map_data
+  def map_data
     if current_user
       start_date = Date.today.beginning_of_week
       end_date = Date.today.end_of_week
-      week_colors = current_user.colors.where(created_at: start_date..end_date)
-      ordered_moods = [ "ホッと", "ワクワク", "わからない", "モヤモヤ", "ムカムカ" ]
+      current_week = current_user.colors.where(created_at: start_date..end_date).order(:created_at)
 
-      group_mood = week_colors.group(:mood).count
+      last_week_start = 1.week.ago.to_date.beginning_of_week
+      last_week_end   = 1.week.ago.to_date.end_of_week
+      last_week = current_user.colors.where(created_at: last_week_start..last_week_end).order(:created_at)
 
-      scores = ordered_moods.map do |mood|
-        count = group_mood[mood] || 0
-        score = Color.mood_score_map[mood] * count
-        [ mood, score ]
-      end.to_h
+    render json: {
+      current_scores: normalize_week(current_week),
+      last_scores: normalize_week(last_week)
+    }
 
-      data =
+    end
+  end
+
+  private
+
+  # 曜日付きの配列（不足日をnilや0補完してもOK）
+  def normalize_week(data)
+    weekdays = %w[日 月 火 水 木 金 土]
+    mood_map = data.index_by { |m| m.created_at.wday }  # wday: 0(日)〜6(土)
+
+    (0..6).map do |wday|
+      color = mood_map[wday]
       {
-      mood: scores.keys,
-      score: scores.values
+        day: weekdays[wday],
+        score: color&.mood_score || 0  # データない日は0
       }
-
-    render json: data
     end
   end
 end

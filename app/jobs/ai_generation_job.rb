@@ -17,6 +17,5 @@ class AiGenerationJob < ApplicationJob
     Rails.logger.info ai_responses
     Rails.logger.info "===== AI生成結果====="
     Rails.logger.info "🎉🎉🎉🎉🎉🎉🎉🎉バックグラウンド処理成功！！🎉🎉🎉🎉🎉🎉🎉🎉🎉"
-
   end
 end
