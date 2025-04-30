@@ -1,8 +1,8 @@
-<div class="flex flex-col justify-center items-center bg-gradient-diagonal sm:p-8 p-4 min-h-screen">
-  <div id="profile" class="card max-w-3xl sm:w-full glass overflow-y-auto max-h-[90vh]">
-    <figure class="sm:px-10 px-4 sm:pt-10 pt-4 flex flex-col">
+<div class="flex flex-col justify-center items-center bg-gradient-diagonal sm:p-8 p-0 min-h-screen">
+  <div id="profile" class="card max-w-3xl sm:w-full glass overflow-y-auto max-h-[80vh]">
+    <figure class="px-4 pt-4 flex flex-col">
       <div class="avatar">
-        <div class="w-24 rounded-full border-4 mx-auto mt-4">
+        <div class="w-24 h-24 rounded-full border-4 mx-auto mt-4 shrink-0 object-cover">
             <img class="" src="/images/onomatopoeia/アバター画像.png">
         </div>
       </div>
@@ -10,7 +10,7 @@
       <div class="badge bg-gradient-diagonal text-md max-w-sm sm:p-2 p-1 skeleton">Google連携中</div>
       <% end %>
     </figure>
-    <div class="card-body items-center text-center p-4">
+    <div class="card-body items-center text-center">
         <h2 class="card-title"><%= current_user.name %></h2>
         <p class="text-base-content text-opacity-70">
             <%= current_user.email %>
@@ -25,11 +25,6 @@
             <%= link_to "アカウント削除", user_registration_path, class: "text-base-content btn bg-rose-500 text-white font-bold w-full", data: { turbo_method: :delete, turbo_confirm: "本当にアカウントを削除しますか" } %>
         </div>
     </div>
-    <div class="w-full flex lg:items-center flex-col sm:py-4 py-2 h-fit">
-      <div class=""><%= current_user.name %>さんのLogです</div>
-      <%= render "shared/heatmap" %>
-    </div>
-  </div>
 </div>
 <div id="edit-modal" data-controller="modal" data-modal-target="modal"></div>
 <div id="password-reset-modal" data-controller="modal" data-modal-target="modal"></div>
