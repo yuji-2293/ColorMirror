@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :generate_line_token
   extend Enumerize
 
   has_many :self_logs
@@ -18,6 +19,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable, :trackable, :confirmable,
           :timeoutable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
+
+  enum :line_alert, { no_alert: 0, need_alert: 1 }, validate: true
 
   def unconfirmed?
     pending_any_confirmation
@@ -59,4 +62,13 @@ class User < ApplicationRecord
     福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46,
     沖縄県: 47
   }, scope: true, predicates: true
+
+  private
+
+  def generate_line_token
+    self.line_token = loop do
+      random_token  = SecureRandom.hex(6)
+      break random_token unless User.exists?(line_token: random_token)
+    end
+  end
 end

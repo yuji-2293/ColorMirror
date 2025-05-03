@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get "map", to: "result_maps#map_data", as: :map
   # JSからopen AI へのルーティング
   post "/colors/analyze", to: "colors#analyze"
+  # LINEルーティング
+  post "/callback", to: "line#callback", as: :callback
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
