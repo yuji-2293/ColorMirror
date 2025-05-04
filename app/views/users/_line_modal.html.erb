@@ -1,0 +1,58 @@
+<div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
+    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative sm:max-w-3xl max-h-96 h-full w-full">
+        <div class="w-full h-full flex flex-col justify-center items-center space-y-4">
+            <!-- Header -->
+            <h2 class="text-xl font-bold mb-4">LINE連携の方法</h2>
+
+            <!-- 友だち追加 -->
+            <div class="mb-4 max-w-xl flex justify-around items-center glass p-2">
+                <p class="text-sm mb-1">公式LINEを友だち追加（QRコード）</p>
+                <div class="w-[120px] h-[40px]">
+                    <a href="https://lin.ee/G7xVc73B" class="rounded-md"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="24" border="0"></a>
+                </div>
+            </div>
+
+            <!-- トークン表示 -->
+            <div class="flex items-center justify-between glass px-3 py-2 rounded join max-w-md w-full">
+                <input type="text" id="line-token" data-modal-target="token" value="<%= current_user.line_token %>" readonly class="input join-item bg-transparent text-xl mr-3 focus:outline-none" />
+                <button data-action="click->modal#copyToken" data-modal-target="copyButton" class="join-item transition">
+                    <i class="fa-regular fa-copy fa-2xl"></i>
+                </button>
+
+            </div>
+
+            <!-- 使い方 -->
+<div class="text-sm text-gray-700 neumorphism mt-4 p-2">
+  <ul class="space-y-2">
+    <li class="flex items-start">
+      <span class="text-green-500  mr-2">
+        <i class="fas fa-check-circle"></i>
+      </span>
+      <span>「友達追加」ボタンからQRコードを読み取り、公式LINEを友達に追加します。</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-green-500  mr-2">
+        <i class="fas fa-check-circle"></i>
+      </span>
+      <span>表示されたトークンをコピーして、LINEトークルームに送信してください。</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-green-500  mr-2">
+        <i class="fas fa-check-circle"></i>
+      </span>
+      <span>通知のON/OFFは「リマインダ設定」「リマインダ解除」の送信で切り替え可能です。</span>
+    </li>
+  </ul>
+</div>
+
+
+        </div>
+
+
+
+
+        <button type="button" data-action="click->modal#close" class="text-gray-500 hover:scale-125 sm:text-3xl text-lg absolute top-0 right-0 sm:p-4 p-2 z-20">
+          ✖️
+        </button>
+    </div>
+</div>

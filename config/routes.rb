@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   resource :users, only: [ :show, :edit, :destroy, :update ] do
     get "profile", to: "users#show", as: "profile"
+    get "reminder", to: "users#reminder", as: "reminder"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

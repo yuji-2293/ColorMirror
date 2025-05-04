@@ -1,12 +1,10 @@
-
-
-<div class="flex flex-col justify-center items-center bg-gradient-diagonal sm:p-8 p-0 min-h-screen">
-
-<p>このトークンをコピーして、公式LINEに送ってください</p>
-<div class="token-box"><%= current_user.line_token %></div>
-<button data-clipboard-text="<%= current_user.line_token %>">コピー</button>
-<a href="https://line.me/R/ti/p/@YOUR_BOT_ID" target="_blank">LINEを開く</a>
-
+<div class="flex flex-col items-center bg-gradient-diagonal sm:p-8 p-0 min-h-screen">
+  <div class="bg-base-200 my-4 p-4 rounded-md flex items-center justify-between max-w-xl w-full">
+    <p class="">友達追加をするとリマインダを受け取れます</p>
+    <button type="button" class="rounded-md p-3">
+      <%= link_to "友達追加はこちら", reminder_users_path, class:"hover:bg-emerald-600 bg-emerald-400 rounded-md p-3 text-white text-xs font-bold", data: { turbo_stream: true } %>
+    </button>
+</div>
 <div id="profile" class="card max-w-3xl sm:w-full glass overflow-y-auto max-h-[80vh]">
     <figure class="px-4 pt-4 flex flex-col">
       <div class="avatar">
@@ -36,3 +34,4 @@
 </div>
 <div id="edit-modal" data-controller="modal" data-modal-target="modal"></div>
 <div id="password-reset-modal" data-controller="modal" data-modal-target="modal"></div>
+<div id="line-modal" data-controller="modal" data-modal-target="modal"></div>
