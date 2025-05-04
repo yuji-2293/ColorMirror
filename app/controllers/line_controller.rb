@@ -66,7 +66,7 @@ class LineController < ApplicationController
       if user_by_token && user_by_token.line_id.blank?
         line_id = event["source"]["userId"]
         user_by_token.update!(line_id: line_id)
-        reply = "LINE連携を完了しました。ColorMirrorのリマインダ通知を受け取れるようになりました.通知は毎朝９時にお届けします"
+        reply = "LINE連携を完了しました。ColorMirrorのリマインダ通知を受け取れるようになりました.通知は毎朝8時にお届けします"
       # 連携完了済みの場合、userIdを取得、LINE上で送信されたメッセージに従い処理を分岐
       elsif user_by_line = User.find_by(line_id: event["source"]["userId"])
           case message_text
