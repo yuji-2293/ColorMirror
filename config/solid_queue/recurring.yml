@@ -1,0 +1,5 @@
+development:
+  line_reminder:
+    class: LineReminderJob
+    queue: default
+    schedule: every 1m

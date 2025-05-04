@@ -68,7 +68,7 @@ class LineController < ApplicationController
           case message_text
           when /リマインダ(設定|登録)/
             user_by_line&.need_alert!
-            reply = "リマインダを設定しました。毎朝９時にお知らせします。"
+            reply = "リマインダを設定しました。毎朝8時にお知らせします。"
           when /リマインダ解除/
             user_by_line&.no_alert!
             reply = "リマインダを解除しました。再開するには「リマインダ設定 or 登録」と送信してください"
