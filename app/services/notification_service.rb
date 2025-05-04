@@ -11,8 +11,8 @@ class NotificationService
 
   def send_push_message
     message = {
-      type: 'text',
-      text: 'これはPushメッセージです。'
+      type: "text",
+      text: "これはPushメッセージです。"
     }
 
     response = LINE_NOTIFY_CLIENT.broadcast(message)

@@ -9,7 +9,11 @@ class LineController < ApplicationController
       Rails.logger.info "[LINE] 受け取ったリクエストボディ: #{body}"
 
       signature = request.env["HTTP_X_LINE_SIGNATURE"]
+        Rails.logger.info "[LINE DEBUG] body: #{body}"
+        Rails.logger.info "[LINE DEBUG] signature: #{signature}"
       unless LINE_MESSAGING_CLIENT.validate_signature(body, signature)
+        Rails.logger.warn "[LINE DEBUG] Signature validation failed"
+
         head :bad_request and return
       end
 
