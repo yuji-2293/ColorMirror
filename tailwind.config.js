@@ -27,6 +27,17 @@ module.exports = {
         "gradient-diagonal": "linear-gradient(135deg, #f472b6 0%, #ffffff 50%, #7dd3fc 100%)",
         "re-gradient-diagonal": "linear-gradient(135deg, #7dd3fc 0%, #ffffff 50%, #f472b6 100%)"
       },
+      // font
+      fontFamily: {
+        // ベース用フォント
+        sans: ['"Noto Sans JP"', 'sans-serif'],
+
+        // やわらかい見出し・感情表現など
+        rounded: ['"M PLUS Rounded 1c"', 'sans-serif'],
+
+        // マイルドで表情豊かにしたい見出しなど
+        maru: ['"Zen Maru Gothic"', 'sans-serif'],
+      },
     },
   },
   plugins: [require("daisyui"),
