@@ -1,0 +1,30 @@
+<% log = color.self_logs.order(created_at: :desc).first  %>
+<% weather_image = WeatherHelper.weather_image(log&.weather_log.weather_icon) %>
+
+<div class="card-flip card-hover neumorphism h-64 w-full rounded-xl shadow-xl overflow-hidden text-white" style="background-image: url(<%= weather_image %>); background-size: cover; background-position: center;">
+    <div class="bg-black bg-opacity-20 w-full h-full p-4 flex flex-col justify-between">
+    <!-- 上部：日付・気分 -->
+        <div>
+            <p class="text-sm"><%= color.created_at.strftime("%-m/%-d（#{%w[日 月 火 水 木 金 土][color.created_at.wday]}）") %></p>
+            <div class="flex items-center space-x-2 text-sm">
+                <span><%= OnomatopeiaHelper.mood_for_icon(color.mood) %></span>
+                <h2 class="text-xl font-bold"><%= color.mood %></h2>
+            </div>
+            <div class="flex items-center space-x-2 text-sm">
+                <span><%= WeatherHelper.emoji_for_icon(log.weather_log.weather_icon) %></span>
+                <span><%= log.weather_log.description %></span>
+            </div>
+        </div>
+
+        <!-- 中央：カラー丸 -->
+        <div class="mx-auto w-16 h-16 rounded-full border-2 border-white shadow-inner" style="background-color: <%= color.color_name %>;"></div>
+
+        <!-- 下部：ボタン -->
+        <div class="text-center">
+<%= link_to "AIからのレスポンスを見る", ai_response_self_log_path(log.id), data: { turbo_stream: true }, class: "mt-4 px-4 py-2 bg-white text-gray-800 text-sm rounded-full font-semibold hover:bg-gray-200 transition" %>
+            <%# <button class="mt-4 px-4 py-2 bg-white text-gray-800 text-sm rounded-full font-semibold hover:bg-gray-200 transition">
+                AIレスポンスを見る
+            </button> %>
+        </div>
+    </div>
+</div>

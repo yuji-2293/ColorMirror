@@ -1,43 +1,30 @@
-<%
-=begin
-%>
 
-コメントアウトされている
+<div class="flex flex-col items-center justify-center sm:px-4 sm:py-8 px-2 py-4 sm:space-y-10 space-y-5">
 
+  <div class="text-center">
+      <h2 class="text-3xl font-bold">今週の記録一覧</h2>
+      <p class="text-sm text-gray-500"><%= @start_date.strftime("%-m/%-d") %> 〜 <%= @end_date.strftime("%-m/%-d") %></p>
+  </div>
+  <div class="max-w-7xl w-full mx-auto bg-slate-200 shadow-lg rounded-2xl p-6 mt-6">
+    <h2 class="text-lg font-semibold text-gray-800 mb-2">AIレスポンス</h2>
+    <section class="glass overflow-hidden w-full">
+      <% if @week_colors.present? %>
+        <div class=" px-4 sm:px-8 md:px-12 mx-auto py-12 lg:py-24">
 
-<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
-  <h2 class="text-lg font-semibold text-gray-800 mb-2">AIレスポンス</h2>
-
-  <!-- 色の情報 -->
-    <% if @color.present? %>
-      <div class="flex items-center mb-4">
-          <div class="<%= ColorMapping.color_class(@color.color_name) %> rounded-full w-10 h-10 m-10"></div>
-          <h2 class="ml-2 text-gray-700"><strong>私が今日選択した色は:</strong><%= ColorMapping.mapping_color(@color.color_name) %></h2>
-      </div>
-      <div class="ボタンエリア">
-          <%= link_to "edit", edit_color_path(@color), class: "btn btn-ghost rounded-btn",data: {turbo: false}%>
-          <%= link_to "delete", color_path(@color), class: "btn btn-ghost rounded-btn", data: { turbo_method: :delete, turbo_confirm:"Are you sure?" }  %>
-      </div>
-    <% else %>
-    <h3>今日は気分の登録をされていません</h3>
-      <%= link_to "気分を登録する", new_color_path, class: "btn btn-primary" %>
-    <% end %>
-
-    <!-- 天気情報 -->
-    <div class="bg-gray-100 p-3 rounded-lg mb-4">
-      <% if @weather.present? %>
-          <%= render "shared/weather_card" %>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <% @week_colors.first(4).each do |color| %>
+              <%= render partial: "colors/card", locals: { color: color } %>
+            <% end %>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <% @week_colors.drop(4).each do |color| %>
+              <%= render partial: "colors/card", locals: { color: color } %>
+            <% end %>
+          </div>
       <% else %>
-          <h3>この記録にはお天気情報を登録されていません</h3>
+        <p class="text-center text-gray-500">今週の記録はありません</p>
       <% end %>
-    </div>
-</div>
-<div class="max-w-7xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
-  <div class="mx-auto bg-gray-100 shadow-lg rounded-2xl p-6 my-4">
-      <!-- AIコメント -->
-        <%= render 'shared/response' %>
+    </section>
   </div>
 </div>
-<%
-=end
-%>
+<div id="response-modal"></div>

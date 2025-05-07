@@ -4,9 +4,15 @@ class ColorsController < ApplicationController
   def top;end
 
   def index
-    # @color = current_user.colors.today_form.first
-    # @response = current_user.responses.today_form.first
-    # @weather = current_user.weather_logs.today_form.first
+    @start_date = Date.today.beginning_of_week
+    @end_date = Date.today.end_of_week
+    @week_colors = Color
+      .joins(:self_logs)
+      .includes(self_logs: [ :response, :weather_log ])
+      .where(self_logs: { user_id: current_user.id })
+      .where(colors: { created_at: @start_date.beginning_of_day..@end_date.end_of_day })
+      .select("DISTINCT ON (DATE(colors.created_at)) colors.*")
+      .order("DATE(colors.created_at), colors.created_at DESC")
   end
 
   def new
@@ -21,14 +27,14 @@ class ColorsController < ApplicationController
     # formオブジェクトで処理されたデータを保存
     if @color.save
       flash[:notice] = "本日のデータは登録し、コメントを生成しました"
+      self_log = @color.color.self_logs.find_by(user_id: current_user.id)
+
       # Jobを呼ぶコードを書く
       # promptとして使うデータを変数に格納
       prompt = color_params.slice(:color_name, :mood)
       weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
-      @self_log =  @color.color.self_logs.create!(user_id: current_user.id)
-      @self_log.create_response!(color_analysis: nil, weather_analysis: nil)
 
-      AiGenerationJob.perform_later(prompt, weather_data, @self_log.id, @color.color.id, current_user.id)
+      AiGenerationJob.perform_later(prompt, weather_data, self_log.id, @color.color.id, current_user.id)
       redirect_to colors_path
     else
       flash.now[:alert] = "保存失敗、情報が不足している可能性があります"
@@ -73,6 +79,6 @@ class ColorsController < ApplicationController
     @color = current_user.colors.find(params[:id])
   end
   def color_params
-    params.require(:color).permit(:color_name, :mood, :mood_level, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon, :city, :color_analysis, :weather_analysis).merge(user_id: current_user.id)
+    params.require(:color).permit(:color_name, :mood, :mood_level, :weather_name, :description, :temperature, :temp_max, :temp_min, :weather_pressure, :weather_icon, :city, :color_analysis, :weather_analysis, :self_log_id).merge(user_id: current_user.id)
   end
 end

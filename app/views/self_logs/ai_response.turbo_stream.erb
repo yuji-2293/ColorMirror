@@ -1,0 +1,8 @@
+<turbo-stream target="response-modal" action="update">
+  <template>
+    <div data-controller="modal" data-modal-target="modal">
+      <%= render partial: "response_modal", formats: [:html], locals: { self_log: @self_log } %>
+    </div>
+
+  </template>
+</turbo-stream>

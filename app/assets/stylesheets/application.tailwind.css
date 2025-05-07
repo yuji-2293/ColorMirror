@@ -9,6 +9,11 @@
 .modal-visible {
   @apply flex items-center justify-center;
 }
+
+
+
+
+
 .alert {
   position: fixed;
   top: 20px;
@@ -89,6 +94,16 @@
   }
 /* オノマトペカードのアニメーションクラス */
   @layer utilities {
+
+    .card-flip {
+      @apply rounded-xl rotate-6 duration-500 transform origin-bottom;
+    }
+    .card-hover {
+      @apply hover:rotate-0 hover:-translate-y-12 hover:scale-110;
+    }
+
+
+
     .transform-style {
       transform-style: preserve-3d;
     }
@@ -231,7 +246,7 @@
     }
   }
 
-
+/* Googleボタンのスタイル */
   .gsi-material-button {
     -moz-user-select: none;
     -webkit-user-select: none;

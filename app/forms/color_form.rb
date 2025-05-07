@@ -42,7 +42,7 @@ class ColorForm
       else
         @color = Color.create!(color_name: color_name, mood: mood)
       end
-      self_log = @color.self_logs.first_or_create(user_id: user_id)
+      self_log = @color.self_logs.find_or_create_by(user_id: user_id, color_id: @color.id)
 
       self_log.create_response!(
         color_analysis: nil,

@@ -11,9 +11,9 @@ module WeatherHelper
 
   WEATHER_MAPPING = {
     "01d" => "/images/weather/sunny.webp",
-    "02d" => "/images/weather/party_cloudy.webp",
-    "03d" => "/images/weather/cloudy.webp",
-    "04d" => "/images/weather/overcast.webp",
+    "02d" => "/images/weather/overcast.webp",
+    "03d" => "/images/weather/party_cloudy.webp" ,
+    "04d" => "/images/weather/cloudy.webp",
     "09d" => "/images/weather/rain.webp",
     "10d" => "/images/weather/showers.webp",
     "11d" => "/images/weather/thunderstorm.webp",
@@ -21,9 +21,9 @@ module WeatherHelper
     "50d" => "/images/weather/mist.webp",
     # 夜のアイコン
     "01n" => "/images/weather/sunny.webp",
-    "02n" => "/images/weather/party_cloudy.webp",
-    "03n" => "/images/weather/cloudy.webp",
-    "04n" => "/images/weather/overcast.webp",
+    "02n" => "/images/weather/overcast.webp",
+    "03n" => "/images/weather/party_cloudy.webp",
+    "04n" => "/images/weather/cloudy.webp",
     "09n" => "/images/weather/rain.webp",
     "10n" => "/images/weather/showers.webp",
     "11n" => "/images/weather/thunderstorm.webp",
@@ -33,5 +33,28 @@ module WeatherHelper
 
   def self.weather_image(icon_code)
     WEATHER_MAPPING[icon_code] || "images/weather/sunny.webp"
+  end
+
+  def self.emoji_for_icon(icon)
+    case icon
+    when  "01d" then "🌞"
+    when  "02d" then "🌤️"
+    when  "03d" then "☁"
+    when  "04d" then "🌥️"
+    when  "09d" then "☔"
+    when  "10d" then "☔"
+    when  "11d" then "⛈️"
+    when  "13d" then "☃"
+    when  "50d" then "🌫️"
+    when  "01n" then "🌞"
+    when  "02n" then "🌤️"
+    when  "03n" then "☁"
+    when  "04n" then "🌥️"
+    when  "09n" then "☔"
+    when  "10n" then "☔"
+    when  "11n" then "⛈️"
+    when  "13n" then "☃"
+    when  "50n" then "🌫️"
+    end
   end
 end

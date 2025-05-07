@@ -1,0 +1,11 @@
+<div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
+    <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative sm:max-w-3xl w-full">
+        <div class="glass sm:p-8 p-6 m-4 sm:w-full max-w-md text-center">
+            <p class=""><%= @self_log.response.color_analysis %></p>
+            <p class=""><%= @self_log.response.weather_analysis %></p>
+        </div>
+        <button type="button" data-action="click->modal#close" class="text-gray-500 hover:scale-125 sm:text-3xl text-lg absolute top-0 right-0 sm:p-4 p-2 z-20">
+          ✖️
+        </button>
+    </div>
+</div>

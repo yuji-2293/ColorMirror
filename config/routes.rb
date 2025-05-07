@@ -27,9 +27,13 @@ Rails.application.routes.draw do
   root "home#index"
   get "colors/top" => "colors#top"
 
-  resources :colors do
-    resources :self_logs, only: [ :index, :show, :create, :destroy ]
+  resources :colors
+  resources :self_logs, only: [ :index, :show, :create, :destroy ] do
+    member do
+      get :ai_response
+    end
     resources :weather_logs, only: [ :index, :show, :create, :destroy ]
+    # get "colors/:id/response", to: "colors#response", as: :response
   end
   resources :analysis_results, only: [ :index, :show, :create, :destroy ]
 
