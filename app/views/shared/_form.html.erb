@@ -1,130 +1,64 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper">
-<div class="swiper-wrapper">
-<%# formステップ1エリア %>
-<div id=STEP1 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg relative glass">
-<%# sign up時の居住地を初期値にセット %>
-<%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
-<div class="flex flex-col">
-<p class="text-center text-white tracking-wider text-xl animate-fade-in-text block my-4">STEP1:現在地の環境を設定<span class="text-white text-xs font-medium">(登録した居住地をもとに自動取得されます)</span></p>
-<%# お天気カードUI %>
-<div id="display-weather" class=""></div>
-<div class="flex items-center justify-center gap-6 my-4">
-    <%= link_to "マイページで再設定", profile_users_path, class: "btn btn-secondary" %>
-    <button type="button" class="swiper-button-next-custom btn btn-accent">次のステップへ</button>
-</div>
-</div>
+<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
 
+    <div class="swiper-wrapper">
+        <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass flex flex-col relative">
+            <div class="font-maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
 
-<%# 天気カードから取得したパラメーター %>
-<div class="hidden_fields">
-<%= f.hidden_field :weather_name, id: "weather_name" %>
-<%= f.hidden_field :description, id: "description" %>
-<%= f.hidden_field :temperature, id: "temperature" %>
-<%= f.hidden_field :temp_max, id: "temp_max" %>
-<%= f.hidden_field :temp_min, id: "temp_min" %>
-<%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
-<%= f.hidden_field :weather_icon, id: "weather_icon" %>
-</div>
-<div class="flex justify-between mt-4">
-<button class="swiper-button-next-custom absolute right-0 top-1/2 flex -translate-y-1/2 transform justify-between text-cyan-400"><i class="fa-solid fa-arrow-right fa-beat-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
-</div>
-
-
-</div>
-
-
-<%# formステップ2エリア %>
-<div id="STEP2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
-  <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
-    <%= f.hidden_field :mood, id: "selected-mood", required: true %>
-    <%= f.hidden_field :mood_level, id: "mood_level" %>
-
-
-  <div class="grid grid-flow-col justify-between gap-4 w-full mx-auto p-6">
-<%# ワクワクcard %>
-    <button type="button" class="flip-card neumorphism w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
-        <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
-            <!-- 表面 -->
-            <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ワクワクfront.png');">
-                <span class="text-white text-lg font-bold">ワクワク</span>
+            <%# sign up時の居住地を初期値にセット %>
+            <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
+            <div id="weather_image" class="max-w-7xl w-full rounded-xl shadow-lg mx-auto ">
+            <%= render "shared/weather_card" %>
+            <div class="flex justify-between mt-4">
+                <button
+                    class="swiper-button-next-custom absolute hidden sm:flex fixed right-0 top-1/2 flex -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
             </div>
-            <!-- 裏面 -->
-            <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
-                style="background-image: url('/images/onomatopoeia/ワクワクback.jpg');">
-                <span class="text-white text-lg font-bold">この気分を選択中</span>
             </div>
+            <%# 天気カードから取得したパラメーター %>
+            <div class="hidden_fields">
+                <%= f.hidden_field :weather_name, id: "weather_name" %>
+                <%= f.hidden_field :description, id: "description" %>
+                <%= f.hidden_field :temperature, id: "temperature" %>
+                <%= f.hidden_field :temp_max, id: "temp_max" %>
+                <%= f.hidden_field :temp_min, id: "temp_min" %>
+                <%= f.hidden_field :weather_pressure, id: "weather_pressure" %>
+                <%= f.hidden_field :weather_icon, id: "weather_icon" %>
+            </div>
+
+        <div>
+            <%= render "shared/cards" %>
+            <%= f.hidden_field :mood, id: "selected-mood", required: true %>
+            <%= f.hidden_field :mood_level, id: "mood_level" %>
         </div>
-    </button>
-<%# ムカムカcard %>
-    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
-        <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
-            <!-- 表面 -->
-            <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ムカムカfront.jpg');">
-                <span class="text-white text-lg font-bold">ムカムカ</span>
-            </div>
-            <!-- 裏面 -->
-            <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
-                style="background-image: url('/images/onomatopoeia/ムカムカback.jpg');">
-                <span class="text-white text-lg font-bold">この気分を選択中</span>
-            </div>
         </div>
-    </button>
-<%# モヤモヤcard %>
-    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
-        <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
-            <!-- 表面 -->
-            <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/モヤモヤfront.jpg');">
-                <span class="text-white text-lg font-bold">モヤモヤ</span>
-            </div>
-            <!-- 裏面 -->
-            <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
-                style="background-image: url('/images/onomatopoeia/モヤモヤback.jpg');">
-                <span class="text-white text-lg font-bold">この気分を選択中</span>
-            </div>
-        </div>
-    </button>
-<%# ホッとcard %>
-    <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
-        <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
-            <!-- 表面 -->
-            <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ホッとfront.jpg');">
-                <span class="text-white text-lg font-bold">ホッと</span>
-            </div>
-            <!-- 裏面 -->
-            <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
-                style="background-image: url('/images/onomatopoeia/ホッとback.jpg');">
-                <span class="text-white text-lg font-bold">この気分を選択中</span>
-            </div>
-        </div>
-    </button>
-<%# その他card %>
-    <button type="button" id="other-mood-button" class="mood-button neumorphism bg-secondary-content text-gray-800 p-4 rounded-lg font-bold w-72 h-80" data-mood="その他">
-    わからない
-    </button>
-    </div>
 
-    <!-- わからない時の気分入力欄（デフォルトで非表示） -->
-    <div id="other-mood-input-container" class="hidden m-4 p-4 text-center rounded-lg">
-        <input type="text" id="other-mood-input" class="p-4 rounded-lg font-bold glass focus:outline-none" placeholder="今思うことを入力してみてください">
-    </div>
-        <button type="button" id="generate-colors" class="glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+    <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
+    <div class="font-maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
+
+        <%= f.hidden_field :color_name, id: "color_name", required: true %>
+        <div id="display-confirmation" class=""></div>
         <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
+        <button type="button" id="generate-colors focus-target" tabindex="-1" class="mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+<%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
 
-<div class="flex justify-between mt-4">
-  <button class="swiper-button-prev-custom absolute left-0 top-1/2 flex -translate-y-1/2 transform justify-between"><i class="fa-solid fa-arrow-left fa-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
-  <button class="swiper-button-next-custom absolute right-0 top-1/2 flex -translate-y-1/2 transform justify-between"><i class="fa-solid fa-arrow-right fa-beat-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
-</div>
-</div>
+                <button
+                    class="swiper-button-prev-custom absolute hidden sm:flex left-0 top-1/2  -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
+                    <svg class="w-12 h-12 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
 
-<div id="STEP3" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
-    <h2 class="text-lg font-bold text-gray-800 mb-4">STEP3:登録してください</h2>
-    <%= f.hidden_field :color_name, id: "color_name", required: true %>
-  <button class="swiper-button-prev-custom absolute left-0 top-1/2 flex -translate-y-1/2 transform justify-between"><i class="fa-solid fa-arrow-left fa-fade text-5xl block mr-5" style="color: #FFD43B;"></i></button>
-    <%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
-</div>
-<% end %>
+
+
+    </div>
+    <% end %>
 
 </div>
 

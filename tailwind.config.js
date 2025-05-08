@@ -37,6 +37,8 @@ module.exports = {
 
         // マイルドで表情豊かにしたい見出しなど
         maru: ['"Zen Maru Gothic"', 'sans-serif'],
+        
+        mincho: ['"Shippori Mincho"', 'Georgia', 'serif'],
       },
     },
   },

@@ -5,8 +5,7 @@
       <h2 class="text-3xl font-bold">今週の記録一覧</h2>
       <p class="text-sm text-gray-500"><%= @start_date.strftime("%-m/%-d") %> 〜 <%= @end_date.strftime("%-m/%-d") %></p>
   </div>
-  <div class="max-w-7xl w-full mx-auto bg-slate-200 shadow-lg rounded-2xl p-6 mt-6">
-    <h2 class="text-lg font-semibold text-gray-800 mb-2">AIレスポンス</h2>
+  <div class="max-w-7xl w-full mx-auto bg-slate-200 shadow-lg rounded-2xl p-8">
     <section class="glass overflow-hidden w-full">
       <% if @week_colors.present? %>
         <div class=" px-4 sm:px-8 md:px-12 mx-auto py-12 lg:py-24">

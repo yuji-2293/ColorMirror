@@ -10,8 +10,30 @@
   @apply flex items-center justify-center;
 }
 
-
-
+/* ai_response用のスタイル */
+.letter-style {
+  background-color: #fffaf0; /* フローラルホワイト */
+  border: 1px solid #f0e6d6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Shippori Mincho', serif;
+  padding: 2rem;
+  border-radius: 8px;
+  background-size: 100% 2.5em;
+  line-height: 2.5em;
+}
+.letter-line {
+  display: block;
+  width: 100%;
+  padding-bottom: 0.5em;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 5 0, 10 2 T 20 2 T 30 2 T 40 2 T 50 2 T 60 2 T 70 2 T 80 2 T 90 2 T 100 2' stroke='%23d2b48c' fill='transparent' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: contain; /* 幅に合わせて縮小・拡大される */
+  line-height: 2.5em;
+  font-family: 'Shippori Mincho', serif;
+  color: #4b3d2f;
+  letter-spacing: 0.03em;
+}
 
 
 .alert {
@@ -146,8 +168,8 @@
   .custom-tooltip[data-tip]::before {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: red;
-    font-size: 0.600rem;
+    color: rgb(254, 132, 132);
+    font-size: 0.75rem;
     font: bold; /* text-sm */
     padding: 0.25rem 0.5rem;
     border-radius: 0.400rem;

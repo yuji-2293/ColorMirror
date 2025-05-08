@@ -38,8 +38,8 @@ document.addEventListener("turbo:load", () => {
                   <div class="container flex items-center justify-around w-full h-full">
                     <div class="leftColumn">
                       <div class="uppercase tracking-wide text-white font-bold flex flex-col space-y-2">
-                        <p class="text-6xl"><span id="weather-location">${data.name}</span></p>
-                        <p class="text-sm">現在の日時:<span id="current-date"></span></p>
+                        <p class="lg:text-6xl md:text-4xl sm:text-2xl text-xl"><span id="weather-location">${data.name}</span></p>
+                        <p class="sm:text-sm text-xs">現在の日時:<span id="current-date"></span></p>
                       </div>
                       <div class="flex flex-col justify-start items-center space-y-2">
                         <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="天気アイコン" class="w-70 h-70">
@@ -77,11 +77,11 @@ document.addEventListener("turbo:load", () => {
     document.getElementById("current-date").textContent = formatter.format(now).replace(/\//g, "/");
 
     // 格納した変数から天気の情報をもとに天気カードの背景を動的に変更
-    const step1 = document.getElementById("STEP1");
-    if (step1) {
-      step1.style.backgroundImage = `url('${weatherImage}')`;
-      step1.classList.remove("glass");
-      step1.classList.add("bg-cover", "bg-center");
+    const image = document.getElementById("weather_image");
+    if (image) {
+      image.style.backgroundImage = `url('${weatherImage}')`;
+      image.classList.remove("glass");
+      image.classList.add("bg-cover", "bg-center");
     }
     // 動的に生成した天気カードにtailwindcssで定義したアニメーションを付与
       const weatherCard = document.getElementById("weather-card");

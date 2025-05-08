@@ -1,36 +1,25 @@
 document.addEventListener("turbo:load", ()=>{
   const moodButtons = document.querySelectorAll(".mood-button");
   const selectedMoodInput = document.getElementById("selected-mood");
+  const selectedWeatherInput = document.getElementById("description");  // 天気APから取得した天気情報を取得
   const generateColorsButton = document.getElementById("generate-colors");
   const colorSuggest = document.getElementById("color-suggest");
-  const otherMoodButton = document.getElementById("other-mood-button");
-  const otherMoodInput = document.getElementById("other-mood-input");
-  const otherMoodInputContainer = document.getElementById("other-mood-input-container");
 
   moodButtons.forEach(button => {
     button.addEventListener("click", () => {
-      if(button === otherMoodButton) {
-        otherMoodInputContainer.classList.remove("hidden");
-        otherMoodInput.focus();
-        selectedMoodInput.value = "";
-      }else {
-        otherMoodInputContainer.classList.add("hidden");
-
+if (selectedMoodInput) {
         selectedMoodInput.value = button.dataset.mood;
         console.log(selectedMoodInput.value);
-      };
+        console.log(selectedWeatherInput.value);
+      }
     });
   });
-    if (otherMoodInput){
-      otherMoodInput.addEventListener("input", () => {
-        selectedMoodInput.value = otherMoodInput.value;
-        console.log(selectedMoodInput.value);
-      });
-    };
 
 if (generateColorsButton) {
   generateColorsButton.addEventListener("click", () => {
     const mood = selectedMoodInput.value;
+    const weather = selectedWeatherInput.value;
+    console.log(weather);
     if (!mood) {
       alert("気分を選んでください");
       return;
@@ -38,7 +27,7 @@ if (generateColorsButton) {
     fetch("/colors/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mood })
+      body: JSON.stringify({ mood, weather })
     })
     .then(response => response.json())
     .then(data => {
@@ -86,8 +75,6 @@ if (generateColorsButton) {
       // クリックしたカードを回転
       card.classList.add("flipped");
 
-      // hidden input に選択した気分をセット
-      selectedMoodInput.value = card.dataset.mood;
     });
   });
 
@@ -101,14 +88,14 @@ if (generateColorsButton) {
       const newClickedButton = event.target
 
       if ( clickedButton && clickedButton !== newClickedButton) {
-        clickedButton.classList.remove("skeleton", "ring-4", "ring-yellow-400", "scale-125"); // 以前のボタンのクラスを削除
+        clickedButton.classList.remove("ring-4", "scale-125"); // 以前のボタンのクラスを削除
       }
 
       if (clickedButton === newClickedButton) {
         return;
       }
       clickedButton = newClickedButton;
-      clickedButton.classList.add("skeleton", "ring-4", "ring-yellow-400", "scale-125");
+      clickedButton.classList.add("ring-4", "scale-125");
 
         const colorName = window.getComputedStyle(event.target).backgroundColor;
         console.log(colorName);

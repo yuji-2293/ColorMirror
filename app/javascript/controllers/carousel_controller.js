@@ -12,10 +12,45 @@ export default class extends Carousel {
     // The swiper instance.
     this.swiper = new Swiper(this.element, {
       loop: false,
+      allowTouchMove: false,
       navigation: {
         nextEl: '.swiper-button-next-custom',
         prevEl: '.swiper-button-prev-custom',
       },
+    });
+    this.swiper.on("slideChangeTransitionEnd", () => {
+      console.log("スライドが切り替わりました (Stimulus)");
+
+      if (this.swiper.activeIndex === 1) {
+        const weather = document.getElementById("description")?.value || "不明";
+        const mood = document.getElementById("selected-mood")?.value || "未選択";
+        const confirmation = document.getElementById("display-confirmation");
+
+        confirmation.innerHTML = `
+          <div id="confirmationCard" class="max-w-3xl h-[300px] mx-auto glass neumorphism flex flex-col rounded-xl shadow-lg overflow-hidden animate-fade-in">
+            <div class="container flex items-center justify-around w-full h-full">
+              <div class="leftColumn">
+                <div class="uppercase tracking-wide text-white font-bold flex flex-col space-y-2">
+                  <p class="">今日の天気</p>
+                  <p class="lg:text-6xl md:text-4xl sm:text-2xl text-xl">
+                    <span id="weather-location">${weather}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="rightColumn">
+                <div class="uppercase tracking-wide text-white font-bold flex flex-col space-y-2">
+                <p class="">今日の気分</p>
+                <p class="text-7xl font-bold text-white block mb-4">${mood}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        const fixCard = document.getElementById("confirmationCard");
+        fixCard.classList.add("animate-fade-in");
+      } else {
+        document.getElementById("display-confirmation").innerHTML = "";
+      }
     });
 
     // Default options for every carousels.

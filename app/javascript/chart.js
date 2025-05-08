@@ -1,6 +1,8 @@
 import Chart from "chart.js/auto"
 
 document.addEventListener("turbo:load", () => {
+    const map = document.getElementById("myChart");
+    if (map) {
     fetch("/map")
     .then(response => response.json())
     .then(data => {
@@ -9,8 +11,7 @@ document.addEventListener("turbo:load", () => {
     const lastWeekScores = data.last_scores.map(item => item.score);
     console.log(data);
 
-    const map = document.getElementById("myChart");
-    if (map) {
+
       const myChart = new Chart(map, {
           type: "line",
           data: {
@@ -45,9 +46,9 @@ document.addEventListener("turbo:load", () => {
             }
           }
       });
-    }
     });
 
 
+    }
 
 });

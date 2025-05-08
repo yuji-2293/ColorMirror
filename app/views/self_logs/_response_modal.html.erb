@@ -1,8 +1,24 @@
 <div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
     <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative sm:max-w-3xl w-full">
-        <div class="glass sm:p-8 p-6 m-4 sm:w-full max-w-md text-center">
-            <p class=""><%= @self_log.response.color_analysis %></p>
-            <p class=""><%= @self_log.response.weather_analysis %></p>
+        <div class="relative letter-style text-gray-800 rounded-xl shadow p-8 font-mincho leading-relaxed  space-y-4 w-full">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-gray-500 mx-auto text-2xl font-bold">〜 AIからの手紙<span class="mx-2">✉️</span> 〜</div>
+                <div class="letter-line"></div>
+                <div class="py-4">
+                                        <div class="flex items-center">
+                        <div class="border-t-2 border-b-2 h-2 border-[#f472b6] flex-grow"></div>
+                        <div class="px-3 text-gray-800 text-xl font-bold rounded-lg">Color分析</div>
+                        <div class="border-t-2 border-b-2 h-2 border-[#f472b6] flex-grow"></div>
+                    </div>
+                        <p class="whitespace-pre-wrap"><%= @self_log.response.color_analysis %></p>
+                    <div class="flex items-center">
+                        <div class="border-t-2 border-b-2 h-2 border-[#7dd3fc] flex-grow"></div>
+                        <div class="px-3 text-gray-800 text-xl font-bold rounded-lg">天気分析</div>
+                        <div class="border-t-2 border-b-2 h-2 border-[#7dd3fc] flex-grow"></div>
+                    </div>
+                        <p class="whitespace-pre-wrap"><%= @self_log.response.weather_analysis %></p>
+
+                </div>
+               <div class="letter-line"></div>
         </div>
         <button type="button" data-action="click->modal#close" class="text-gray-500 hover:scale-125 sm:text-3xl text-lg absolute top-0 right-0 sm:p-4 p-2 z-20">
           ✖️

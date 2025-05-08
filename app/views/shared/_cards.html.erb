@@ -1,0 +1,66 @@
+
+    <div id="STEP2" class="mx-auto text-center hover:shadow-xl my-4">
+    <h2 class="text-lg font-bold text-gray-800 mb-4">STEP2: 今の気分を選んでください</h2>
+    <div class="grid grid-flow-col justify-between gap-4 w-full mx-auto p-6">
+    <%# ワクワクcard %>
+        <button type="button" class="flip-card neumorphism w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
+            <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
+                <!-- 表面 -->
+                <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ワクワクfront.png');">
+                    <span class="text-white text-lg font-bold">ワクワク</span>
+                </div>
+                <!-- 裏面 -->
+                <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
+                    style="background-image: url('/images/onomatopoeia/ワクワクback.jpg');">
+                    <span class="text-white text-lg font-bold">この気分を選択中</span>
+                </div>
+            </div>
+        </button>
+    <%# ムカムカcard %>
+        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
+            <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
+                <!-- 表面 -->
+                <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ムカムカfront.jpg');">
+                    <span class="text-white text-lg font-bold">ムカムカ</span>
+                </div>
+                <!-- 裏面 -->
+                <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
+                    style="background-image: url('/images/onomatopoeia/ムカムカback.jpg');">
+                    <span class="text-white text-lg font-bold">この気分を選択中</span>
+                </div>
+            </div>
+        </button>
+    <%# モヤモヤcard %>
+        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
+            <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
+                <!-- 表面 -->
+                <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/モヤモヤfront.jpg');">
+                    <span class="text-white text-lg font-bold">モヤモヤ</span>
+                </div>
+                <!-- 裏面 -->
+                <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
+                    style="background-image: url('/images/onomatopoeia/モヤモヤback.jpg');">
+                    <span class="text-white text-lg font-bold">この気分を選択中</span>
+                </div>
+            </div>
+        </button>
+    <%# ホッとcard %>
+        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
+            <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
+                <!-- 表面 -->
+                <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ホッとfront.jpg');">
+                    <span class="text-white text-lg font-bold">ホッと</span>
+                </div>
+                <!-- 裏面 -->
+                <div class="flip-card-back absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center rotate-y-180 font-bold"
+                    style="background-image: url('/images/onomatopoeia/ホッとback.jpg');">
+                    <span class="text-white text-lg font-bold">この気分を選択中</span>
+                </div>
+            </div>
+        </button>
+    <%# その他card %>
+        <button type="button" id="other-mood-button" class="mood-button neumorphism bg-secondary-content text-gray-800 p-4 rounded-lg font-bold w-72 h-80" data-mood="わからない">
+        わからない
+        </button>
+        </div>
+    </div>

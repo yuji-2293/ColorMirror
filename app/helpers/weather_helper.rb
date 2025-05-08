@@ -12,7 +12,7 @@ module WeatherHelper
   WEATHER_MAPPING = {
     "01d" => "/images/weather/sunny.webp",
     "02d" => "/images/weather/overcast.webp",
-    "03d" => "/images/weather/party_cloudy.webp" ,
+    "03d" => "/images/weather/party_cloudy.webp",
     "04d" => "/images/weather/cloudy.webp",
     "09d" => "/images/weather/rain.webp",
     "10d" => "/images/weather/showers.webp",

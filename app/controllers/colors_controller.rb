@@ -69,7 +69,9 @@ class ColorsController < ApplicationController
 
   def analyze
     mood = params[:mood]
-    suggested_colors = AiColorService.generate_color(mood)
+    weather = params[:weather]
+
+    suggested_colors = AiColorService.generate_color(mood, weather)
     render json: { colors: suggested_colors }
   end
 
