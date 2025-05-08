@@ -44,7 +44,7 @@
         <%= f.hidden_field :color_name, id: "color_name", required: true %>
         <div id="display-confirmation" class=""></div>
         <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
-        <button type="button" id="generate-colors focus-target" tabindex="-1" class="mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+        <button type="button" id="generate-colors" class="mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
 <%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
 
                 <button
