@@ -49,7 +49,7 @@ if (generateColorsButton) {
 
          // コンテナの作成
         const colorContainer = document.createElement("div");
-        colorContainer.classList.add("flex", "flex-col", "items-center","justify-center");
+        colorContainer.classList.add("flex", "flex-col", "items-center","justify-center","bg-[#fffaf0]", "m-8", "p-4","rounded-xl","shadow-lg");
 
         colorContainer.appendChild(colorBall);
         colorContainer.appendChild(colorLabel);

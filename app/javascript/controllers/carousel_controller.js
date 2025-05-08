@@ -18,6 +18,9 @@ export default class extends Carousel {
         prevEl: '.swiper-button-prev-custom',
       },
     });
+    this.element.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+    }, { passive: false });
     this.swiper.on("slideChangeTransitionEnd", () => {
       console.log("スライドが切り替わりました (Stimulus)");
 

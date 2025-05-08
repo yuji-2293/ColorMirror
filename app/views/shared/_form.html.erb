@@ -1,6 +1,6 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
+<div data-controller="carousel" class="swiper touch-none sm:mb-8 mb-4 sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
 
     <div class="swiper-wrapper">
         <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass flex flex-col relative">
@@ -42,9 +42,14 @@
     <div class="font-maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
 
         <%= f.hidden_field :color_name, id: "color_name", required: true %>
-        <div id="display-confirmation" class=""></div>
-        <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
-        <button type="button" id="generate-colors" class="mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">色を生成する</button>
+        <div class="">
+            <div id="display-confirmation" class=""></div>
+            <button type="button" id="generate-colors" class="mt-4 font-maru bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl">セルフカラーを生成する</button>
+        </div>
+
+        <div class="">
+            <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
+        </div>
 <%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
 
                 <button
