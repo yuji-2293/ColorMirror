@@ -12,7 +12,6 @@ export default class extends Carousel {
     // The swiper instance.
     this.swiper = new Swiper(this.element, {
       loop: false,
-      allowTouchMove: false,
       navigation: {
         nextEl: '.swiper-button-next-custom',
         prevEl: '.swiper-button-prev-custom',
