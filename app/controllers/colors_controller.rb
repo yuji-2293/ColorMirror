@@ -74,6 +74,7 @@ class ColorsController < ApplicationController
     suggested_colors = AiColorService.generate_color(mood, weather)
     render json: { colors: suggested_colors }
   end
+  def form;end
 
   private
 

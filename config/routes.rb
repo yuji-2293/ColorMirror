@@ -27,7 +27,12 @@ Rails.application.routes.draw do
   root "home#index"
   get "colors/top" => "colors#top"
 
-  resources :colors
+  resources :colors do
+  collection do
+    get "/colors/form", to: "colors#form", as: :form
+  end
+end
+
   resources :self_logs, only: [ :index, :show, :create, :destroy ] do
     member do
       get :ai_response
@@ -49,10 +54,11 @@ Rails.application.routes.draw do
   get "heatmap", to: "result_maps#heatmap_data", as: :heatmap
   # JSからradar_map_dataへのエンドポイント
   get "map", to: "result_maps#map_data", as: :map
-  # JSからopen AI へのルーティング
+  # JSからopen AI へのエンドポイント
   post "/colors/analyze", to: "colors#analyze"
   # LINEルーティング
   post "/callback", to: "line#callback", as: :callback
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
