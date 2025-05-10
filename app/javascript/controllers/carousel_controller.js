@@ -17,9 +17,7 @@ export default class extends Carousel {
         prevEl: '.swiper-button-prev-custom',
       },
     });
-    this.element.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-    }, { passive: false });
+
     this.swiper.on("slideChangeTransitionEnd", () => {
       console.log("スライドが切り替わりました (Stimulus)");
 
@@ -31,6 +29,7 @@ export default class extends Carousel {
         confirmation.innerHTML = `
           <div id="confirmationCard" class="max-w-3xl h-[300px] mx-auto glass neumorphism flex flex-col rounded-xl shadow-lg overflow-hidden animate-fade-in">
             <div class="container flex items-center justify-around w-full h-full">
+
               <div class="leftColumn">
                 <div class="uppercase tracking-wide text-white font-bold flex flex-col space-y-2">
                   <p class="">今日の天気</p>
@@ -39,12 +38,16 @@ export default class extends Carousel {
                   </p>
                 </div>
               </div>
+
+              <div class="text-white text-5xl font-bold">×</div>
+
               <div class="rightColumn">
                 <div class="uppercase tracking-wide text-white font-bold flex flex-col space-y-2">
                 <p class="">今日の気分</p>
-                <p class="text-7xl font-bold text-white block mb-4">${mood}</p>
+                <p class="lg:text-6xl md:text-4xl sm:text-2xl text-xl">${mood}</p>
                 </div>
               </div>
+
             </div>
           </div>
         `;
