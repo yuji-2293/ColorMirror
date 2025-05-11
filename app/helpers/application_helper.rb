@@ -8,14 +8,14 @@ module ApplicationHelper
         charset: "utf-8",
         description: "気分を色に変換して自己と向き合うセルフケアサービスです（AIと共に）",
         keywords: "感情、天気、色、AI, 傾向、分析",
-        canonical: request.original_url && "https://colormirror.jp/",
+        canonical: "https://colormirror.jp/",
         separator: "|",
         og: {
           site_name: :site,
           title: :title,
           description: :description,
           type: "website",
-          url: request.original_url&& "https://colormirror.jp/",
+          url: "https://colormirror.jp/",
           image: image_url("ogp.png"),
           locale: "ja-JP"
         },
