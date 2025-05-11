@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f472b6">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,9 +14,27 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any"><!-- fallback icon -->
+
+    <!-- PNG Favicon for older browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- SVG Icon (for modern browsers) -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon_180x180.png">
+
+    <!-- Android PWA Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon_192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon_512x512.png">
+
+
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= display_meta_tags(default_meta_tags) %>
@@ -26,6 +45,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_pack_tag 'service_worker_register' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%# font_awesome icon設定%>
