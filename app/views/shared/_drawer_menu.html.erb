@@ -35,11 +35,15 @@
               <% end %>
               <div class="flex items-center gap-x-4 justify-start">
                 <i class="fa-solid fa-user-lock block text-2xl w-10 h-10 font-bold"></i>
-                  <li><a href="" class="hover:bg-white/20">プライバシーポリシー</a></li>
+                  <li>
+                    <%= link_to"プライバシーポリシー", privacy_path, class:"hover:bg-white/20" %>
+                  </li>
               </div>
               <div class="flex items-center gap-x-4 justify-start">
                   <i class="fa-solid fa-lock block text-2xl w-10 h-10 font-bold"></i>
-                  <li><a href="" class="hover:bg-white/20">利用規約</a></li>
+                  <li>
+                  <%= link_to"利用規約", rules_path, class:"hover:bg-white/20" %>
+                  </li>
               </div>
               <div class="flex items-center gap-x-4 justify-start">
                   <i class="fa-regular fa-envelope block text-2xl w-10 h-10 font-bold"></i>

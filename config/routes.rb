@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "home#index"
+  get "/home/privacy", to: "home#privacy", as: :privacy
+  get "/home/rules", to: "home#rules", as: :rules
   get "colors/top" => "colors#top"
 
   resources :colors do
