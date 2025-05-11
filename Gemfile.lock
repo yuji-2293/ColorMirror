@@ -211,6 +211,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     mini_mime (1.1.5)
     minitest (5.25.5)
     mission_control-jobs (1.0.2)
@@ -496,6 +498,7 @@ DEPENDENCIES
   kamal
   letter_opener_web
   line-bot-api
+  meta-tags
   mission_control-jobs
   omniauth
   omniauth-google-oauth2

@@ -98,3 +98,5 @@ gem "omniauth-rails_csrf_protection"
 gem "mission_control-jobs"
 
 gem "line-bot-api"
+# OGP用のgem
+gem "meta-tags"
