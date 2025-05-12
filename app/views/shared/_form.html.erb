@@ -4,7 +4,7 @@
 
     <div class="swiper-wrapper">
         <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass flex flex-col relative min-h-full flex-grow">
-            <div class="maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
+            <div class="maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
 
             <%# sign up時の居住地を初期値にセット %>
             <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
@@ -39,7 +39,7 @@
         </div>
 
     <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
-    <div class="maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
+    <div class="maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
 
         <%= f.hidden_field :color_name, id: "color_name", required: true %>
         <div class="">
@@ -50,15 +50,15 @@
         <div class="">
             <div id="color-suggest" class="flex justify-center items-center space-x-4 mt-4"></div>
         </div>
-<%=f.submit class: "glass mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
+        <%=f.submit class: "bg-secondary mt-4 bg-info text-white border-none font-bold hover:shadow-xl max-w-2xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
 
-                <button
-                    class="swiper-button-prev-custom absolute hidden sm:flex left-0 top-1/2  -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
-                    <svg class="w-12 h-12 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
+        <button
+            class="swiper-button-prev-custom absolute hidden sm:flex left-0 top-1/2  -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
+            <svg class="w-12 h-12 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
 
     </div>
     <% end %>

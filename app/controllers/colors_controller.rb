@@ -1,5 +1,4 @@
 class ColorsController < ApplicationController
-  before_action :set_color, only: [ :edit, :update, :destroy ]
   before_action :authenticate_user!, only: [ :index, :new ]
   def top;end
 
@@ -40,31 +39,6 @@ class ColorsController < ApplicationController
       flash.now[:alert] = "保存失敗、情報が不足している可能性があります"
       render :new,  status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @color_form = ColorForm.new(color: @color)
-  end
-
-  def update
-        mapped_color = ColorMapping.mapping_color(color_params[:color_name])
-        weather_data = color_params.slice(:weather_name, :weather_pressure, :temperature)
-        ai_responses = ColorProcessingService.new(@color, current_user).process_color(mapped_color, weather_data)
-        @color_form = ColorForm.new(color_params.merge(color: @color), color_analysis: color_analysis, weather_analysis: weather_analysis)
-        if @color_form.save
-        flash[:notice] = "色の更新に成功しました！"
-        redirect_to colors_path(@color)
-        else
-        flash.now[:alert] = "編集失敗"
-        render :edit, status: :unprocessable_entity
-        end
-      flash.now[:alert] = "更新に失敗しました"
-      render :edit, status: :unprocessable_entity
-  end
-
-  def destroy
-    current_user.colors.today_form.destroy_all
-    redirect_to new_color_path, notice: "データの削除成功", status: :see_other
   end
 
   def analyze
