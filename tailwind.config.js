@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        body: "#fffaf0",
+        ocean: "#0c4a6e",
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "fade-in-text": "fadeInText 0.5s ease-in-out",
@@ -25,7 +29,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-diagonal": "linear-gradient(135deg, #f472b6 0%, #ffffff 50%, #7dd3fc 100%)",
-        "re-gradient-diagonal": "linear-gradient(135deg, #7dd3fc 0%, #ffffff 50%, #f472b6 100%)"
+        "footer-gradient-diagonal": "linear-gradient(to right, #7dd3fc, #f472b6 )"
       },
       // font
       fontFamily: {
@@ -37,7 +41,7 @@ module.exports = {
 
         // マイルドで表情豊かにしたい見出しなど
         maru: ['"Zen Maru Gothic"', 'sans-serif'],
-        
+
         mincho: ['"Shippori Mincho"', 'Georgia', 'serif'],
       },
     },

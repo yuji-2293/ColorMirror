@@ -1,14 +1,14 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-black bg-opacity-50 z-20 h-screen overflow-y-auto">
+<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-opacity-50 z-20 h-screen overflow-y-auto">
 
     <div class="swiper-wrapper">
         <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass flex flex-col relative min-h-full flex-grow">
-            <div class="font-maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
+            <div class="maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
 
             <%# sign up時の居住地を初期値にセット %>
             <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
-            <div id="weather_image" class="max-w-full w-full overflow-x-auto rounded-xl shadow-lg mx-auto overflow-x-auto">
+            <div id="weather_image" class="max-w-full w-full rounded-xl shadow-lg mx-auto overflow-x-auto">
             <%= render "shared/weather_card" %>
             <div class="flex justify-between mt-4">
                 <button
@@ -39,7 +39,7 @@
         </div>
 
     <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide glass mx-auto text-center hover:shadow-xl my-4">
-    <div class="font-maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
+    <div class="maru uppercase tracking-wide text-center text-white font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
 
         <%= f.hidden_field :color_name, id: "color_name", required: true %>
         <div class="">

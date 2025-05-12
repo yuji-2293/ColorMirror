@@ -1,9 +1,10 @@
-<div class="navbar bg-primary h-16 w-full  flex items-center justify-between px-4 py-2">
+<div class="bg-gradient-diagonal flex items-start justify-between p-4 h-20">
+    <%= link_to root_path, class: "hover:opacity-50" do %>
+        <p class="maru text-4xl font-bold text-white">ColoMirror</p>
+    <% end %>
     <% if user_signed_in? %>
-        <%= link_to 'ColorMirror', colors_top_path, class: 'btn btn-ghost text-3xl' %>
-        <%= render "shared/drawer_menu",class: "right-0" %>
+        <%= render "shared/drawer_menu",class: "" %>
     <% else %>
-        <%= link_to 'ColorMirror', root_path, class: 'btn btn-ghost text-xl' %>
         <%= render "shared/before_menu" %>
       <% end %>
 </div>
