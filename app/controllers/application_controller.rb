@@ -15,9 +15,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [ :name, :email, :prefecture, :type ])
     devise_parameter_sanitizer.permit(:account_update, keys: [ :email, :prefecture, :password, :password_confirmation, :type ])
   end
-
-  private
-  def set_color
-    @color = current_user.colors.find(params[:id])
-  end
 end

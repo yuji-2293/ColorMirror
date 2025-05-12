@@ -27,7 +27,7 @@ export default class extends Carousel {
         const confirmation = document.getElementById("display-confirmation");
 
         confirmation.innerHTML = `
-          <div id="confirmationCard" class="max-w-3xl h-[300px] mx-auto glass neumorphism flex flex-col rounded-xl shadow-lg overflow-hidden animate-fade-in">
+          <div id="confirmationCard" class="max-w-3xl h-[300px] mx-auto bg-base-300 flex flex-col rounded-xl shadow-lg overflow-hidden animate-fade-in">
             <div class="container flex items-center justify-around w-full h-full">
 
               <div class="leftColumn">
