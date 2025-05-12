@@ -26,4 +26,9 @@ module ApplicationHelper
         }
       }
     end
+
+    def active_class_by_controller_and_action(controller, action, active_class = "text-white", default_class = "text-ocean")
+      base = "hover:scale-[1.1]"
+      controller_name == controller && action_name == action ? "#{base} #{active_class}" : "#{base} #{default_class}"
+    end
 end

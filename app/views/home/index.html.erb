@@ -1,14 +1,61 @@
-<div class="min-h-screen w-full bg-base-200 flex flex-col text-center justify-center mx-auto shadow-md rounded-md">
-    <div class="bg-white shadow-lg rounded-md min-h-96 flex flex-col justify-center p-6 gap-4" id="focus-target" tabindex="-1">
-        <h1 class="text-6xl font-bold mb-2">ColorMirror</h1>
-        <p>今の気分を色にして表現するサービスアプリです</p>
-        <p>あなたの気分を分析してAIが寄り添います</p>
+<section class="relative  text-white overflow-hidden  ">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div
+    class="absolute inset-0 bg-cover bg-center "
+            style="background-image: url('/images/ogp.png'); filter: brightness(0.8);"
 
+    ></div>
 
-        <div class="flex gap-4 justify-center my-5">
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+    <div class="container mx-auto lg:px-12 px-5 py-24 md:py-32 relative z-10 lg:h-[90vh]">
+    <div class="flex flex-col md:flex-row items-center justify-around">
+        <div class="w-full md:w-1/2 md:mb-0 relative">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-cyan-400 via #ffff to-rose-500 inline-block text-transparent bg-clip-text">
+            Color Mirror
+            <br />
+            <span class="text-2xl text-white">
+            へようこそ!!
+            </span>
+        </h1>
 
-  </div>
+        <p class="sm:text-xl text-sm mb-5 text-white font-bold ">
+            気分を可視化できるセルフケアサービス
+        </p>
+        <div class="flex flex-col sm:flex-row sm:pt-8 pt-12 space-y-4 sm:space-y-0 sm:space-x-4 ">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-accent" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+        </div>
+
+        </div>
+
+        <div class="w-full md:w-2/5 md:pl-12 hidden sm:block">
+        <div class="bg-white bg-opacity-10 backdrop-filter md:backdrop-blur-lg relative  rounded-xl p-8 shadow-2xl">
+            <h2 class="text-2xl font-semibold mb-6">このアプリの使用方法</h2>
+            <ul class="space-y-4">
+            <li class="flex items-center justify-start gap-x-4">
+                <span class="font-bold text-xl">①</span>
+                <p class="">天気を自動で取得して、入力した気分をもとにセルフカラーを生成し、記録します。</p>
+            </li>
+            <li class="flex items-center justify-start gap-x-4">
+                <span class="font-bold text-xl">②</span>
+                <p class="">記録したデータに対しAIが分析、コメントを生成します。</p>
+            </li>
+            <li class="flex items-center justify-start gap-x-4">
+                <span class="font-bold text-xl">③</span>
+                <p class="">１週間分のデータをもとに頻度、傾向をグラフ化して表示します。</p>
+            </li>
+        <div class="divider divider-warning">大事なこと</div>
+            <li class="flex items-center justify-start gap-x-4">
+                <span class="font-bold text-xl">④</span>
+                <p class="">何気なく不調だったり、言葉にしきれない感情を色で表現してみましょう、このアプリがその気持ちに寄り添います。</p>
+            </li>
+
+            </ul>
+        </div>
+        </div>
     </div>
-</div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0">
+
+    </div>
+</section>

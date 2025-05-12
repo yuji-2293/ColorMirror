@@ -1,20 +1,20 @@
-<div class="btm-nav h-16 fixed z-50">
-  <%= link_to new_color_path, class: "no-underline text-primary" do %>
-  <button class="text-primary flex flex-col items-center justify-center border-none primary-content">
+<div class="btm-nav bg-footer-gradient-diagonal h-16 fixed z-50">
+  <%= link_to new_color_path, class: active_class_by_controller_and_action("colors", "new") do %>
+  <button class="flex flex-col items-center justify-center border-none primary-content">
     <i class="fa-solid fa-pencil fa-2xl p-4"></i>
     <span>記録する</span>
   </button>
   <% end %>
-  <%= link_to colors_path, class: "no-underline text-primary" do %>
-  <button class="text-primary flex flex-col items-center justify-center border-none primary-content">
+  <%= link_to colors_path, class: active_class_by_controller_and_action("colors", "index") do %>
+  <button class="flex flex-col items-center justify-center border-none primary-content">
       <i class="fa-solid fa-book fa-2xl p-4"></i>
       <span>見る</span>
   </button>
   <% end %>
-  <%= link_to analysis_results_path, class: "no-underline text-primary" do %>
-  <button class="text-primary flex flex-col items-center justify-center border-none primary-content">
-  <i class="fa-solid fa-database fa-2xl p-4"></i>
-  <span>振り返る（実装予定）</span>
+<%= link_to analysis_results_path, class: active_class_by_controller_and_action("analysis_results", "index") do %>
+  <button class="flex flex-col items-center justify-center border-none primary-content">
+    <i class="fa-solid fa-database fa-2xl p-4"></i>
+    <span>振り返る（実装予定）</span>
   </button>
-  <% end %>
+<% end %>
 </div>
