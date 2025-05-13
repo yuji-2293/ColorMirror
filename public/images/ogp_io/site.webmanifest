@@ -3,7 +3,6 @@
     "short_name": "ColorMirror",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
     "theme_color": "#f472b6",
     "icons": [
       {
