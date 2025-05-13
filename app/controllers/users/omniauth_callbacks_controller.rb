@@ -25,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     }.to_json,
     expires: 1.day.from_now,
     httponly: true,
-    secure: Rails.env.production? # HTTPSのみで送信する安全策
+    secure: Rails.env.production?
   }
 
     if type == "link"
