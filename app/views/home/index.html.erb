@@ -1,4 +1,4 @@
-<section class="relative  text-white overflow-hidden  ">
+<section class="relative  text-white overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div
     class="absolute inset-0 bg-cover bg-center "
@@ -59,3 +59,14 @@
 
     </div>
 </section>
+
+<div class="max-w-3xl min-h-40 space-y-6 p-4 m-8 flex flex-col mx-auto overflow-y-auto">
+    <div class="grid grid-flow-col">
+        <%= link_to"プライバシーポリシー", privacy_path, class:"hover:scale-110" %>
+        <%= link_to"利用規約", rules_path, class:"hover:scale-110" %>
+        <%= link_to "お問い合わせ", form_colors_path, class:"hover:scale-110" %>
+    </div>
+    <div class="text-center">
+        <p class="font-bold text-lg">copyright ©︎ 2025 - ColorMirror</p>
+    </div>
+</div>
