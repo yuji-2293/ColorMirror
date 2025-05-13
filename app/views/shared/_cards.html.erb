@@ -1,9 +1,9 @@
 
-    <div id="STEP2" class="mx-auto text-center hover:shadow-xl my-4">
-    <h2 class="text-lg font-bold text-white mb-4">下のカードから今の気分を選んでください</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-5 justify-between gap-4 w-full mx-auto p-6">
+    <div id="STEP2" class="mx-auto text-center hover:shadow-xl my-4 max-h-[80vh]">
+    <h2 class="text-lg font-bold text-base-300 mb-4">下のカードから今の気分を選んでください</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-5 justify-between gap-4 w-full mx-auto p-6 max-h-screen overflow-y-auto">
     <%# ワクワクcard %>
-        <button type="button" class="flip-card neumorphism w-72 h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
+        <button type="button" class="flip-card neumorphism w-full max-w-xsh-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ワクワク">
             <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
                 <!-- 表面 -->
                 <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ワクワクfront.jpg');">
@@ -17,7 +17,7 @@
             </div>
         </button>
     <%# ムカムカcard %>
-        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
+        <button type="button" class="flip-card neumorphism w-full max-w-xs h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ムカムカ">
             <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
                 <!-- 表面 -->
                 <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ムカムカfront.jpg');">
@@ -31,7 +31,7 @@
             </div>
         </button>
     <%# モヤモヤcard %>
-        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
+        <button type="button" class="flip-card neumorphism w-full max-w-xs h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="モヤモヤ">
             <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
                 <!-- 表面 -->
                 <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/モヤモヤfront.jpg');">
@@ -45,7 +45,7 @@
             </div>
         </button>
     <%# ホッとcard %>
-        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
+        <button type="button" class="flip-card neumorphism w-full max-w-xs h-80 perspective relative bg-none border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
             <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
                 <!-- 表面 -->
                 <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center" style="background-image: url('/images/onomatopoeia/ホッとfront.jpg');">
@@ -59,7 +59,7 @@
             </div>
         </button>
     <%# その他card %>
-        <button type="button" class="flip-card neumorphism w-72  h-80 perspective relative border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="ホッと">
+        <button type="button" class="flip-card neumorphism w-full max-w-xs h-80 perspective relative border-none rounded-lg shadow-lg  bg-transparent p-0 mood-button" data-mood="わからない">
             <div class="flip-card-inner transition-transform transform-style preserve-3d relative w-full h-full">
                 <!-- 表面 -->
                 <div class="flip-card-front absolute w-full h-full rounded-lg shadow-lg bg-cover bg-center flex items-center justify-center"
