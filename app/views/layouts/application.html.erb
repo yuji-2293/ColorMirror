@@ -51,7 +51,7 @@
     <%# chart.js用の cdnコード %>
 
   </head>
-  <body class="bg-body min-h-screen flex flex-col font-maru">
+  <body class="bg-body min-h-screen overflow-auto font-maru">
     <div data-controller="loading">
       <div data-loading-target="spinner" class="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-60">
         <div class="h-[100px] w-[100px] flex items-center justify-center">
@@ -59,7 +59,7 @@
         </div>
     </div>
     <%= render "shared/header" %>
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1">
       <%= render "shared/flash_message" %>
     <%= yield %>
     </main>
