@@ -59,7 +59,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path, alert: "認証フローに失敗しました"
+    cookies[:login_method] = "normal"
+    redirect_to root_path, alert: "認証に失敗しました、一度Googleのログインをやり直してください"
   end
 
   # GET|POST /resource/auth/twitter
