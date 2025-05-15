@@ -12,5 +12,4 @@
     line_reminder:
       class: "LineReminderJob"
       queue: default
-      # schedule: "every day at 8am"
-      schedule: "every 1 minute"
+      schedule: "every day at 8am"
