@@ -99,7 +99,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if user && data.present?
         user.update!(provider: data[:provider], uid: data[:uid])
         cookies[:login_method] = "google"
-        flash[:notice] = "Googleアカウントが連携されました。"
+        flash[:notice] = "Googleアカウントが連携されました。\n 以後、ログインの時はGoogleログインすることができます。"
       else
         flash[:notice] = "Googleアカウントの連携に失敗しました"
       end
