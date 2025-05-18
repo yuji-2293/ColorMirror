@@ -1,24 +1,22 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
-<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-opacity-50 z-20">
-
+<div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-opacity-50 z-20 flex flex-col ">
     <div class="swiper-wrapper">
-        <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass flex flex-col relative min-h-screen">
+        <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass relative min-h-screen">
             <div class="font-maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
-
             <%# sign up時の居住地を初期値にセット %>
             <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
             <div id="weather_image" class="max-w-full w-full rounded-xl shadow-lg mx-auto overflow-x-auto">
-            <%= render "shared/weather_card" %>
-            <div class="flex justify-between mt-4">
-                <button
-                    class="swiper-button-next-custom absolute hidden sm:flex fixed right-0 top-1/2 flex -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-            </div>
+                <%= render "shared/weather_card" %>
+                <div class="flex justify-between mt-4">
+                    <button
+                        class="swiper-button-next-custom absolute hidden sm:flex fixed right-0 top-1/2 flex -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <%# 天気カードから取得したパラメーター %>
             <div class="hidden_fields">
@@ -31,37 +29,36 @@
                 <%= f.hidden_field :weather_icon, id: "weather_icon" %>
             </div>
 
-        <div>
-            <%= render "shared/cards" %>
-            <%= f.hidden_field :mood, id: "selected-mood", required: true %>
-            <%= f.hidden_field :mood_level, id: "mood_level" %>
-        </div>
-        </div>
-
-        <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide p-6 glass flex justify-center items-center min-h-screen relative">
-        <div class="flex flex-col items-center justify-center w-full max-w-2xl space-y-6 h-full">
-            <div class="font-maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl">STEP 2/2</div>
-
-            <div id="display-confirmation"></div>
-
-            <button type="button" id="generate-colors" class="font-maru bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl">
-            セルフカラーを生成する
-            </button>
-
-            <div id="color-suggest" class="flex justify-center items-center space-x-4"></div>
-
-            <%= f.submit class: "bg-secondary bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
-
-            <%= f.hidden_field :color_name, id: "color_name", required: true %>
+            <div>
+                <%= render "shared/cards" %>
+                <%= f.hidden_field :mood, id: "selected-mood", required: true %>
+                <%= f.hidden_field :mood_level, id: "mood_level" %>
+            </div>
         </div>
 
-        <button
-            class="swiper-button-prev-custom absolute hidden sm:flex left-0 top-1/2 -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
-            <svg class="w-12 h-12 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </button>
-        </div>
-    <% end %>
+        <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide p-6 glass min-h-screen relative">
+                <div class="font-maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl">STEP 2/2</div>
+                <div id="display-confirmation"></div>
+<div class="flex flex-col justify-center mx-auto gap-4 p-4 max-w-2xl ">
+                    <button type="button" id="generate-colors" class="font-maru bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl">
+                    セルフカラーを生成する
+                </button>
+
+                <div id="color-suggest" class="grid grid-flow-row sm:grid-cols-2 space-x-4"></div>
+                <%= f.submit class: "bg-secondary bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl", data: { action: "click->loading#show" } %>
+
 </div>
+
+
+                <%= f.hidden_field :color_name, id: "color_name", required: true %>
+            </div>
+
+            <button
+                class="swiper-button-prev-custom absolute hidden sm:flex left-0 top-1/2 -translate-y-1/2 transform text-cyan-400 bg-gray-800 hover:bg-white rounded-full p-2 focus:outline-none">
+                <svg class="w-12 h-12 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        <% end %>
+    </div>
 </div>

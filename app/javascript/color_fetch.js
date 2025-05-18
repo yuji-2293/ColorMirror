@@ -49,7 +49,7 @@ if (generateColorsButton) {
 
          // コンテナの作成
         const colorContainer = document.createElement("div");
-        colorContainer.classList.add("flex", "flex-col", "items-center","justify-center","bg-[#fffaf0]", "m-8", "p-4","rounded-xl","shadow-lg");
+        colorContainer.classList.add("flex", "flex-col", "items-center","justify-center","bg-[#fffaf0]", "m-8", "p-4","rounded-xl","shadow-lg", "color-ball-wrapper");
 
         colorContainer.appendChild(colorBall);
         colorContainer.appendChild(colorLabel);
@@ -81,21 +81,22 @@ if (generateColorsButton) {
 // 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
   function setupColorBallClickEvents() {
     let clickedButton = null;
-    const submitColor =  document.querySelectorAll('.color-ball');
+    const submitColor =  document.querySelectorAll('.color-ball-wrapper');
+    const selectColor =  document.querySelectorAll('.color-ball');
 
     submitColor.forEach(submit => {
       submit.addEventListener("click", (event) => {
       const newClickedButton = event.target
 
       if ( clickedButton && clickedButton !== newClickedButton) {
-        clickedButton.classList.remove("ring-4", "scale-125"); // 以前のボタンのクラスを削除
+        clickedButton.classList.remove("ring-4", "ring-emerald-500" , "scale-125"); // 以前のボタンのクラスを削除
       }
 
       if (clickedButton === newClickedButton) {
         return;
       }
       clickedButton = newClickedButton;
-      clickedButton.classList.add("ring-4", "scale-125");
+      clickedButton.classList.add("ring-4", "ring-emerald-500", "scale-125");
 
         const colorName = window.getComputedStyle(event.target).backgroundColor;
         console.log(colorName);
