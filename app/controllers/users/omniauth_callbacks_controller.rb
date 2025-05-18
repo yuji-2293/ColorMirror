@@ -23,7 +23,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       provider: auth.provider,
       uid: auth.uid
     }.to_json,
-    expires: 1.day.from_now,
+    expires: 1.month.from_now,
     httponly: true,
     secure: Rails.env.production?
   }
