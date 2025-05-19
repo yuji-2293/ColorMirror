@@ -1,26 +1,9 @@
 <div class="flex items-center justify-center">
   <div class="sm:max-w-3xl w-full rounded-lg shadow-md focus:outline-none glass p-8" id="focus-target" tabindex="-1">
 
-    <%# Googleアカウントで連携中のUI %>
-    <% if cookies[:login_method] === "google" %>
-          <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン(Googleアカウント連携中)</h1>
-          <div class="GoogleForm">
-            <%= render "shared/oauth_form" %>
-            <div class="flex items-center justify-center">
-              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-6"></span>
-                <div class="my-4 text-center text-gray-500 text-md font-bold mx-2">または</div>
-              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-6"></span>
-            </div>
-            <div class="flex items-start justify-center gap-1 max-w-xl  mx-auto">
-              <%= button_to "連携を解除", unlink_google_account_path, method: :delete, data: { turbo: false , turbo_confirm: "連携を解除してもよろしいですか？"},
-              class: "btn bg-gradient-diagonal text-gray-700 py-3 px-4 w-96 font-bold shadow-md rounded-full" %>
-              <span class="tooltip tooltip-left sm:tooltip-bottom custom-tooltip" data-tip="連携を解除してもデータが消えることはありません">
-                <i class="fa-solid fa-circle-exclamation text-base-300 text-xl cursor-pointer"></i>
-              </span>
-            </div>
-          </div>
-    <% else %>
     <%# 連携されてないデフォルトのUI %>
+
+    <% if cookies[:login_method] === "normal" %>
     <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン</h1>
 <%= form_with model: @user, url: user_session_path, local: true, class: "space-y-4" do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -78,6 +61,24 @@
           </button>
         </div>
         <% end %>
+    <% else %>
+    <%# Googleアカウントで連携中のUI %>
+          <h1 class="sm:text-2xl text-xl font-bold text-center">ログイン(Googleアカウント連携中)</h1>
+          <div class="GoogleForm">
+            <%= render "shared/oauth_form" %>
+            <div class="flex items-center justify-center">
+              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-6"></span>
+                <div class="my-4 text-center text-gray-500 text-md font-bold mx-2">または</div>
+              <span class="block w-full sm:max-w-40 max-w-24 border-solid border-t-6"></span>
+            </div>
+            <div class="flex items-start justify-center gap-1 max-w-xl  mx-auto">
+              <%= button_to "連携を解除", unlink_google_account_path, method: :delete, data: { turbo: false , turbo_confirm: "連携を解除してもよろしいですか？"},
+              class: "btn bg-gradient-diagonal text-gray-700 py-3 px-4 w-96 font-bold shadow-md rounded-full" %>
+              <span class="tooltip tooltip-left sm:tooltip-bottom custom-tooltip" data-tip="連携を解除してもデータが消えることはありません">
+                <i class="fa-solid fa-circle-exclamation text-base-300 text-xl cursor-pointer"></i>
+              </span>
+            </div>
+          </div>
     <% end %>
 
   </div>
