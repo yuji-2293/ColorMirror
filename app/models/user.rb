@@ -44,6 +44,7 @@ class User < ApplicationRecord
           confirmed_at: Time.current,
           provider: auth.provider,
           uid: auth.uid,
+          prefecture: "東京都" # デフォルト値
           )
           user.save!
       end

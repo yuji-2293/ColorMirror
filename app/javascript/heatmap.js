@@ -6,7 +6,6 @@ document.addEventListener("turbo:load", () => {
         fetch("/heatmap")
         .then((response) => response.json())
         .then ((data) => {
-
             const parsedData = data.map(entry => ({
                 x: entry.x,
                 y: entry.y
