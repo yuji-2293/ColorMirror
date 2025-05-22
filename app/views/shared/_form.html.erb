@@ -3,7 +3,7 @@
 <div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-opacity-50 z-20 flex flex-col ">
     <div class="swiper-wrapper">
         <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass relative min-h-screen">
-            <div class="font-maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
+            <div class="font-maru uppercase tracking-wide text-center text-emerald-500 font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
             <%# sign up時の居住地を初期値にセット %>
             <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
             <div id="weather_image" class="max-w-full w-full rounded-xl shadow-lg mx-auto overflow-x-auto">
@@ -40,10 +40,10 @@
         </div>
 
         <div id="STEP2/2" data-carousel-target="slide" class="swiper-slide p-6 glass min-h-screen">
-                <div class="font-maru uppercase tracking-wide text-center text-base-300 font-bold text-4xl">STEP 2/2</div>
+                <div class="font-maru uppercase tracking-wide text-center text-emerald-500 font-bold text-4xl items-center my-4 sm:my-2">STEP 2/2</div>
                 <div id="display-confirmation"></div>
                 <div class="flex flex-col justify-center mx-auto gap-4 p-4 max-w-2xl ">
-                    <button type="button" id="generate-colors" class="font-maru bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl">
+                    <button type="button" id="generate-colors" data-carousel-target="generate" class="font-maru bg-info text-white border-none font-bold hover:shadow-xl w-full px-4 py-2 rounded-2xl">
                         セルフカラーを生成する
                     </button>
 

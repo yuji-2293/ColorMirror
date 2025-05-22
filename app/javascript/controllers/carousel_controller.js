@@ -3,7 +3,7 @@ import Swiper from "swiper";
 import "swiper/css/bundle"
 
 export default class extends Carousel {
-  static targets = ["slide"]
+  static targets = ["slide", "generate"]
 
   connect() {
     super.connect()
@@ -17,6 +17,11 @@ export default class extends Carousel {
       navigation: {
         nextEl: '.swiper-button-next-custom',
         prevEl: '.swiper-button-prev-custom',
+      },
+      on: {
+        slideChange: () => {
+          this.handleSlideChange()
+        }
       },
     });
 
@@ -62,8 +67,15 @@ export default class extends Carousel {
 
     // Default options for every carousels.
     this.defaultOptions
-  }
-
+  };
+  handleSlideChange() {
+    // たとえば最後のスライドに到達したらボタンにフォーカス
+    if (this.swiper.isEnd && this.hasGenerateTarget) {
+      this.generateTarget.focus()
+      this.generateTarget.scrollIntoView({ behavior: "smooth", block: "center" })
+      this.generateTarget.classList.add("ring-4", "ring-yellow-500", "transition-shadow", "duration-500")
+    }
+  };
   // You can set default options in this getter.
   get defaultOptions() {
     return {
