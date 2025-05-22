@@ -37,26 +37,45 @@
               </div>
               <div class="flex items-center gap-x-4 justify-start">
                 <span class="w-10 h-10 flex items-center justify-center">
-                  <i class="fa-solid fa-chart-simple block text-2xl font-bold"></i>
+                  <i class="fa-solid fa-pencil fa-2xl p-4"></i>
+                </span>
+                  <li><%= link_to "記録する", new_color_path, class:"hover:bg-white/20" %></li>
+              </div>
+
+              <div class="flex items-center gap-x-4 justify-start">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-book fa-2xl p-4"></i>
+                </span>
+                  <li><%= link_to "見る", colors_path, class:"hover:bg-white/20" %></li>
+              </div>
+              <div class="flex items-center gap-x-4 justify-start">
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-chart-simple block fa-2xl font-bold"></i>
                 </span>
                   <li><%= link_to "振り返り", analysis_results_path, class:"hover:bg-white/20" %></li>
               </div>
               <% end %>
 
               <div class="flex items-center gap-x-4 justify-start">
-                <i class="fa-solid fa-user-lock  text-2xl  font-bold"></i>
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-user-lock  fa-2xl font-bold"></i>
+                </span>
                   <li>
                     <%= link_to"プライバシーポリシー", privacy_path, class:"hover:bg-white/20" %>
                   </li>
               </div>
               <div class="flex items-center gap-x-4 justify-start">
-                  <i class="fa-solid fa-lock  text-2xl  font-bold"></i>
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-lock  fa-2xl font-bold"></i>
+                </span>
                   <li>
                   <%= link_to"利用規約", rules_path, class:"hover:bg-white/20" %>
                   </li>
               </div>
               <div class="flex items-center gap-x-4 justify-start">
-                  <i class="fa-regular fa-envelope  text-2xl font-bold"></i>
+                <span class="w-10 h-10 flex items-center justify-center">
+                  <i class="fa-regular fa-envelope  fa-2xl font-bold"></i>
+                </span>
                   <li>
                     <%= link_to "お問い合わせ", form_colors_path, class:"hover:bg-white/20" %>
                   </li>

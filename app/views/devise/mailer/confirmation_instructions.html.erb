@@ -50,7 +50,7 @@
         <h2>メールアドレスを確認してください</h2>
         <p>こんにちは <strong><%= @resource.name %></strong> さん。</p>
         <p>ColorMirror へようこそ！アカウントを有効化するには、以下のボタンをクリックしてください。</p>
-        <a href="<%= confirmation_url(@resource, confirmation_token: @token) %>" class="button">ユーザー認証を実行する</a>
+        <a href="<%= confirmation_url(@resource, confirmation_token: @token) %>" class="btn btn-success text-white">ユーザー認証を実行する</a>
         <p>このリンクの有効期限は 24 時間です。</p>
         <div class="footer">
             <p>このメールに心当たりがない場合は、無視してください。</p>
