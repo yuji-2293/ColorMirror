@@ -69,7 +69,6 @@ export default class extends Carousel {
     this.defaultOptions
   };
   handleSlideChange() {
-    // たとえば最後のスライドに到達したらボタンにフォーカス
     if (this.swiper.isEnd && this.hasGenerateTarget) {
       this.generateTarget.focus()
       this.generateTarget.scrollIntoView({ behavior: "smooth", block: "center" })

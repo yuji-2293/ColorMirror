@@ -26,7 +26,9 @@ if (generateColorsButton) {
     }
     fetch("/colors/analyze", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+       },
       body: JSON.stringify({ mood, weather })
     })
     .then(response => response.json())
