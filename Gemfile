@@ -100,3 +100,9 @@ gem "mission_control-jobs"
 gem "line-bot-api"
 # OGP用のgem
 gem "meta-tags"
+
+# rspecテストコード用gem
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+end
