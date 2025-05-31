@@ -1,28 +1,28 @@
 <div data-controller="modal" data-modal-target="modal" data-action="click->modal#close" class="flex items-center justify-center sm:p-8 p-4 fixed inset-0 bg-black bg-opacity-50 z-20">
     <div class="flex items-center justify-center bg-gradient-diagonal rounded-xl shadow-lg sm:p-8 p-4 relative sm:max-w-3xl w-full">
-        <div class="relative letter-style text-gray-800 rounded-xl shadow p-8 font-mincho leading-relaxed  space-y-4 w-full">
-            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-gray-500 mx-auto text-2xl font-bold">〜 AIからの手紙<span class="mx-2">✉️</span> 〜</div>
+        <div class="relative letter-style text-gray-800 rounded-xl shadow p-8 font-mincho leading-relaxed  space-y-4 w-full max-h-screen overflow-y-auto">
+            <div class="absolute block w-full sm:top-auto top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-gray-500 text-center sm:text-2xl text-base font-bold">〜 AIからのメッセージ<span class="mx-2">✉️</span> 〜</div>
                 <div class="letter-line"></div>
                 <div class="py-4">
                     <div class="flex items-center">
                         <div class="border-t-2 border-b-2 h-2 border-[#f472b6] flex-grow"></div>
-                        <div class="px-3 text-gray-800 text-xl font-bold rounded-lg">色分析</div>
+                        <div class="px-3 text-gray-800  sm:text-xl text-sm font-bold rounded-lg">色分析</div>
                         <div class="border-t-2 border-b-2 h-2 border-[#f472b6] flex-grow"></div>
                     </div>
 
                     <% if @self_log.response.color_analysis.present? %>
-                        <p class="whitespace-pre-wrap"><%= @self_log.response.color_analysis %></p>
+                        <p class="whitespace-pre-wrap lg:text-base text-sm"><%= @self_log.response.color_analysis %></p>
                     <% else %>
                         <p class="font-bold text-lg text-center">色分析を生成中<span class="font-bold text-sm">...</span></p>
                     <% end %>
                     <div class="flex items-center">
                         <div class="border-t-2 border-b-2 h-2 border-[#7dd3fc] flex-grow"></div>
-                        <div class="px-3 text-gray-800 text-xl font-bold rounded-lg">天気分析</div>
+                        <div class="px-3 text-gray-800 sm:text-xl text-sm font-bold rounded-lg">天気分析</div>
                         <div class="border-t-2 border-b-2 h-2 border-[#7dd3fc] flex-grow"></div>
                     </div>
 
                     <% if @self_log.response.weather_analysis.present? %>
-                        <p class="whitespace-pre-wrap"><%= @self_log.response.weather_analysis %></p>
+                        <p class="whitespace-pre-wrap lg:text-base text-sm"><%= @self_log.response.weather_analysis %></p>
                     <% else %>
                         <p class="font-bold text-lg text-center">天気分析を生成中<span class="font-bold text-sm">...</span></p>
                     <% end %>
