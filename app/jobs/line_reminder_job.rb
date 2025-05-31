@@ -7,7 +7,7 @@ class LineReminderJob < ApplicationJob
     users.each do |user|
       LINE_MESSAGING_CLIENT.push_message(user.line_id, {
         type: "text",
-        text: "おはようございます！！ \nColorMirrorで今日の気分を記録しよう！\nhttps://colormirror.onrender.com/"
+        text: "おはようございます！！ \nColorMirrorで今日の気分を記録しよう！\nhttps://colormirror.jp/"
       })
     end
   end
