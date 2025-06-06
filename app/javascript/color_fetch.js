@@ -81,10 +81,10 @@ if (generateColorsButton) {
   });
 
 // 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
+// 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
   function setupColorBallClickEvents() {
     let clickedButton = null;
-    const submitColor =  document.querySelectorAll('.color-ball-wrapper');
-    const selectColor =  document.querySelectorAll('.color-ball');
+    const submitColor =  document.querySelectorAll('.color-ball');
 
     submitColor.forEach(submit => {
       submit.addEventListener("click", (event) => {
@@ -98,7 +98,7 @@ if (generateColorsButton) {
         return;
       }
       clickedButton = newClickedButton;
-      clickedButton.classList.add("ring-4", "ring-emerald-500", "scale-125");
+      clickedButton.classList.add("ring-4", "ring-emerald-500" , "scale-125");
 
         const colorName = window.getComputedStyle(event.target).backgroundColor;
         console.log(colorName);
