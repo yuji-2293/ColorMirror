@@ -10,6 +10,12 @@
   @apply flex items-center justify-center;
 }
 
+.is-current-month {
+  outline: 3px dashed hotpink;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+}
+
 /* ai_response用のスタイル */
 .letter-style {
   background-color: #fffaf0; /* フローラルホワイト */
@@ -187,15 +193,11 @@
       #bdeeff 60%,   /* やさしいスカイブルー */
       #8fdcfb 90%,   /* 少し強い青み */
       #74d6f3 100%   /* しっかり空色 */
-    );    border-radius: 10px;
-    box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+    );
+    border-radius: 10px;
   }
   #cal-heatmap svg {
     box-sizing: content-box;
-  }
-  #cal-heatmap {
-    mask-image: linear-gradient(to left, transparent 0%, white 16.6%, white 100%);
-    -webkit-mask-image: linear-gradient(to left, transparent 0%, white 16.6%, white 100%);
   }
 
   .loader {

@@ -2,6 +2,11 @@ import CalHeatmap from "cal-heatmap";
 
 document.addEventListener("turbo:load", () => {
     const painHeatmap = document.getElementById("cal-heatmap");
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), 0, 1);
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
     if (painHeatmap){
         fetch("/heatmap")
         .then((response) => response.json())
@@ -40,7 +45,7 @@ document.addEventListener("turbo:load", () => {
 
                             },
                             date: {
-                                start: new Date('2025-01-01')
+                                start: new Date(startOfYear)
                             },
                             range: 12,
                             data: {
@@ -71,7 +76,24 @@ document.addEventListener("turbo:load", () => {
                                 },
                             ],
                         ],
-                    );
+                    ).then(() => {
+                        const domains = document.querySelectorAll('.ch-domain');
+                        domains.forEach((el) => {
+                          const className = el.className.baseVal || el.className;
+                          const match = className.match(/m_(\d+)/);
+                          if (match) {
+                            const monthNumber = parseInt(match[1], 10);
+                            const now = new Date();
+                            const currentMonth = now.getMonth();
+                            if (monthNumber - 1 === currentMonth) {
+                              el.classList.add('is-current-month');
+                              el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center"  }); // ← スクロールでフォーカス
+                              el.classList.add("transition-shadow", "duration-500");
+                            }
+                          }
+                        });
+                      });
+
             }
         })
         .catch(err => {

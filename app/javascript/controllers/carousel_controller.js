@@ -7,9 +7,7 @@ export default class extends Carousel {
 
   connect() {
     super.connect()
-    console.log("carouselControllerと接続しました")
 
-    // The swiper instance.
     this.swiper = new Swiper(this.element, {
       loop: false,
       slidesPerView: 1,
