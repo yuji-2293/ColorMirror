@@ -40,7 +40,7 @@ document.addEventListener("turbo:load", () => {
 
                             },
                             date: {
-                                start: new Date()
+                                start: new Date('2025-01-01')
                             },
                             range: 12,
                             data: {
