@@ -81,7 +81,6 @@ if (generateColorsButton) {
   });
 
 // 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
-// 動的に生成されたカラーボールにクリックイベントを追加する関数（ハイライトを追加）
   function setupColorBallClickEvents() {
     let clickedButton = null;
     const submitColor =  document.querySelectorAll('.color-ball');
