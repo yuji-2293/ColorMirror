@@ -3,13 +3,15 @@ class ResultMapsController < ApplicationController
 
   def heatmap_data
     if current_user
-    data = current_user.colors.map do |color|
-      {
-        x: color.created_at.to_date,
-        y: color.mood_score
+      data = current_user.self_logs.includes(:weather_log).map(&:weather_log)
+    weather  =  data.map { |log|
+        {
+          x: log.created_at.to_date,
+          y: log.weather_score
+        }
       }
-    end
-      render json: data
+
+      render json: weather
     else
       render json: [], status: :unauthorized
     end
@@ -35,7 +37,7 @@ class ResultMapsController < ApplicationController
 
   private
 
-  # 曜日付きの配列（不足日をnilや0補完してもOK）
+  # 曜日付きの配列
   def normalize_week(data)
     weekdays = %w[日 月 火 水 木 金 土]
     mood_map = data.index_by { |m| m.created_at.wday }  # wday: 0(日)〜6(土)
