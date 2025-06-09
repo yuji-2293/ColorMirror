@@ -77,22 +77,22 @@ document.addEventListener("turbo:load", () => {
                             ],
                         ],
                     ).then(() => {
-                        const domains = document.querySelectorAll('.ch-domain');
-                        domains.forEach((el) => {
-                          const className = el.className.baseVal || el.className;
-                          const match = className.match(/m_(\d+)/);
-                          if (match) {
-                            const monthNumber = parseInt(match[1], 10);
-                            const now = new Date();
-                            const currentMonth = now.getMonth();
-                            if (monthNumber - 1 === currentMonth) {
-                              el.classList.add('is-current-month');
-                              el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center"  }); // ← スクロールでフォーカス
-                              el.classList.add("transition-shadow", "duration-500");
+                            const domains = document.querySelectorAll('.ch-domain');
+                            domains.forEach((el) => {
+                            const className = el.className.baseVal || el.className;
+                            const match = className.match(/m_(\d+)/);
+                            if (match) {
+                                const monthNumber = parseInt(match[1], 10);
+                                const now = new Date();
+                                const currentMonth = now.getMonth();
+                                if (monthNumber - 1 === currentMonth) {
+                                el.classList.add('is-current-month');
+                                el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center"  }); // ← スクロールでフォーカス
+                                el.classList.add("transition-shadow", "duration-500");
+                                }
                             }
-                          }
+                            });
                         });
-                      });
 
             }
         })
