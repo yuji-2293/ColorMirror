@@ -10,7 +10,6 @@ class ResultMapsController < ApplicationController
           y: log.weather_score
         }
       }
-
       render json: weather
     else
       render json: [], status: :unauthorized

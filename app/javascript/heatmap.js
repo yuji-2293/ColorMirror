@@ -4,8 +4,7 @@ document.addEventListener("turbo:load", () => {
     const painHeatmap = document.getElementById("cal-heatmap");
     const now = new Date();
     const startOfYear = new Date(now.getFullYear(), 0, 1);
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
 
     if (painHeatmap){
         fetch("/heatmap")
