@@ -123,6 +123,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
+    docile (1.4.1)
     dotenv (3.1.7)
     dotenv-rails (3.1.7)
       dotenv (= 3.1.7)
@@ -430,6 +431,14 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -537,6 +546,8 @@ DEPENDENCIES
   rubocop-rails-omakase
   ruby-openai
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
+  simplecov
   solid_cable
   solid_cache
   solid_queue
