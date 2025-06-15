@@ -183,7 +183,7 @@
           null,
           null,
           1,
-          10,
+          28,
           null,
           null,
           1,
@@ -239,6 +239,83 @@
           1,
           null,
           null,
+          null
+        ]
+      },
+      "/myapp/app/models/self_log.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/myapp/app/models/color.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/myapp/app/models/weather_log.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/myapp/app/models/response.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -1219,89 +1296,8 @@
         ],
         "branches": {}
       },
-      "/myapp/app/models/color.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
       "/myapp/app/models/reminder.rb": {
         "lines": [
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/myapp/app/models/response.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/myapp/app/models/self_log.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/myapp/app/models/weather_log.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0
@@ -1513,6 +1509,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1749734040
+    "timestamp": 1749875608
   }
 }
