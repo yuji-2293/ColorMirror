@@ -48,8 +48,17 @@
     <%# cal-heatmap用 cdnコード %>
     <%= stylesheet_link_tag "https://unpkg.com/cal-heatmap/dist/cal-heatmap.css" %>
     <script src="https://unpkg.com/cal-heatmap/dist/plugins/CalendarLabel.min.js"></script>
-    <%# chart.js用の cdnコード %>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTH92NE5SR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DTH92NE5SR');
+    </script>
+    <!-- Google tag終了  -->
   </head>
   <body class="bg-body min-h-screen overflow-auto font-maru">
     <div data-controller="loading">
