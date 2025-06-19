@@ -43,8 +43,6 @@ subject(:user) { build(:user) }
     end
   end
 
-
-
   context "Userバリデーションの機能テスト" do
     it "設定したバリデーションが機能しているか" do
       user = build(:user)

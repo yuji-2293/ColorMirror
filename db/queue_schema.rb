@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_03_155154) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_121141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,8 +27,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_03_155154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "color_name", null: false
-    t.bigint "mood_level"
-    t.datetime "selected_at"
     t.string "mood"
   end
 
