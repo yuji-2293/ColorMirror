@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Color, type: :model do
   subject(:color) { build(:color) }
-describe "#mood_scoreが機能するか？"do
+describe "#mood_scoreが機能するか？" do
   {
     "ホッと" => 5,
     "ワクワク" => 4,

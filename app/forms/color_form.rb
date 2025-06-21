@@ -4,7 +4,6 @@ class ColorForm
   # 親モデルの属性
   attribute :color_name, :string
   attribute :mood, :string
-  attribute :mood_level, :integer
   # 子モデルの属性(中間)
   attribute :color_id, :integer
   attribute :user_id, :integer

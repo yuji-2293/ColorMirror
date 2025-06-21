@@ -152,24 +152,6 @@
           null
         ]
       },
-      "/myapp/app/models/analysis_result.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/myapp/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
       "/myapp/app/models/color.rb": {
         "lines": [
           1,
@@ -190,6 +172,17 @@
           null,
           1,
           6,
+          null,
+          null
+        ]
+      },
+      "/myapp/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
           null,
           null
         ]
@@ -321,8 +314,15 @@
           null,
           null,
           1,
-          0,
+          18,
           null,
+          null
+        ]
+      },
+      "/myapp/app/models/analysis_result.rb": {
+        "lines": [
+          1,
+          1,
           null
         ]
       },
@@ -1508,6 +1508,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1750338547
+    "timestamp": 1750423045
   }
 }

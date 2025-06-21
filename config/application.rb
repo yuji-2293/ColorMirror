@@ -34,12 +34,11 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.hosts << "colormirror.onrender.com"
+    config.hosts << "https://colormirror.jp/"
     config.mission_control.jobs.http_basic_auth_enabled = false
 
     config.i18n.default_locale = :ja
     config.time_zone = "Tokyo"
-    # config.autoload_paths << Rails.root.join("app/services")
     config.autoload_paths |= [ Rails.root.join("app/services").to_s ]
     config.autoload_paths |= [ Rails.root.join("lib").to_s ]
   end

@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe SelfLog, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "アソシエーション" do
+    it { is_expected.to belong_to (:user) }
+    it { is_expected.to belong_to (:color) }
+    it { is_expected.to have_one (:response) }
+    it { is_expected.to have_one (:weather_log) }
+  end
 end
