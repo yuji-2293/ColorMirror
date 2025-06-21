@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # メール認証設定
 
-  config.action_mailer.default_url_options = { host: "https://colormirror.jp/" }
+  config.action_mailer.default_url_options = { host: "colormirror.jp/" }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -74,7 +74,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "https://colormirror.jp/" }
+  config.action_mailer.default_url_options = { host: "colormirror.jp/" }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
@@ -89,7 +89,7 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  config.hosts << "https://colormirror.jp"
+  config.hosts << "colormirror.jp"
   config.hosts << "www.colormirror.jp"
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
