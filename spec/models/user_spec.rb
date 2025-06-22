@@ -6,6 +6,7 @@ subject(:user) { build(:user) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_presence_of(:password) }
+  it { is_expected.to validate_presence_of(:password_confirmation) }
   it { is_expected.to validate_presence_of(:prefecture) }
   it { is_expected.to validate_presence_of(:email).with_message("メールアドレスの入力は必須です") }
 
@@ -23,7 +24,7 @@ subject(:user) { build(:user) }
       expect(user.errors.full_messages).to include("パスワードを入力してください", "パスワード（確認用）とパスワードの入力が一致しません")
     end
     it "パスワードが6文字未満だと無効" do
-      user.password = "12345"
+      user.password = 12345
       user.valid?
       expect(user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
     end
@@ -31,10 +32,20 @@ subject(:user) { build(:user) }
       user = build(:user, password: "password")
       expect(user.password_required?).to be true
     end
-    it "入力されていないと false" do
+    it "パスワードが入力されていないと false" do
       user = build(:user, password: nil, password_confirmation: nil)
       allow(user).to receive(:new_record?).and_return(false)
       expect(user.password_required?).to be false
+    end
+    it "password_confirmationが6文字未満だと無効" do
+      user.password_confirmation = 12345
+      user.valid?
+      expect(user.errors.full_messages).to include("パスワード（確認用）は6文字以上で入力してください", "パスワード（確認用）とパスワードの入力が一致しません")
+    end
+    it "password_confirmationが入力されていないと false" do
+      user = build(:user, password: 999999, password_confirmation: nil)
+      expect(user).not_to be_valid
+      expect(user.errors[:password_confirmation]).to be_present
     end
     it "LINEトークンをモックで固定する" do
       allow(SecureRandom).to receive(:hex).and_return("mocked_token")
