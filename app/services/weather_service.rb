@@ -8,7 +8,7 @@ class WeatherService
 
   def initialize(city)
     @city = valid_city?(city) ? city : DEFAULT_CITY
-    api_key = ENV["OPNEWEATHERMAP_API_KEY"]
+    api_key = ENV["OPENWEATHERMAP_API_KEY"]
     @options = { query: { q: "#{@city}", appid: api_key, lang: "ja" } }
   end
 
