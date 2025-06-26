@@ -45,7 +45,3 @@ end
     end
   end
 end
-
-# def weather_score
-#   WEATHER_SCORE[weather_icon] || 0
-# end

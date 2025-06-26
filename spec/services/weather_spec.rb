@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe WeatherService do
+RSpec.describe WeatherService do
   describe "#initialize" do
     it "有効な都市名が設定される" do
       service = WeatherService.new("Tokyo").fetch_weather
