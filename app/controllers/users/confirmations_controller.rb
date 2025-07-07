@@ -13,7 +13,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
     def resend
       self.resource = User.find_by(email: params[:user][:email])
-      if resource&.unconfirmed?
+      if resource&.needs_confirmation?
         resource.send_confirmation_instructions
           flash[:notice] = "認証メールを送信しました!!"
             if request.referer&.include?("sign_in")

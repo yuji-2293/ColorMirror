@@ -24,10 +24,10 @@ class User < ApplicationRecord
 
   enum :line_alert, { no_alert: 0, need_alert: 1 }, validate: true
 
-  def unconfirmed?
+  def needs_confirmation?
     pending_any_confirmation
   end
-
+  # unconfirmed?
   def password_required?
     new_record? || password.present? || password_confirmation.present?
   end
