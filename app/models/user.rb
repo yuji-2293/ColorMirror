@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   enum :line_alert, { no_alert: 0, need_alert: 1 }, validate: true
 
-  def unconfirmed?
+  def need_unconfirmed?
     pending_any_confirmation
   end
 
