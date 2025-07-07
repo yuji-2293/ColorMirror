@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   validates :password, presence: true, on: :create
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
-  validates :password_confirmation, presence: true, on: :create
   validates :email, presence: { message: "メールアドレスの入力は必須です" }
 
   # Include default devise modules. Others available are:
