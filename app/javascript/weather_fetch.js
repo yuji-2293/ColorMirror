@@ -1,4 +1,4 @@
-import  {prefectureMapping, convertPrefectureName} from "./prefecuture.js"
+import  { prefectureMapping, convertPrefectureName } from "./prefecture.js"
 document.addEventListener("turbo:load", () => {
     // _form内でWeatherAPIにfetchする処理
     const cityInput = document.getElementById("city");
