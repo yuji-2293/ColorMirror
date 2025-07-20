@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "./color_fetch"
-import "./prefecuture"
+import "./prefecture.js"
 import "./weather_fetch"
 import "./link_google_account"
 import "swiper/css/bundle"
