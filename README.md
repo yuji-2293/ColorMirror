@@ -4,8 +4,10 @@
 本アプリで発見したUI・通信・状態管理の責務混在という課題を改善するため、React＋TypeScript＋Rails API構成の「ColorMirror_Re」へリプレイスしました。
 
 <p>
-GitHubリポジトリ: https://github.com/yuji-2293/ColorMirror_Re
-サービスURL: https://color-mirror-re.vercel.app/
+GitHubリポジトリ: https://github.com/yuji-2293/ColorMirror_Re  
+  
+サービスURL: https://color-mirror-re.vercel.app/  
+
 </p>
 
 ## サービススクリーンショット
