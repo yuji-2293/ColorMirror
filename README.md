@@ -2,21 +2,23 @@
 
 ## サービススクリーンショット
 
-１ユーザーにとって感情を可視化し自己認知を得ることがコアとなっています。
+ユーザーにとって感情を可視化し自己認知を得ることがコアとなっています。
 
-天気APIによる自動取得でオリジナルの天気カードの作成
+### データの登録の流れ
+
+1. 天気APIによる自動取得でオリジナルの天気カードの作成
 [![Image from Gyazo](https://i.gyazo.com/2276ff47d7bf4adf83cce73338f92ac4.png)](https://gyazo.com/2276ff47d7bf4adf83cce73338f92ac4)
 
-ユーザーの気分→オノマトペのカードで変換
+2. 今の気分をオノマトペのカードの中から選択する
 [![Image from Gyazo](https://i.gyazo.com/d57e5bb312879f6bd25da1fee687ee2b.jpg)](https://gyazo.com/d57e5bb312879f6bd25da1fee687ee2b)
 
-天気（外部情報)✖️気分（オノマトペ）でAIに色を生成させる→自分にマッチした色を登録!!　
+3. 天気（= 外部情報) ✖️ 気分（オノマトペ）でAIに色を生成させる → 自分にマッチした色を選択!!　
 [![Image from Gyazo](https://i.gyazo.com/26a18d8e388b7f9cbbd1566d70c94044.png)](https://gyazo.com/26a18d8e388b7f9cbbd1566d70c94044)
 
-登録したデータの一覧
+4. 「選択した色を登録」 → 登録したデータの一覧画面
 [![Image from Gyazo](https://i.gyazo.com/ee019bb925b7766a7f374f648be27fb2.png)](https://gyazo.com/ee019bb925b7766a7f374f648be27fb2)
 
-AIからのコメント（非同期で生成）
+5. 色を登録した後、AIからのコメントが遅れて生成され、届きます
 [![Image from Gyazo](https://i.gyazo.com/8b6adb4548fab67699833e43ace479d3.png)](https://gyazo.com/8b6adb4548fab67699833e43ace479d3)
 
 ## 🚀 サービス概要（3行で説明）
