@@ -1,5 +1,13 @@
 # 🎨 ColorMirror
 
+## 重要
+このアプリは、ポートフォリオ拡充および、開発時に自主的に発見した課題を解決するため、リプレイス開発を行いました
+
+<p>
+GitHubリポジトリ: https://github.com/yuji-2293/ColorMirror_Re
+サービスURL: https://color-mirror-re.vercel.app/
+</p>
+
 ## サービススクリーンショット
 
 ユーザーにとって感情を可視化し自己認知を得ることがコアとなっています。
