@@ -1,11 +1,14 @@
 <%= form_with model: @color, url: colors_path, method: :post, scope: :color,local: true, data: { turbo: false } do |f|%>
 <%= render 'shared/error_messages', object: f.object %>
+<%# stimulusによるカルーセル制御 %>
 <div data-controller="carousel" class="swiper sm:mb-8 mb-4 sm:p-8 p-4 bg-opacity-50 z-20 flex flex-col ">
     <div class="swiper-wrapper">
         <div id=STEP1/2 data-carousel-target="slide" class="swiper-slide  p-6 hover:shadow-lg  glass relative min-h-screen">
             <div class="font-maru uppercase tracking-wide text-center text-emerald-500 font-bold text-4xl items-center my-4 sm:my-2">STEP 1/2</div>
+
             <%# sign up時の居住地を初期値にセット %>
             <%= f.hidden_field :city, id: "city", value: @city, class: "hidden", required: true %>
+
             <div id="weather_image" class="max-w-full w-full rounded-xl shadow-lg mx-auto overflow-x-auto">
                 <%= render "shared/weather_card" %>
                 <div class="flex justify-between mt-4">
@@ -18,6 +21,7 @@
                     </button>
                 </div>
             </div>
+
             <%# 天気カードから取得したパラメーター %>
             <div class="hidden_fields">
                 <%= f.hidden_field :weather_name, id: "weather_name" %>
